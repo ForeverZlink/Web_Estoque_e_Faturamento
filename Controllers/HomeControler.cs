@@ -1,17 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Encodings.Web;
-fjskfs
-jk
+
 namespace Web_Estoque_E_Faturamento.Controllers
 {
-    public class HelloWorldController : Controller
+    public class HomeController : Controller
     {
         // 
-        // GET: /HelloWorld/
+        // GET: /Home/
 
-        public string Index()
+        public string index()
         {
-            return "This is my default actio.";
+            return "hello";
         }
 
         // 
