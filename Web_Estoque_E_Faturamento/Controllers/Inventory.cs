@@ -4,23 +4,24 @@ using System.Text.Encodings.Web;
 
 namespace Web_Estoque_E_Faturamento.Controllers
 {
-    public class OrderServiceController : Controller
+    public class InventoryController : Controller
     {
         
-        public string index()
+        public IActionResult Index()
         {
-            return "hello";
+            return View();
         }
 
         // 
         // GET: /OrderService/Welcome/ 
 
-        public string NewOrderOfService()
+        public IActionResult NewProductInventory()
         {
             DateTime DateTimeNow = DateTime.Now;
             
-            return $"Hoje é dia  {DateTimeNow}";
+            return View();
         }
+        
 
     }
 }
