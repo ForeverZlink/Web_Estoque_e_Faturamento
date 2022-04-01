@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Encodings.Web;
 
+
 namespace Web_Estoque_E_Faturamento.Controllers
 {
     public class OrderServiceController : Controller
@@ -14,9 +15,12 @@ namespace Web_Estoque_E_Faturamento.Controllers
         // 
         // GET: /OrderService/Welcome/ 
 
-        public string Welcome()
+        public string NewOrderOfService()
         {
-            return "This is the Welcome action method...";
+            DateTime DateTimeNow = DateTime.Now;
+            
+            return $"Hoje é dia  {DateTimeNow}";
         }
+
     }
 }
