@@ -15,12 +15,6 @@ namespace Web_Estoque_E_Faturamento.Controllers
         // 
         // GET: /OrderService/Welcome/ 
 
-        public IActionResult NewProductInventory()
-        {
-            DateTime DateTimeNow = DateTime.Now;
-            
-            return View();
-        }
         
 
     }
