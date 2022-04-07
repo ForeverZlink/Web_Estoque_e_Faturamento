@@ -9,6 +9,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
         
         public IActionResult Index()
         {
+            ViewData["Message"]= Environment.GetEnvironmentVariable("Anime");
             return View();
         }
 

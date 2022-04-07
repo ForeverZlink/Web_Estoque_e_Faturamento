@@ -13,9 +13,10 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /WebApp/Release/Out
 COPY --from=build-env /WebApp/Web_Estoque_E_Faturamento/Out .
 
-EXPOSE 80
 
+# padrão para quando não usar  heroku
+#ENTRYPOINT ["dotnet", "Web_Estoque_E_Faturamento.dll"]
 
-ENTRYPOINT ["dotnet", "Web_Estoque_E_Faturamento.dll"]
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet Web_Estoque_E_Faturamento.dll
 
 
