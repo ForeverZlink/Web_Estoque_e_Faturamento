@@ -4,7 +4,7 @@ using System.Text.Encodings.Web;
 
 namespace Web_Estoque_E_Faturamento.Controllers
 {
-    public class InventoryController : Controller
+    public class ProductController : Controller
     {
         
         public IActionResult Index()
