@@ -12,27 +12,39 @@
             <button type="button" class="btn btn-sm btn-outline-secondary">Exportar</button>
             <button type="button" class="btn btn-sm btn-outline-secondary">Compatilhar</button>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Launch demo modal
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#NewProductModal">
+              Criar novo produto
             </button>
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal fade" id="NewProductModal" tabindex="-1" aria-labelledby="NewProductModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
                 <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="NewProductModalLabel">Informações</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
+                  </div>
+                  <div class="modal-body">
+                    <div class="mb-3">
+                      <label for="CodeProductLabel" class="form-label">Código do Produto</label>
+                      <input type="textr" class="form-control" id="CodeProductLabel" placeholder="(Por favor, coloque o código original do produto, pois facilitará as pesquisas futuramente)">
+                    </div>
+                    <div class="mb-3">
+                      <label for="NameProductLabel" class="form-label">Nome do Produto</label>
+                      <input type="text" maxlength="300" class="form-control" id="NameProductLabel" placeholder="Digite o nome do produto">
+                    </div>
+                    <div class="mb-3">
+                      <label for="DescriptionProductLabel" class="form-label">Descrição do Produto</label>
+                      <textarea class="form-control" id="DescriptionProductLabel" rows="3"></textarea>
+                    </div>
+                  </div>
+                  
+                  <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
                 </div>
-                </div>
-            </div>
+              </div>
             </div>
           </div>
           <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
