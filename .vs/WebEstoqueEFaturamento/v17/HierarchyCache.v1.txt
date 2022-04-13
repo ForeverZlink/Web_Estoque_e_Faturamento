@@ -1,0 +1,308 @@
+﻿++Solução 'WebEstoqueEFaturamento' ‎(2 de 2 projetos)
+i:{00000000-0000-0000-0000-000000000000}:WebEstoqueEFaturamento.sln
+++WebEstoqueTests
+i:{00000000-0000-0000-0000-000000000000}:WebEstoqueTests
+++Dependências
+i:{bab7809e-20c7-4179-880d-d1109cae507f}:>753
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:>975
+++UnitTest1.cs
+i:{bab7809e-20c7-4179-880d-d1109cae507f}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\webestoquetests\unittest1.cs
+++Analisadores
+i:{bab7809e-20c7-4179-880d-d1109cae507f}:analisadores
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:analisadores
+++Estruturas
+i:{bab7809e-20c7-4179-880d-d1109cae507f}:estruturas
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:estruturas
+++Pacotes
+i:{bab7809e-20c7-4179-880d-d1109cae507f}:pacotes
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:pacotes
+++Microsoft.CodeAnalysis.CSharp.NetAnalyzers
+i:{bab7809e-20c7-4179-880d-d1109cae507f}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+++Microsoft.CodeAnalysis.NetAnalyzers
+i:{bab7809e-20c7-4179-880d-d1109cae507f}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+++System.Text.Json.SourceGeneration
+i:{bab7809e-20c7-4179-880d-d1109cae507f}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.3\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.3\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
+++xunit.analyzers
+i:{bab7809e-20c7-4179-880d-d1109cae507f}:c:\users\carlos h\.nuget\packages\xunit.analyzers\0.10.0\analyzers\dotnet\cs\xunit.analyzers.dll
+++Microsoft.NETCore.App
+i:{bab7809e-20c7-4179-880d-d1109cae507f}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\webestoquetests\microsoft.netcore.app
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\microsoft.netcore.app
+++coverlet.collector (3.1.0)
+i:{bab7809e-20c7-4179-880d-d1109cae507f}:>987
+++Microsoft.NET.Test.Sdk (16.11.0)
+i:{bab7809e-20c7-4179-880d-d1109cae507f}:>984
+++xunit (2.4.1)
+i:{bab7809e-20c7-4179-880d-d1109cae507f}:>985
+++xunit.runner.visualstudio (2.4.3)
+i:{bab7809e-20c7-4179-880d-d1109cae507f}:>986
+++Web_Estoque_E_Faturamento
+i:{00000000-0000-0000-0000-000000000000}:Web_Estoque_E_Faturamento
+++Connected Services 
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:>976
+++Banco de Dados do SQL Server
+++Foi detectada a dependência de Banco de Dados do SQL Server
+++Microsoft.EntityFrameworkCore.Design (6.0.4)
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:>1027
+++Microsoft.EntityFrameworkCore.Sqlite (6.0.4)
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:>1028
+++Microsoft.EntityFrameworkCore.SqlServer (6.0.4)
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:>1033
+++Microsoft.VisualStudio.Web.CodeGeneration.Design (6.0.2)
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:>1029
+++Properties
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\properties\
+++launchSettings.json
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\properties\launchsettings.json
+++wwwroot
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\
+++_Models
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\_models\
+++Product.cs
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\_models\product.cs
+++Controllers
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\controllers\
+++ProductController.cs
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\controllers\productcontroller.cs
+++Data
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\data\
+++MvcProductContext.cs
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\data\mvcproductcontext.cs
+++Migrations
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\migrations\
+++20220412010723_InitialCreate.cs
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\migrations\20220412010723_initialcreate.cs
+++MvcProductContextModelSnapshot.cs
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\migrations\mvcproductcontextmodelsnapshot.cs
+++Pages
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\pages\
+++Shared
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\pages\shared\
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\views\shared\
+++_Layout.cshtml
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\pages\shared\_layout.cshtml
+++_LayoutDashboard.cshtml
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\pages\shared\_layoutdashboard.cshtml
+++_ValidationScriptsPartial.cshtml
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\pages\shared\_validationscriptspartial.cshtml
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\views\shared\_validationscriptspartial.cshtml
+++_ViewImports.cshtml
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\pages\_viewimports.cshtml
+++_ViewStart.cshtml
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\pages\_viewstart.cshtml
+++Error.cshtml
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\pages\error.cshtml
+++Index.cshtml
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\pages\index.cshtml
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\views\product\index.cshtml
+++Privacy.cshtml
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\pages\privacy.cshtml
+++Views
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\views\
+++Product
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\views\product\
+++LiveServer
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\views\product\liveserver\
+++IndexConcept.html
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\views\product\liveserver\indexconcept.html
+++Create.cshtml
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\views\product\create.cshtml
+++Delete.cshtml
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\views\product\delete.cshtml
+++Details.cshtml
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\views\product\details.cshtml
+++Edit.cshtml
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\views\product\edit.cshtml
+++appsettings.json
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\appsettings.json
+++appsettings.Development.json
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\appsettings.development.json
+++MvcProductContext-d4ce254b-22a6-4620-b1ce-955566b95869.db
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\mvcproductcontext-d4ce254b-22a6-4620-b1ce-955566b95869.db
+++Program.cs
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\program.cs
+++MessagePackAnalyzer
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\.nuget\packages\messagepackanalyzer\2.1.152\analyzers\dotnet\messagepackanalyzer.dll
+++Microsoft.AspNetCore.Analyzers
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.analyzers.dll
+++Microsoft.AspNetCore.App.Analyzers
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.3\analyzers\dotnet\cs\microsoft.aspnetcore.app.analyzers.dll
+++Microsoft.AspNetCore.App.CodeFixes
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.3\analyzers\dotnet\cs\microsoft.aspnetcore.app.codefixes.dll
+++Microsoft.AspNetCore.Components.Analyzers
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.components.analyzers.dll
+++Microsoft.AspNetCore.Mvc.Analyzers
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.mvc.analyzers.dll
+++Microsoft.AspNetCore.Razor.SourceGenerator.Tooling.Internal
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk.razor\source-generators\microsoft.aspnetcore.razor.sourcegenerator.tooling.internal.dll
+++Microsoft.CodeAnalysis.Analyzers
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\.nuget\packages\microsoft.codeanalysis.analyzers\3.3.2\analyzers\dotnet\cs\microsoft.codeanalysis.analyzers.dll
+++Microsoft.CodeAnalysis.CSharp.Analyzers
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\.nuget\packages\microsoft.codeanalysis.analyzers\3.3.2\analyzers\dotnet\cs\microsoft.codeanalysis.csharp.analyzers.dll
+++Microsoft.EntityFrameworkCore.Analyzers
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\.nuget\packages\microsoft.entityframeworkcore.analyzers\6.0.4\analyzers\dotnet\cs\microsoft.entityframeworkcore.analyzers.dll
+++Microsoft.Extensions.Logging.Generators
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.3\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
+++Microsoft.NET.Sdk.Razor.SourceGenerators
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\program files\dotnet\sdk\6.0.201\sdks\microsoft.net.sdk.razor\source-generators\microsoft.net.sdk.razor.sourcegenerators.dll
+++Microsoft.AspNetCore.App
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\microsoft.aspnetcore.app
+++css
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\css\
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\
+++js
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\js\
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\js\
+++lib
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\
+++favicon.ico
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\favicon.ico
+++20220412010723_InitialCreate.Designer.cs
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\migrations\20220412010723_initialcreate.designer.cs
+++_Layout.cshtml.css
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\pages\shared\_layout.cshtml.css
+++Error.cshtml.cs
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\pages\error.cshtml.cs
+++Index.cshtml.cs
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\pages\index.cshtml.cs
+++Privacy.cshtml.cs
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\pages\privacy.cshtml.cs
+++site.css
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\css\site.css
+++site.js
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\js\site.js
+++bootstrap
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\
+++jquery
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\jquery\
+++jquery-validation
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\jquery-validation\
+++jquery-validation-unobtrusive
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\jquery-validation-unobtrusive\
+++dist
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\jquery\dist\
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\jquery-validation\dist\
+++LICENSE
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\license
+++LICENSE.txt
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\jquery\license.txt
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\jquery-validation-unobtrusive\license.txt
+++LICENSE.md
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\jquery-validation\license.md
+++jquery.validate.unobtrusive.js
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js
+++jquery.js
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\jquery\dist\jquery.js
+++additional-methods.js
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\jquery-validation\dist\additional-methods.js
+++jquery.validate.js
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\jquery-validation\dist\jquery.validate.js
+++jquery.validate.unobtrusive.min.js
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js
+++bootstrap.css
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap.css
+++bootstrap-grid.css
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
+++bootstrap-reboot.css
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
+++bootstrap-utilities.css
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css
+++bootstrap.js
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\js\bootstrap.js
+++jquery.min.js
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\jquery\dist\jquery.min.js
+++additional-methods.min.js
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\jquery-validation\dist\additional-methods.min.js
+++jquery.validate.min.js
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
+++bootstrap.css.map
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
+++bootstrap.min.css
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
+++bootstrap.rtl.css
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
+++bootstrap-grid.css.map
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
+++bootstrap-grid.min.css
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
+++bootstrap-grid.rtl.css
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
+++bootstrap-reboot.css.map
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
+++bootstrap-reboot.min.css
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
+++bootstrap-reboot.rtl.css
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css
+++bootstrap-utilities.css.map
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
+++bootstrap-utilities.min.css
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css
+++bootstrap-utilities.rtl.css
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
+++bootstrap.bundle.js
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
+++bootstrap.esm.js
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js
+++bootstrap.js.map
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
+++bootstrap.min.js
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
+++jquery.min.map
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\jquery\dist\jquery.min.map
+++bootstrap.min.css.map
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
+++bootstrap.rtl.css.map
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
+++bootstrap.rtl.min.css
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
+++bootstrap-grid.min.css.map
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
+++bootstrap-grid.rtl.css.map
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
+++bootstrap-grid.rtl.min.css
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
+++bootstrap-reboot.min.css.map
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
+++bootstrap-reboot.rtl.css.map
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
+++bootstrap-reboot.rtl.min.css
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
+++bootstrap-utilities.min.css.map
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map
+++bootstrap-utilities.rtl.css.map
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
+++bootstrap-utilities.rtl.min.css
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
+++bootstrap.bundle.js.map
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
+++bootstrap.bundle.min.js
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
+++bootstrap.esm.js.map
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
+++bootstrap.esm.min.js
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js
+++bootstrap.min.js.map
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
+++bootstrap.rtl.min.css.map
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
+++bootstrap-grid.rtl.min.css.map
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map
+++bootstrap-reboot.rtl.min.css.map
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
+++bootstrap-utilities.rtl.min.css.map
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
+++bootstrap.bundle.min.js.map
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
+++bootstrap.esm.min.js.map
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map
+++MvcProductContext-d4ce254b-22a6-4620-b1ce-955566b95869.db-shm
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\mvcproductcontext-d4ce254b-22a6-4620-b1ce-955566b95869.db-shm
+++MvcProductContext-d4ce254b-22a6-4620-b1ce-955566b95869.db-wal
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:c:\users\carlos h\downloads\programação\projetos web\webestoqueefaturamento\web_estoque_e_faturamento\mvcproductcontext-d4ce254b-22a6-4620-b1ce-955566b95869.db-wal
+++Banco de Dados do SQL Server (ConnectionStrings:MvcProductContext)
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:>1732
+++Foi detectada a dependência de Banco de Dados do SQL Server com connectionId 'ConnectionStrings:MvcProductContext'
+i:{77ac7f66-538e-4061-8e78-aa1f144f6a36}:>1733

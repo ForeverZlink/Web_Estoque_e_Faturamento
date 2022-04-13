@@ -1,9 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+
+builder.Services.AddDbContext<MvcProductContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("MvcProductContext")));
 
 var app = builder.Build();
 
