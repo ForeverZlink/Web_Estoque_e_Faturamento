@@ -61,49 +61,57 @@
         </div>
       </div>
       
-    
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Code)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
+    <div class="table-responsive">
+        <table class="table table-sm table-striped ">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Code)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
                 
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-    @foreach (var item in Model) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Code)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
+                    <th></th>
+                 </tr>
+            </thead>
+            <tbody>
+             @foreach (var item in Model) {
+                <tr>
+                    <td >
+                        <p class="text-break">@Html.DisplayFor(modelItem => item.Code)</p> 
+                    </td>
+                    <td>
+                        <p class="text-break">@Html.DisplayFor(modelItem => item.Name)</p> 
+                    </td>
+                    <td>
+                        <p class="text-break">@Html.DisplayFor(modelItem => item.Description)</p>
+                        
+                    </td>
                
-                <td>
+                    <td>
 
-                    <a href="/Product/Edit/@item.Id" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="/Product/Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="/Product/Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-    }
-        </tbody>
+                        <a href="/Product/Edit/@item.Id" asp-route-id="@item.Id">Edit</a> |
+                        
+                         @Html.ActionLink("Detalhes","Details","Product",new {id=@item.Id});
+                         
+                        
+                        <a asp-action="/Product/Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+    <table class="table">
+        
     </table>
 
 </main>
-</main>
+
 
 
 <div>
