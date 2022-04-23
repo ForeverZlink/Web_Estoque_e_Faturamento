@@ -96,7 +96,7 @@
 
                         <a href="/Product/Edit/@item.Id" asp-route-id="@item.Id">Edit</a> |
                         
-                         @Html.ActionLink("Detalhes","Details","Product",new {id=@item.Id});
+                         @Html.ActionLink("Detalhes","Details","Product",new {id=@item.Id})
                          
                         
                         <a asp-action="/Product/Delete" asp-route-id="@item.Id">Delete</a>
