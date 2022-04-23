@@ -7,7 +7,7 @@ COPY . /WebApp
 WORKDIR /WebApp/Web_Estoque_E_Faturamento
 RUN dotnet restore
 
-run dotnet ef migrations add InitialCreate
+run dotnet ef Migrations add InitialCreate
 run dotnet ef database update
 RUN dotnet publish -c Release -o Out
 
