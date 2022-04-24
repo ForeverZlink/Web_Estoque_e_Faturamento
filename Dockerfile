@@ -1,15 +1,14 @@
-FROM  mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
+FROM  mcr.microsoft.com/dotnet/sdk AS build-env
 WORKDIR /WebApp
-
 
 COPY . /WebApp
 
 WORKDIR /WebApp/Web_Estoque_E_Faturamento
-RUN dotnet restore
-run  dotnet tool install --global dotnet-ef
-run export PATH="$PATH:/root/.dotnet/tools"
-run dotnet-ef migrations add InitialCreate
-run dotnet-ef database update
+run dotnet restore
+run dotnet tool install --global dotnet-ef
+ENV PATH="${PATH}:/root/.dotnet/tools"
+
+run dotnet ef database update
 RUN dotnet publish -c Release -o Out
 
 

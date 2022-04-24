@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\WebEstoqueTests",
-    "\\Web_Estoque_E_Faturamento"
+    "\\Web_Estoque_E_Faturamento",
+    "\\Web_Estoque_E_Faturamento\\Models"
   ],
-  "SelectedNode": "\\WebEstoqueTests\\WebEstoqueTests.csproj",
+  "SelectedNode": "\\WebEstoqueTests\\bin",
   "PreviewInSolutionExplorer": false
 }
