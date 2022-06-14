@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-
-
+using Npgsql;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +10,7 @@ builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 
 builder.Services.AddDbContext<MvcProductContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("MvcProductContext")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("MvcProductContext")));
 
 var app = builder.Build();
 
