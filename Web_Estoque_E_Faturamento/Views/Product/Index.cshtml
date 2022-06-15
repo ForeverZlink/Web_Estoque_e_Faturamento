@@ -22,23 +22,23 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="NewProductModalLabel">Informa��es</h5>
+                    <h5 class="modal-title" id="NewProductModalLabel">Informações</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
                         <form action="/Product/Create" method = "Post">
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <div class="mb-3">
-                              <label for="CodeProductLabel" class="form-label">C�digo do Produto</label>
-                              <input type="text" class="form-control" id="CodeProductLabel" name="Code" placeholder="(Por favor, coloque o c�digo original do produto, pois facilitar� as pesquisas futuramente)">
+                              <label for="CodeProductLabel" class="form-label">Código do Produto</label>
+                              <input type="text" required class="form-control" id="CodeProductLabel" name="Code" placeholder="(Por favor, coloque o código original do produto, pois facilitará as pesquisas futuramente)">
                             </div>
                             <div class="mb-3">
-                              <label for="NameProductLabel" class="form-label">Nome do Produto</label>
-                              <input type="text" maxlength="300" class="form-control" name="Name" id="NameProductLabel" placeholder="Digite o nome do produto">
+                              <label for="NameProductLabel"  class="form-label">Nome do Produto</label>
+                              <input type="text" maxlength="300" required class="form-control" name="Name" id="NameProductLabel" placeholder="Digite o nome do produto">
                             </div>
                             <div class="mb-3">
-                              <label for="DescriptionProductLabel" class="form-label">Descri��o do Produto</label>
-                              <textarea class="form-control" id="DescriptionProductLabel" name="Description" rows="3"></textarea>
+                              <label for="DescriptionProductLabel" class="form-label">Descrição do Produto</label>
+                              <textarea class="form-control" required id="DescriptionProductLabel" name="Description" rows="3"></textarea>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
