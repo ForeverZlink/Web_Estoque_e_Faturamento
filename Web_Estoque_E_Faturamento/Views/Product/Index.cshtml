@@ -99,7 +99,7 @@
                          @Html.ActionLink("Detalhes","Details","Product",new {id=@item.Id})
                          
                         
-                        <a asp-action="/Product/Delete" asp-route-id="@item.Id">Delete</a>
+                         @Html.ActionLink("Apagar","Delete","Product", new {id=@item.Id})
                     </td>
                 </tr>
             }

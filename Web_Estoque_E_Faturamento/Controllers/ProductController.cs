@@ -22,7 +22,9 @@ namespace Web_Estoque_E_Faturamento.Controllers
         // GET: Product
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Product.ToListAsync());
+           
+            _context.Product.Reverse();
+            return View(await _context.Product.ToArrayAsync());
         }
 
         // GET: Product/Details/5
