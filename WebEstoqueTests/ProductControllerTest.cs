@@ -2,7 +2,7 @@ using Xunit;
 
 namespace WebEstoqueTests
 {
-    public class UnitTest1
+    public class ProductControllerTest
     {
         [Fact]
         public void Test1()
