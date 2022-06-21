@@ -7,16 +7,21 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Web_Estoque_E_Faturamento._Models;
+using Microsoft.AspNetCore.Mvc.Controllers;
 
 namespace Web_Estoque_E_Faturamento.Controllers
 {
+    
     public class ProductController : Controller
     {
+        
         private readonly MvcProductContext _context;
-
+       
+        
         public ProductController(MvcProductContext context)
         {
             _context = context;
+            
         }
 
         // GET: Product
@@ -30,6 +35,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
         // GET: Product/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            
             if (id == null)
             {
                 return NotFound();
@@ -50,12 +56,12 @@ namespace Web_Estoque_E_Faturamento.Controllers
         {
             return View();
         }
-
+        
         // POST: Product/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,Code")] Product product)
+        [HttpPost,ActionName("Create")]
+        public async Task<IActionResult> CreateOn([Bind("Id,Name,Description,Code")] Product product)
         {
             if (ModelState.IsValid)
             {
