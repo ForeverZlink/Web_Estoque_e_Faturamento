@@ -23,7 +23,10 @@ namespace Web_Estoque_E_Faturamento.Controllers
             _context = context;
             
         }
-
+        
+        public RedirectToActionResult RedirectToActionSucess(string ActionName){
+            return RedirectToAction(nameof(ActionName));
+        }
         // GET: Product
         public async Task<IActionResult> Index()
         {
@@ -65,9 +68,10 @@ namespace Web_Estoque_E_Faturamento.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 _context.Add(product);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToActionSucess(nameof(Index));
 
             }
             else
@@ -123,7 +127,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToActionSucess(nameof(Index));
             }
             return View(product);
         }
@@ -154,7 +158,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
             var product = await _context.Product.FindAsync(id);
             _context.Product.Remove(product);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToActionSucess(nameof(Index));
         }
 
         private bool ProductExists(int id)
