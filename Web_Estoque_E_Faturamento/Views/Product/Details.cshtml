@@ -31,6 +31,7 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    @Html.ActionLink("Editar ", "Edit","Product", new {id=@Model.Id})
+    <div>@Html.ActionLink("Voltar ao gerenciamento de produtos", "Index","Product")</div>
+    
 </div>

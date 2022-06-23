@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "Web_Estoque_E_Faturamento/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.Certificate": "6.0.6",
           "Microsoft.EntityFrameworkCore.Design": "6.0.4",
           "Microsoft.EntityFrameworkCore.Sqlite": "6.0.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.5",
@@ -52,6 +53,17 @@
         }
       },
       "MessagePackAnalyzer/2.1.152": {},
+      "Microsoft.AspNetCore.Authentication.Certificate/6.0.6": {
+        "dependencies": {
+          "Microsoft.Extensions.Caching.Memory": "6.0.1"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.AspNetCore.Authentication.Certificate.dll": {
+            "assemblyVersion": "6.0.6.0",
+            "fileVersion": "6.0.622.26805"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Razor.Language/6.0.0": {
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Razor.Language.dll": {
@@ -2423,6 +2435,13 @@
       "sha512": "sha512-uJhZlGMkXDaFYsH8V9S6o1EyvsUqB9mpU4DVBXNr0DXZVzZMhuLP1IkLj5xK3EKlaAcvkFkZv3eSvuz360wb3Q==",
       "path": "messagepackanalyzer/2.1.152",
       "hashPath": "messagepackanalyzer.2.1.152.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.Certificate/6.0.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-j1VjU1djsBIGGwFoFW9HOEHeVluuEyut0eOvpmOWPLruIsZW527W1MEocklJtBk2/yOB9oRs1BmZKwpkbqF55Q==",
+      "path": "microsoft.aspnetcore.authentication.certificate/6.0.6",
+      "hashPath": "microsoft.aspnetcore.authentication.certificate.6.0.6.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Razor.Language/6.0.0": {
       "type": "package",

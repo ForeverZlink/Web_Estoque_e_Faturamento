@@ -8,7 +8,6 @@ WORKDIR /WebApp/Web_Estoque_E_Faturamento
 RUN dotnet restore
 run  dotnet tool install --global dotnet-ef
 run dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
-run dotnet ef database update
 RUN dotnet publish -c Release -o Out
 
 
