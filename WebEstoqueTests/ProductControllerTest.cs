@@ -20,14 +20,27 @@ namespace WebEstoqueTests
         Product ProductModelData = new Product(){
             Id=1,Name="Car",Code="01",Description="A nice car"
            };
+        public ProductController _ProductController;
+        public dynamic ContextConfig{
+            get{return context;}
+            set{
+                this.context.Product.Add(value);
+                context.SaveChanges();
+            }
+        } 
+        public dynamic ProductControllerInstance{
+            get{ return this._ProductController;}
+            set{this._ProductController = new ProductController(value);}
+        }
+
 
         [Fact]
         public void Details()
         {
             // Case when its a Product  te jwenn
-             context.Product.Add(this.ProductModelData);
-             context.SaveChanges();
-             ProductController ProductControllerInstance = new ProductController(context);
+             ContextConfig=ProductModelData;
+             ProductControllerInstance = ContextConfig;
+
              var ResponseWanted  = ProductControllerInstance.Details(id:1);
            
              
@@ -43,7 +56,7 @@ namespace WebEstoqueTests
              var ResponseWantedIdIsNull = ProductControllerInstance.Details(id:null);
              Assert.Contains(this.NotFoundResult,ResponseWantedIdNotExists.Result.ToString());
 
-             context.Dispose();
+             this.ContextConfig.Dispose();
            
         }
         [Fact]
@@ -52,9 +65,8 @@ namespace WebEstoqueTests
             Product ProductModelData = new Product(){
             Id=2,Name="Car",Code="01",Description="A nice car"
            };
-           context.Product.Add(ProductModelData);
-           context.SaveChanges();
-           ProductController ProductControllerInstance = new ProductController(context);
+           ContextConfig=ProductModelData;
+           ProductControllerInstance = ContextConfig;
            var ResponseWanted  = ProductControllerInstance.DeleteConfirmed(id:1);
            context.Dispose();
            Console.WriteLine(ResponseWanted.Result.ToString());
@@ -67,8 +79,7 @@ namespace WebEstoqueTests
             Id=3,Name="Car2",Code="02",Description="A nice car"
            };
            //True Case
-           context.SaveChanges();
-           ProductController ProductControllerInstance = new ProductController(context);
+           ProductControllerInstance = ContextConfig;
            var Response = ProductControllerInstance.CreateOn(ProductModelData);
            
            Assert.Contains("RedirectToActionResult",Response.Result.ToString());
