@@ -33,7 +33,32 @@ namespace WebEstoqueTests
             set{this._ProductController = new ProductController(value);}
         }
 
+        [Fact]
+        public void Edit()
+        {
+            //This part will be test Edit method when acess via get, thus
+            //its just search in database for the informations
 
+            ContextConfig =ProductModelData;
+            ProductControllerInstance = ContextConfig;
+            //When its passed a id null
+            var ResponseWantedIdIsNull = ProductControllerInstance.Edit(id:null);
+            Assert.Contains(this.NotFoundResult, ResponseWantedIdIsNull.Result.ToString());
+            
+            //When its passed id that not null, but doesn't exists in database
+            var ResponseWantedIdNotIsNullButDoesntExists= ProductControllerInstance.Edit(id:null);
+            Assert.Contains(this.NotFoundResult, ResponseWantedIdNotIsNullButDoesntExists.Result.ToString());
+            
+            // When its passed a product id that already exists
+            var ResponseWantedExists= ProductControllerInstance.Edit(id:ProductModelData.Id);
+            Assert.Contains(this.ViewResult, ResponseWantedExists.Result.ToString());
+            
+            //end of part of test via get
+
+            //This part will be test Edit method when acess via post 
+            
+
+        }
         [Fact]
         public void Details()
         {
