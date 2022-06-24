@@ -25,7 +25,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
         }
         
         public RedirectToActionResult RedirectToActionSucess(string ActionName){
-            return RedirectToAction(nameof(ActionName));
+            return RedirectToAction(ActionName);
         }
         // GET: Product
         public async Task<IActionResult> Index()
