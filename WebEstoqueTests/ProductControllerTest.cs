@@ -57,6 +57,21 @@ namespace WebEstoqueTests
 
             //This part will be test Edit method when acess via post 
             
+            //When id its different of product.Id
+            var ResponseIdIsDifferentOfProductId =ProductControllerInstance.Edit(id:999999, product:ProductModelData);
+            Assert.Contains(this.NotFoundResult, ResponseIdIsDifferentOfProductId.Result.ToString());
+
+            //When id its equal, exist the product in database and the  changes were made.
+            var ResponseIdEqualAndExistAProductWithId =ProductControllerInstance.Edit(id:ProductModelData.Id, product:ProductModelData);
+            Assert.Contains(this.RedirectToActionResult, ResponseIdEqualAndExistAProductWithId.Result.ToString());
+
+            //when id passed its equal a product.Id, but doesn't exist a product with this id in database
+            Product ProductModelDataButWithoutSaveInDatabase = new Product(){
+            Id=999,Name="Car",Code="01",Description="A nice car"
+            };
+            var ResponseIdEqualButNotExistAProductWithId =ProductControllerInstance.Edit(id:ProductModelDataButWithoutSaveInDatabase.Id, product:ProductModelDataButWithoutSaveInDatabase);
+            Assert.Contains(this.NotFoundResult, ResponseIdEqualButNotExistAProductWithId.Result.ToString());
+
 
         }
         [Fact]
