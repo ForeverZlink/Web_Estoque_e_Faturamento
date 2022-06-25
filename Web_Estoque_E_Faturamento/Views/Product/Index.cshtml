@@ -76,7 +76,9 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Description)
                     </th>
-                
+                    <th>
+                        @Html.DisplayNameFor(model=>model.DateOfCreation)
+                    </th>
                     <th></th>
                  </tr>
             </thead>
@@ -91,6 +93,10 @@
                     </td>
                     <td>
                         <p class="text-break">@Html.DisplayFor(modelItem => item.Description)</p>
+                        
+                    </td>
+                    <td>
+                        <p class="text-break">@Html.DisplayFor(modelItem => item.DateOfCreation)</p>
                         
                     </td>
                

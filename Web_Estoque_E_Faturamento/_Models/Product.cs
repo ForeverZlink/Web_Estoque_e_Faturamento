@@ -7,6 +7,10 @@
         
         public string? Description{ get; set; }
         public string? Code{ get; set; }
+        
+        public DateTime DateOfCreation {
+            get {return DateTime.Today.Date;}
+            set{;}}
 
     }
 }
