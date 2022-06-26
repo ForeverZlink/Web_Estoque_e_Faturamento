@@ -15,5 +15,6 @@ using Web_Estoque_E_Faturamento._Models;
         }
 
         public DbSet<Web_Estoque_E_Faturamento._Models.Product> Product { get; set; }
+        public DbSet<Web_Estoque_E_Faturamento._Models.ProductInventoryRegisterPurchase> ProductInventoryRegisterPurchase {get;set;}
        
     }
