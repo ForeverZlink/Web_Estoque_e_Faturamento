@@ -12,10 +12,14 @@ namespace Web_Estoque_E_Faturamento._Models
         [Key]
         public int Id {get;set;}
         public float QuantityBuyed {get;set;}
-        public string Provider{get;set;}
+        
         public string DateOfPurchase {get;set;}
         public float PriceOfPurchase {get;set;}
         public float PriceProductUnity {get;set;}
+        
+        [ForeignKey("Provider")]
+        public int ProviderId {get;set;}
+        public Provider Provider{get;set;}
         
         [ForeignKey("Product")]
         public int ProductId{get;set;}
