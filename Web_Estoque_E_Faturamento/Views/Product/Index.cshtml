@@ -30,16 +30,24 @@
                   <div class="modal-body">
                         <form asp-action = "Create" asp-controller= "ProductInventoryRegister" method ="POST">
                             @Html.AntiForgeryToken()
+
+                            <select class="form-select" aria-label="Default select example">
+                               
+                              <option  selected>Clique aqui para escolher o produto</option>
+                              @foreach(var item in Model){
+                                  <option value="@product">@product.Name</option>
+                              
+                              }
+
+                              
+                            </select>
+                            <div></div>
                             <div class="input-group mb-3">
                               
                               <label for="DateOfPurchase" class="col-sm-2 col-form-label">Fornecedor</label>
                               <input name="Provider" type="text" class="form-control" placeholder="Fornecedor do produto" aria-label="Provider" aria-describedby="basic-addon1">
                             </div>
-                            <div class="input-group mb-3">
-                              
-                              <label for="DateOfPurchase" class="col-sm-2 col-form-label">Produto</label>
-                              <input name="Provider" type="text" class="form-control" placeholder="Produto Comprado" aria-label="Provider" aria-describedby="basic-addon1">
-                            </div>
+                            
 
                             <div class="input-group mb-3">
                               <label for="DateOfPurchase" class="col-sm-2 col-form-label">Data da compra</label>
