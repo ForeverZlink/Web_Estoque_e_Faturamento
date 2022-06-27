@@ -10,12 +10,12 @@ using Microsoft.Extensions.Logging;
 
 namespace Web_Estoque_E_Faturamento.Controllers
 {
-    [Route("[controller]")]
-    public class ProductInventoryRegisterController : Controller
+    
+    public class ProductInventoryRegisterPurchaseController : Controller
     {
         private readonly MvcProductContext _context;
 
-        public ProductInventoryRegisterController(MvcProductContext context)
+        public ProductInventoryRegisterPurchaseController(MvcProductContext context)
         {
             _context = context;
         }
@@ -26,8 +26,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
         // GET: ProductInventoryRegister
         public async Task<IActionResult> Index()
         {
-           
-            _context.Product.Reverse();
+        
             return View(await _context.ProductInventoryRegisterPurchase.ToArrayAsync());
         }
 
