@@ -1,0 +1,22 @@
+@model IEnumerable<Web_Estoque_E_Faturamento._Models.Provider>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutDashboard";
+}
+
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+      <h3>helo</h3>
+
+    @foreach(var item in Model){
+        <h1>@item.Name</h1>
+
+    }
+    
+<form asp-action="Create" asp-controller="Provider"  method= "Post">
+    @Html.AntiForgeryToken()
+    <input id="Andress" name="Andress" placeholder = "Andress" type="text">
+    <input id="Cnpj" name="Cnpj" placeholder ="Cnpj" type="text">
+     <input id="Name" name="Name" placeholder="Nome" type="text">
+     <input type="submit" value="Enviar">
+</form>

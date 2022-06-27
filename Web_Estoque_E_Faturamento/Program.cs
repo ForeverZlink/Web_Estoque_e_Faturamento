@@ -13,7 +13,9 @@ builder.Logging.AddConsole();
 builder.Services.AddDbContext<MvcProductContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("MvcProductContext")));
 
+
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
