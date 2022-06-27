@@ -68,7 +68,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+                product.DateOfCreation= DateTime.UtcNow;
                 _context.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToActionSucess(nameof(Index));
