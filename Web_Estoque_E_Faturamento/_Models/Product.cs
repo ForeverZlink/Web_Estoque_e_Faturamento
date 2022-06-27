@@ -9,9 +9,7 @@
         
         public string? Code{ get; set; }
         
-        public DateTime DateOfCreation {
-            get {return DateTime.Today.Date;}
-            set{;}}
+        public DateTime DateOfCreation {get;set;}
 
     }
 }
