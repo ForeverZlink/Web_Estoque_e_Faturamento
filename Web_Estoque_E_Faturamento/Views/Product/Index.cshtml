@@ -1,5 +1,6 @@
 @model IEnumerable<Web_Estoque_E_Faturamento._Models.Product>
 
+
 @{
     ViewData["Title"] = "Index";
     Layout = "_LayoutDashboard";
@@ -31,9 +32,20 @@
                         <form asp-action = "Create" asp-controller= "ProductInventoryRegister" method ="POST">
                             @Html.AntiForgeryToken()
 
-                            <select class="form-select" aria-label="Default select example">
+                            <select name ="Product" class="form-select" aria-label="Default select example">
                                
                               <option  selected>Clique aqui para escolher o produto</option>
+                              @foreach(var product in Model){
+                                  <option value="@product">@product.Name</option>
+                              
+                              }
+
+                              
+                            </select>
+                            
+                            <select name ="Provider" class="form-select" aria-label="Default select example">
+                               
+                              <option  selected>Clique aqui para escolher o Fornecedor</option>
                               @foreach(var product in Model){
                                   <option value="@product">@product.Name</option>
                               
@@ -44,7 +56,7 @@
                             <div></div>
                             <div class="input-group mb-3">
                               
-                              <label for="DateOfPurchase" class="col-sm-2 col-form-label">Fornecedor</label>
+                              <label for="Provider" class="col-sm-2 col-form-label">Fornecedor</label>
                               <input name="Provider" type="text" class="form-control" placeholder="Fornecedor do produto" aria-label="Provider" aria-describedby="basic-addon1">
                             </div>
                             
