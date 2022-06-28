@@ -32,7 +32,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
         {
            
             _context.Product.Reverse();
-            return View(await _context.Product.ToArrayAsync());
+            return View(await _context.Product.ToListAsync());
         }
 
         // GET: Product/Details/5
