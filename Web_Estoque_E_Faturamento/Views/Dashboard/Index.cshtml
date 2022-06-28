@@ -1,0 +1,212 @@
+@model IEnumerable<Web_Estoque_E_Faturamento._Models.Product>
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutDashboard";
+}
+
+
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Gerenciamento  de Produtos Cadastrados</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group me-2">
+            
+            <button type="button" class="btn btn-sm btn-outline-secondary">Exportar</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Compatilhar</button>
+            
+             <!-- Button trigger modal -->
+            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#RegisterPurchases">
+              Registrar Compras
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="RegisterPurchases" tabindex="-1" aria-labelledby="RegisterPurchases" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content modal-lg ">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="RegisterPurchases">Digite as Informações sobre a Compras</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                        <form asp-action = "Create" asp-controller= "ProductInventoryRegister" method ="POST">
+                            @Html.AntiForgeryToken()
+
+                            <select name ="Product" class="form-select" aria-label="Default select example">
+                               
+                              <option  selected>Clique aqui para escolher o produto</option>
+                              @foreach(var product in Model){
+                                  <option value="@product">@product.Name</option>
+                              
+                              }
+
+                              
+                            </select>
+                            
+                            <select name ="Provider" class="form-select" aria-label="Default select example">
+                               
+                              <option  selected>Clique aqui para escolher o Fornecedor</option>
+                              @foreach(var product in Model){
+                                  <option value="@product">@product.Name</option>
+                              
+                              }
+
+                              
+                            </select>
+                            <div></div>
+                            <div class="input-group mb-3">
+                              
+                              <label for="Provider" class="col-sm-2 col-form-label">Fornecedor</label>
+                              <input name="Provider" type="text" class="form-control" placeholder="Fornecedor do produto" aria-label="Provider" aria-describedby="basic-addon1">
+                            </div>
+                            
+
+                            <div class="input-group mb-3">
+                              <label for="DateOfPurchase" class="col-sm-2 col-form-label">Data da compra</label>
+                              <input class="form-control" id="DateOfPurchase" type="date" name="DateOfPurchase" id="DateOfPurchase">
+                              <div class="input-group mb-3">
+                                <span class="input-group-text">R$</span>
+                                <input placeholder="Preço Unitário" type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                
+                              </div>
+                            </div>
+                           
+                            <div class="input-group mb-3">
+                              <label for="QuantityBuyed" class="col-sm-2 col-form-label">Quantidade de itens comprados</label>
+                              <input class="form-control form-control-sm" placeholder="Quntidade de Itens" id="QuantityBuyed" type="number" name="QuantityBuyed" id="QuantityBuyed">
+                            </div>
+                            <div class="input-group mb-3">
+                              <label for="PriceOfPurchase" class="col-sm-2 col-form-label">Preço total gasto com esse item </label>
+                              <span class="input-group-text">R$</span>
+                              <input class="form-control" id="PriceOfPurchase" type="number" placeholder="Preço total" name="PriceOfPurchase" id="PriceOfPurchase">
+                            </div>
+                         
+                            <div class="modal-footer">
+                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <input type="submit" value="Registra Compra" class="btn btn-primary">
+                                <input type="submit" value="Registrar a compra atual e continuar a registra outras" class="btn btn-primary" >
+                              </div>
+                          
+
+                         </form>
+
+                         
+                   </div>
+                  
+                 
+                </div>
+              </div>
+            </div>
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#NewProductModal">
+              Criar novo produto
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="NewProductModal" tabindex="-1" aria-labelledby="NewProductModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content modal-lg ">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="NewProductModalLabel">Informações</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                        <form action="/Product/Create" method = "Post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="mb-3">
+                              <label for="CodeProductLabel" class="form-label">Código do Produto</label>
+                              <input type="text" required class="form-control" id="CodeProductLabel" name="Code" placeholder="(Por favor, coloque o código original do produto, pois facilitará as pesquisas futuramente)">
+                            </div>
+                            <div class="mb-3">
+                              <label for="NameProductLabel"  class="form-label">Nome do Produto</label>
+                              <input type="text" maxlength="300" required class="form-control" name="Name" id="NameProductLabel" placeholder="Digite o nome do produto">
+                            </div>
+                            <div class="mb-3">
+                              <label for="DescriptionProductLabel" class="form-label">Descrição do Produto</label>
+                              <textarea class="form-control" required id="DescriptionProductLabel" name="Description" rows="3"></textarea>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <input type="submit" value="Create" class="btn btn-primary">
+                              </div>
+                         </form>
+
+                         
+                   </div>
+                  
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            Essa semana 
+          </button>
+        </div>
+      </div>
+      
+    <div class="table-responsive">
+        <table class="table table-sm table-striped ">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Code)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model=>model.DateOfCreation)
+                    </th>
+                    <th></th>
+                 </tr>
+            </thead>
+            <tbody>
+             @foreach (var item in Model) {
+                <tr>
+                    <td >
+                        <p class="text-break">@Html.DisplayFor(modelItem => item.Code)</p> 
+                    </td>
+                    <td>
+                        <p class="text-break">@Html.DisplayFor(modelItem => item.Name)</p> 
+                    </td>
+                    <td>
+                        <p class="text-break">@Html.DisplayFor(modelItem => item.Description)</p>
+                        
+                    </td>
+                    <td>
+                        <p class="text-break">@Html.DisplayFor(modelItem => item.DateOfCreation)</p>
+                        
+                    </td>
+               
+                    <td>
+
+                         @Html.ActionLink("Editar","Edit","Product", new {id=@item.Id}) 
+                        
+                         @Html.ActionLink("Detalhes","Details","Product",new {id=@item.Id})
+                         
+                        
+                         @Html.ActionLink("Apagar","Delete","Product", new {id=@item.Id})
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+    <table class="table">
+        
+    </table>
+
+</main>
+
+
+
+<div>
+    <a asp-action="Index">Backs to List</a>
+
+</div>
+
