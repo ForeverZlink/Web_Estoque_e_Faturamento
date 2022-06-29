@@ -8,8 +8,14 @@ namespace Web_Estoque_E_Faturamento.ViewModels
 {
     public class DashBoardContextNecessary
     {
-        public Provider Provider {get;set;}
-        public Product  Product{get;set;}
-        public ProductInventoryRegisterPurchase ProductInventoryRegisterPurchase {get;set;}
+        public DashBoardContextNecessary ( IEnumerable<Provider>  provider,IEnumerable<Product> product, IEnumerable<ProductInventoryRegisterPurchase> productInventoryRegisterPurchase){
+            this.Product=product;
+            this.Provider=provider;
+            this.ProductInventoryRegisterPurchase=productInventoryRegisterPurchase;         
+        }
+        public IEnumerable<Provider> Provider {get;set;}
+        public IEnumerable<Product> Product{get;set;}
+        public IEnumerable<ProductInventoryRegisterPurchase> ProductInventoryRegisterPurchase {get;set;}
+
     }
 }
