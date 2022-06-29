@@ -13,7 +13,8 @@ namespace Web_Estoque_E_Faturamento._Models
         public int Id {get;set;}
         public float QuantityBuyed {get;set;}
         
-        public string DateOfPurchase {get;set;}
+        
+        public DateTime DateOfPurchase {get;set;}
         public float PriceOfPurchase {get;set;}
         public float PriceProductUnity {get;set;}
         
