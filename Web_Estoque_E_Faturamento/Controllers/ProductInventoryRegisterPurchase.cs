@@ -14,10 +14,12 @@ namespace Web_Estoque_E_Faturamento.Controllers
     public class ProductInventoryRegisterPurchaseController : Controller
     {
         private readonly MvcProductContext _context;
+        private readonly ILogger _logger;
 
-        public ProductInventoryRegisterPurchaseController(MvcProductContext context)
+        public ProductInventoryRegisterPurchaseController(MvcProductContext context, ILogger<ProductInventoryRegisterPurchaseController> logger)
         {
             _context = context;
+            _logger  = logger;
         }
 
         public RedirectToActionResult RedirectToActionSucess(string ActionName){
@@ -52,6 +54,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
         // GET: ProductInventoryRegister/Create
         public IActionResult Create()
         {
+            
             return View();
         }
         
@@ -59,12 +62,13 @@ namespace Web_Estoque_E_Faturamento.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost,ActionName("Create")]
-        public async Task<IActionResult> CreateOn([Bind("Id,QuantityBuyed,PriceOfPurchase,DateOfPurchase,PriceProductUnity,Provider,Product")] ProductInventoryRegisterPurchase ProductInventory)
+        public async Task<IActionResult> CreateOn([Bind("Id,QuantityBuyed,PriceOfPurchase,DateOfPurchase,PriceProductUnity,Product,Provider")] ProductInventoryRegisterPurchase ProductInventory)
         {
+            
             if (ModelState.IsValid)
             {
                 
-                _context.Add(ProductInventory);
+                _context.ProductInventoryRegisterPurchase.Add(ProductInventory);
                 await _context.SaveChangesAsync();
                 return RedirectToActionSucess(nameof(Index));
 
@@ -73,6 +77,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
             {
                 Console.WriteLine("NO is valid");
             }
+            
             return View(ProductInventory);
         }
 

@@ -16,12 +16,12 @@ namespace Web_Estoque_E_Faturamento.Controllers
     {
         
         private readonly MvcProductContext _context;
-       
+        private readonly ILogger _logger;
         
-        public ProductController(MvcProductContext context)
+        public ProductController(MvcProductContext context, ILogger<ProductController> logger)
         {
             _context = context;
-            
+            _logger = logger;
         }
         
         public RedirectToActionResult RedirectToActionSucess(string ActionName){
@@ -30,7 +30,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
         // GET: Product
         public async Task<IActionResult> Index()
         {
-           
+            this._logger.LogInformation("REI DA BILADA");
             _context.Product.Reverse();
             return View(await _context.Product.ToListAsync());
         }
