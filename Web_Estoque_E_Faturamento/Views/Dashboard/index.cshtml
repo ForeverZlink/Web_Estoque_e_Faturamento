@@ -23,25 +23,24 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                        <form asp-action = "Create" asp-controller= "ProductInventoryRegister" method ="POST">
+                        <form asp-action = "Create" asp-controller= "ProductInventoryRegisterPurchase" method ="POST">
                             @Html.AntiForgeryToken()
 
-                            <select name ="Product" class="form-select" aria-label="Default select example">
+                            <select name ="Product" class="form-select" aria-label="Zelda ocarina of time">
                                
-                              <option  name ="Product" selected>Clique aqui para escolher o produto</option>
                               @foreach(var product in Model.Product){
-                                  <option name ="Product"  value="@product">@product.Name</option>
+                                  <option  value="@product">@product.Name</option>
+                                  
                               
                               }
 
                               
                             </select>
                             
-                            <select name ="Provider" class="form-select" aria-label="Default select example">
+                            <select name="Provider" class="form-select" aria-label="Default select example">
                                
-                              <option  name ="Provider" selected>Clique aqui para escolher o Fornecedor</option>
                               @foreach(var provider in Model.Provider){
-                                  <option name ="Provider" value="@provider">@provider.Name</option>
+                                  <option  value="@provider">@provider.Name</option>
                               
                               }
 
@@ -50,12 +49,14 @@
                             <div></div>
                             
                             
-
+                            
                             <div class="input-group mb-3">
+                              
                               <label for="DateOfPurchase" class="col-sm-2 col-form-label">Data da compra</label>
                               <input class="form-control" id="DateOfPurchase" type="date" name="DateOfPurchase" id="DateOfPurchase">
                               <div class="input-group mb-3">
                                 <span class="input-group-text">R$</span>
+                                
                                 <input placeholder="Preço Unitário" type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
                                 
                               </div>
