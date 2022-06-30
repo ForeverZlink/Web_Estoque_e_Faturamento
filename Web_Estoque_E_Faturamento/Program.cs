@@ -10,6 +10,7 @@ builder.Services.AddRazorPages();
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 
+
 builder.Services.AddDbContext<MvcProductContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("MvcProductContext")));
 
