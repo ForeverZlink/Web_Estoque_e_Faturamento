@@ -21,11 +21,11 @@ namespace Web_Estoque_E_Faturamento._Models
         
         [ForeignKey("Provider")]
         public int ProviderId {get;set;}
-        public Provider Provider{get;set;}
+        public Provider ?Provider{get;set;}
         
         [ForeignKey("Product")]
         public int ProductId{get;set;}
-        public Product Product {get;set;}
+        public Product ?Product {get;set;}
        
     }
 }
