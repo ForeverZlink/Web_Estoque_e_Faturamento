@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Web_Estoque_E_Faturamento._Models;
 using Microsoft.Extensions.Logging;
+using Web_Estoque_E_Faturamento.ViewModels;
 
 namespace Web_Estoque_E_Faturamento.Controllers
 {
@@ -29,7 +30,11 @@ namespace Web_Estoque_E_Faturamento.Controllers
         public async Task<IActionResult> Index()
         {
         
-            return View(await _context.ProductInventoryRegisterPurchase.ToArrayAsync());
+            IEnumerable<Provider> provider = await this._context.Provider.ToArrayAsync();
+            IEnumerable<Product> product = await this._context.Product.ToArrayAsync();
+            IEnumerable<ProductInventoryRegisterPurchase> productInventoryRegisterPurchase = await this._context.ProductInventoryRegisterPurchase.ToArrayAsync();
+            DashBoardContextNecessary DashboardContext = new DashBoardContextNecessary(provider,product,productInventoryRegisterPurchase);
+            return View(DashboardContext);
         }
 
         // GET: ProductInventoryRegister/Details/5
@@ -68,7 +73,8 @@ namespace Web_Estoque_E_Faturamento.Controllers
             
             ProductInventory.Product = await this._context.Product.FindAsync(ProductId);
             ProductInventory.Provider = await this._context.Provider.FindAsync(ProviderId);
- 
+            this._logger.LogInformation(ProductInventory.Product.Name.ToString());
+
             if (ModelState.IsValid)
             {
                 

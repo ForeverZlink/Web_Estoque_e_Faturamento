@@ -1,4 +1,5 @@
-@model IEnumerable<Web_Estoque_E_Faturamento._Models.ProductInventoryRegisterPurchase>
+@model Web_Estoque_E_Faturamento.ViewModels.DashBoardContextNecessary
+
 
 @{
     ViewData["Title"] = "Index";
@@ -7,7 +8,10 @@
 
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
       <h3>helo</h3>
-        @foreach(var value in Model){
-        <h1>@value.DateOfPurchase</h1>
+        @foreach(var value in Model.ProductInventoryRegisterPurchase){
+        <h1>@value.Product.Name
+          
+        </h1>
+
 
 }
