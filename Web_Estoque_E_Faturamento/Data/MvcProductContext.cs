@@ -12,9 +12,12 @@ using Web_Estoque_E_Faturamento._Models;
         public MvcProductContext (DbContextOptions<MvcProductContext> options)
             : base(options)
         {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+            
         }
 
         public DbSet<Web_Estoque_E_Faturamento._Models.Product> Product { get; set; }
         public DbSet<Web_Estoque_E_Faturamento._Models.ProductInventoryRegisterPurchase> ProductInventoryRegisterPurchase {get;set;}
         public DbSet<Web_Estoque_E_Faturamento._Models.Provider> Provider {get;set;}
+        
     }
