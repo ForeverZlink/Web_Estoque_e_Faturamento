@@ -26,10 +26,10 @@
                         <form asp-action = "Create" asp-controller= "ProductInventoryRegisterPurchase" method ="POST">
                             @Html.AntiForgeryToken()
 
-                            <select name ="Product" class="form-select" aria-label="Zelda ocarina of time">
+                            <select name ="ProductId" class="form-select" aria-label="Zelda ocarina of time">
                                
                               @foreach(var product in Model.Product){
-                                  <option  value="@product">@product.Name</option>
+                                  <option  value="@product.Id">@product.Name</option>
                                   
                               
                               }
@@ -37,12 +37,13 @@
                               
                             </select>
                             
-                            <select name="Provider" class="form-select" aria-label="Default select example">
+                            <select name="ProviderId" class="form-select" aria-label="Default select example">
                                
                               @foreach(var provider in Model.Provider){
-                                  <option  value="@provider">@provider.Name</option>
+                                  <option  value="@provider.Id">@provider.Name</option>
                               
                               }
+                              
 
                               
                             </select>
@@ -57,7 +58,7 @@
                               <div class="input-group mb-3">
                                 <span class="input-group-text">R$</span>
                                 
-                                <input placeholder="Preço Unitário" type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                <input name="PriceProductUnity" placeholder="Preço Unitário" type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
                                 
                               </div>
                             </div>
