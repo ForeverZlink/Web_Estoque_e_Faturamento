@@ -67,12 +67,12 @@ namespace Web_Estoque_E_Faturamento.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost,ActionName("Create")]
-        public async Task<IActionResult> CreateOn(int ProductId,int ProviderId,
+        public async Task<IActionResult> CreateOn(
             [Bind("ProviderId, ProductId, DateOfPurchase, PriceOfPurchase,QuantityBuyed,  PriceProductUnity")] ProductInventoryRegisterPurchase ProductInventory)
         {
             
-            ProductInventory.Product = await this._context.Product.FindAsync(ProductId);
-            ProductInventory.Provider = await this._context.Provider.FindAsync(ProviderId);
+            ProductInventory.Product = await this._context.Product.FindAsync(ProductInventory.ProductId);
+            ProductInventory.Provider = await this._context.Provider.FindAsync(ProductInventory.ProviderId);
             this._logger.LogInformation(ProductInventory.Product.Name.ToString());
 
             if (ModelState.IsValid)
