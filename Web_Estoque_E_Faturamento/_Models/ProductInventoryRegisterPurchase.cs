@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Web_Estoque_E_Faturamento._Models
 {
     public class ProductInventoryRegisterPurchase
@@ -14,7 +15,7 @@ namespace Web_Estoque_E_Faturamento._Models
         public float QuantityBuyed {get;set;}
         
         
-        public DateTime DateOfPurchase {get;set;}
+        public string DateOfPurchase {get;set;}
         public float PriceOfPurchase {get;set;}
         public float PriceProductUnity {get;set;}
         
