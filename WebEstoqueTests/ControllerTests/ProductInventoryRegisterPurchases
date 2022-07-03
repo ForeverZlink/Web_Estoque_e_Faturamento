@@ -1,0 +1,148 @@
+using Xunit;
+using Moq;
+using Web_Estoque_E_Faturamento.Controllers;
+using Web_Estoque_E_Faturamento._Models;
+using WebEstoqueTests;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+using System;
+
+namespace WebEstoqueTests
+{
+    public class ProductInventoryRegisterPurchaseControllerTest:Controller
+    {
+        public string ViewResult = "ViewResult";
+        public string NotFoundResult = "NotFoundResult";
+        public string RedirectToActionResult = "RedirectToActionResult";
+        static DbContextOptions<MvcProductContext> option = new DbContextOptionsBuilder<MvcProductContext>().UseInMemoryDatabase(databaseName:"ProductContextDatabase").Options;
+        MvcProductContext context = new MvcProductContext(option);
+        static Provider ProviderInstance = new Provider(){
+            Id=1,Name="Volkswagem",Andress="Rua das limitã",Cnpj="134"
+        };
+        static Product Product = new Product(){
+            Id=1,Name="Car",Code="01",Description="A nice car"
+           };
+
+        ProductInventoryRegisterPurchase ProductInvetoryRegisterPurchaseModelData = new ProductInventoryRegisterPurchase(){
+            Id=1,QuantityBuyed=1,PriceOfPurchase=20,DateOfPurchase=DateTime.Today.ToString(),
+            PriceProductUnity=2, ProviderId=1,Provider=ProviderInstance, 
+            ProductId=1,Product=Product
+        };
+        public ProductInventoryRegisterPurchaseController _ProductInventoryRegisterPurchaseController;
+        public dynamic ContextConfig{
+            get{return context;}
+            set{
+                this.context.ProductInventoryRegisterPurchase.Add(value);
+                context.SaveChanges();
+            }
+        } 
+        public dynamic ProductInventoryRegisterPurchaseControllerInstance{
+            get{ return this._ProductInventoryRegisterPurchaseController;}
+            set{this._ProductInventoryRegisterPurchaseController = new ProductInventoryRegisterPurchaseController(context:value, logger:null );}
+        }
+
+        [Fact]
+        public void Edit()
+        {
+            //This part will be test Edit method when acess via get, thus
+            //its just search in database for the informations
+
+            ContextConfig =ProductInvetoryRegisterPurchaseModelData;
+            ProductInventoryRegisterPurchaseControllerInstance = ContextConfig;
+            //When its passed a id null
+            var ResponseWantedIdIsNull = ProductInventoryRegisterPurchaseControllerInstance.Edit(id:null);
+            Assert.Contains(this.NotFoundResult, ResponseWantedIdIsNull.Result.ToString());
+            
+            //When its passed id that not null, but doesn't exists in database
+            var ResponseWantedIdNotIsNullButDoesntExists= ProductInventoryRegisterPurchaseControllerInstance.Edit(id:null);
+            Assert.Contains(this.NotFoundResult, ResponseWantedIdNotIsNullButDoesntExists.Result.ToString());
+            
+            // When its passed a product id that already exists
+            var ResponseWantedExists= ProductInventoryRegisterPurchaseControllerInstance.Edit(id:ProductInvetoryRegisterPurchaseModelData.Id);
+            Assert.Contains(this.ViewResult, ResponseWantedExists.Result.ToString());
+            
+            //end of part of test via get
+
+            //This part will be test Edit method when acess via post 
+            
+            //When id its different of product.Id
+            var ResponseIdIsDifferentOfProductId =ProductInventoryRegisterPurchaseControllerInstance.Edit(id:999999, ProductInvetory:ProductInvetoryRegisterPurchaseModelData);
+            Assert.Contains(this.NotFoundResult, ResponseIdIsDifferentOfProductId.Result.ToString());
+
+            //When id its equal, exist the product in database and the  changes were made.
+            var ResponseIdEqualAndExistAProductWithId =ProductInventoryRegisterPurchaseControllerInstance.Edit(id:ProductInvetoryRegisterPurchaseModelData.Id, ProductInventory:ProductInvetoryRegisterPurchaseModelData);
+            Assert.Contains(this.RedirectToActionResult, ResponseIdEqualAndExistAProductWithId.Result.ToString());
+
+            //when id passed its equal a product.Id, but doesn't exist a product with this id in database
+            Product ProductInventoryRegisterPurchaseModelDataButWithoutSaveInDatabase = new Product(){
+            Id=999,Name="Car",Code="01",Description="A nice car"
+            };
+            var ResponseIdEqualButNotExistAProductWithId =ProductInventoryRegisterPurchaseControllerInstance.Edit(id:ProductInventoryRegisterPurchaseModelDataButWithoutSaveInDatabase.Id, product:ProductInventoryRegisterPurchaseModelDataButWithoutSaveInDatabase);
+            Assert.Contains(this.NotFoundResult, ResponseIdEqualButNotExistAProductWithId.Result.ToString());
+
+
+        }
+        [Fact]
+        public void Details()
+        {
+            // Case when its a Product  te jwenn
+             ContextConfig=ProductInventoryRegisterPurchaseModelData;
+             ProductInventoryRegisterPurchaseControllerInstance = ContextConfig;
+
+             var ResponseWanted  = ProductInventoryRegisterPurchaseControllerInstance.Details(id:1);
+           
+             
+
+             Assert.Contains(this.ViewResult, ResponseWanted.Result.ToString());
+
+             //Case when doesn't have a product with this id
+             var ResponseWantedIdNotExists = ProductInventoryRegisterPurchaseControllerInstance.Details(id:9999);
+             Assert.Contains(this.NotFoundResult,ResponseWantedIdNotExists.Result.ToString());
+
+
+             //Case when the id its null 
+             var ResponseWantedIdIsNull = ProductInventoryRegisterPurchaseControllerInstance.Details(id:null);
+             Assert.Contains(this.NotFoundResult,ResponseWantedIdNotExists.Result.ToString());
+
+             this.ContextConfig.Dispose();
+           
+        }
+        [Fact]
+        public async void Delete()
+        {
+            Product ProductInventoryRegisterPurchaseModelData = new Product(){
+            Id=2,Name="Car",Code="01",Description="A nice car"
+           };
+           ContextConfig=ProductInventoryRegisterPurchaseModelData;
+           ProductInventoryRegisterPurchaseControllerInstance = ContextConfig;
+           var ResponseWanted  = ProductInventoryRegisterPurchaseControllerInstance.DeleteConfirmed(id:1);
+           context.Dispose();
+           Console.WriteLine(ResponseWanted.Result.ToString());
+           Assert.Contains("RedirectToActionResult",ResponseWanted.Result.ToString());
+
+        }
+        [Fact]
+        public async void CreateOn(){
+            Product ProductInventoryRegisterPurchaseModelData = new Product(){
+            Id=3,Name="Car2",Code="02",Description="A nice car"
+           };
+           //True Case
+           ProductInventoryRegisterPurchaseControllerInstance = ContextConfig;
+           var Response = ProductInventoryRegisterPurchaseControllerInstance.CreateOn(ProductInventoryRegisterPurchaseModelData);
+           
+           Assert.Contains("RedirectToActionResult",Response.Result.ToString());
+
+           //Fall and erro expected because this part will attempt create with a values 
+           //thas already exists in database 
+           try{
+            var ResultFail = ProductInventoryRegisterPurchaseControllerInstance.CreateOn(ProductInventoryRegisterPurchaseModelData);
+           }catch(Exception e ){
+             
+           }
+           
+
+        }
+        
+    }
+}
