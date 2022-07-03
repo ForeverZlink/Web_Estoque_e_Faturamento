@@ -11,5 +11,7 @@
         
         public DateTime DateOfCreation {get;set;}
 
+        public virtual ProductInventory ProductInventory {get;set;}
+
     }
 }
