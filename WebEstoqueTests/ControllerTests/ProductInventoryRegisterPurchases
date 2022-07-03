@@ -75,10 +75,12 @@ namespace WebEstoqueTests
             Assert.Contains(this.RedirectToActionResult, ResponseIdEqualAndExistAProductWithId.Result.ToString());
 
             //when id passed its equal a product.Id, but doesn't exist a product with this id in database
-            Product ProductInventoryRegisterPurchaseModelDataButWithoutSaveInDatabase = new Product(){
-            Id=999,Name="Car",Code="01",Description="A nice car"
-            };
-            var ResponseIdEqualButNotExistAProductWithId =ProductInventoryRegisterPurchaseControllerInstance.Edit(id:ProductInventoryRegisterPurchaseModelDataButWithoutSaveInDatabase.Id, product:ProductInventoryRegisterPurchaseModelDataButWithoutSaveInDatabase);
+            
+            ProductInventoryRegisterPurchase ProductInvetoryRegisterPurchaseModelDataButWithoutSaveInDatabase = new ProductInventoryRegisterPurchase(){
+            Id=200202,QuantityBuyed=1,PriceOfPurchase=20,DateOfPurchase=DateTime.Today.ToString(),
+            PriceProductUnity=2, ProviderId=1,Provider=ProviderInstance, 
+            ProductId=1,Product=Product};
+            var ResponseIdEqualButNotExistAProductWithId =ProductInventoryRegisterPurchaseControllerInstance.Edit(id:ProductInvetoryRegisterPurchaseModelDataButWithoutSaveInDatabase.Id, product:ProductInvetoryRegisterPurchaseModelDataButWithoutSaveInDatabase);
             Assert.Contains(this.NotFoundResult, ResponseIdEqualButNotExistAProductWithId.Result.ToString());
 
 
