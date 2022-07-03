@@ -30,7 +30,7 @@ namespace WebEstoqueTests
         } 
         public dynamic ProductControllerInstance{
             get{ return this._ProductController;}
-            set{this._ProductController = new ProductController(value);}
+            set{this._ProductController = new ProductController(context:value,logger:null);}
         }
 
         [Fact]

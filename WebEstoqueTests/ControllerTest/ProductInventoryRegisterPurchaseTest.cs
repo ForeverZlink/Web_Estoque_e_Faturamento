@@ -10,7 +10,7 @@ using System;
 
 namespace WebEstoqueTests
 {
-    public class ProductInventoryRegisterPurchaseControllerTest:Controller
+    public class ProductInventoryRegisterPurchaseControlleTest:Controller
     {
         public string ViewResult = "ViewResult";
         public string NotFoundResult = "NotFoundResult";
@@ -21,7 +21,7 @@ namespace WebEstoqueTests
             Id=1,Name="Volkswagem",Andress="Rua das limitã",Cnpj="134"
         };
         static Product Product = new Product(){
-            Id=1,Name="Car",Code="01",Description="A nice car"
+            Id=11,Name="Car",Code="01",Description="A nice car"
            };
 
         ProductInventoryRegisterPurchase ProductInvetoryRegisterPurchaseModelData = new ProductInventoryRegisterPurchase(){
@@ -79,72 +79,11 @@ namespace WebEstoqueTests
             ProductInventoryRegisterPurchase ProductInvetoryRegisterPurchaseModelDataButWithoutSaveInDatabase = new ProductInventoryRegisterPurchase(){
             Id=200202,QuantityBuyed=1,PriceOfPurchase=20,DateOfPurchase=DateTime.Today.ToString(),
             PriceProductUnity=2, ProviderId=1,Provider=ProviderInstance, 
-            ProductId=1,Product=Product};
-            var ResponseIdEqualButNotExistAProductWithId =ProductInventoryRegisterPurchaseControllerInstance.Edit(id:ProductInvetoryRegisterPurchaseModelDataButWithoutSaveInDatabase.Id, product:ProductInvetoryRegisterPurchaseModelDataButWithoutSaveInDatabase);
+            ProductId=2,Product=Product};
+            var ResponseIdEqualButNotExistAProductWithId =ProductInventoryRegisterPurchaseControllerInstance.Edit(id:ProductInvetoryRegisterPurchaseModelDataButWithoutSaveInDatabase.Id, ProductInventory:ProductInvetoryRegisterPurchaseModelDataButWithoutSaveInDatabase);
             Assert.Contains(this.NotFoundResult, ResponseIdEqualButNotExistAProductWithId.Result.ToString());
 
 
         }
-        [Fact]
-        public void Details()
-        {
-            // Case when its a Product  te jwenn
-             ContextConfig=ProductInventoryRegisterPurchaseModelData;
-             ProductInventoryRegisterPurchaseControllerInstance = ContextConfig;
-
-             var ResponseWanted  = ProductInventoryRegisterPurchaseControllerInstance.Details(id:1);
-           
-             
-
-             Assert.Contains(this.ViewResult, ResponseWanted.Result.ToString());
-
-             //Case when doesn't have a product with this id
-             var ResponseWantedIdNotExists = ProductInventoryRegisterPurchaseControllerInstance.Details(id:9999);
-             Assert.Contains(this.NotFoundResult,ResponseWantedIdNotExists.Result.ToString());
-
-
-             //Case when the id its null 
-             var ResponseWantedIdIsNull = ProductInventoryRegisterPurchaseControllerInstance.Details(id:null);
-             Assert.Contains(this.NotFoundResult,ResponseWantedIdNotExists.Result.ToString());
-
-             this.ContextConfig.Dispose();
-           
-        }
-        [Fact]
-        public async void Delete()
-        {
-            Product ProductInventoryRegisterPurchaseModelData = new Product(){
-            Id=2,Name="Car",Code="01",Description="A nice car"
-           };
-           ContextConfig=ProductInventoryRegisterPurchaseModelData;
-           ProductInventoryRegisterPurchaseControllerInstance = ContextConfig;
-           var ResponseWanted  = ProductInventoryRegisterPurchaseControllerInstance.DeleteConfirmed(id:1);
-           context.Dispose();
-           Console.WriteLine(ResponseWanted.Result.ToString());
-           Assert.Contains("RedirectToActionResult",ResponseWanted.Result.ToString());
-
-        }
-        [Fact]
-        public async void CreateOn(){
-            Product ProductInventoryRegisterPurchaseModelData = new Product(){
-            Id=3,Name="Car2",Code="02",Description="A nice car"
-           };
-           //True Case
-           ProductInventoryRegisterPurchaseControllerInstance = ContextConfig;
-           var Response = ProductInventoryRegisterPurchaseControllerInstance.CreateOn(ProductInventoryRegisterPurchaseModelData);
-           
-           Assert.Contains("RedirectToActionResult",Response.Result.ToString());
-
-           //Fall and erro expected because this part will attempt create with a values 
-           //thas already exists in database 
-           try{
-            var ResultFail = ProductInventoryRegisterPurchaseControllerInstance.CreateOn(ProductInventoryRegisterPurchaseModelData);
-           }catch(Exception e ){
-             
-           }
-           
-
-        }
-        
     }
 }
