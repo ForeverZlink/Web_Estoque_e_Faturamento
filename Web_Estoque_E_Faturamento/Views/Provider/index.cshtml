@@ -9,38 +9,30 @@
       <h3>Registro de fornecedores</h3>
     <table class="table table-striped-columns">
         <thead>
-            <tr>
-            <th scope="col">Nome</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+           <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cnpj)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Andress)
+                </th>
+                
+            
             </tr>
         </thead>
         <tbody>
-            <tr>
-            
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>fs</td>
-            </tr>
-            <tr>
-            
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>jhelç</td>
-            </tr>
-            <tr>
-            
-            <td>Larry the Bird</td>
-            <td>hlo</td>
-            <td>Helo</td>
-            </tr>
-        </tbody>
+            @foreach(var provider  in @Model){
+                <tr>
+                    <td>@provider.Name</td>
+                    <td>@provider.Cnpj</td>
+                    <td>@provider.Andress</td>
+                </tr>
+            }
         </table>
-    @foreach(var item in Model){
-        <h1>@item.Name</h1>
-
-    }
-    
+  
 <form asp-action="Create" asp-controller="Provider"  method= "POST">
     @Html.AntiForgeryToken()
     <input id="Andress" name="Andress" placeholder = "Andress" type="text">
