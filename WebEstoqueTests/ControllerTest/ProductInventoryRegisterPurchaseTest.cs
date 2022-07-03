@@ -55,7 +55,7 @@ namespace WebEstoqueTests
             Assert.Contains(this.NotFoundResult, ResponseWantedIdIsNull.Result.ToString());
             
             //When its passed id that not null, but doesn't exists in database
-            var ResponseWantedIdNotIsNullButDoesntExists= ProductInventoryRegisterPurchaseControllerInstance.Edit(id:null);
+            var ResponseWantedIdNotIsNullButDoesntExists= ProductInventoryRegisterPurchaseControllerInstance.Edit(id:4343343);
             Assert.Contains(this.NotFoundResult, ResponseWantedIdNotIsNullButDoesntExists.Result.ToString());
             
             // When its passed a product id that already exists
@@ -67,7 +67,7 @@ namespace WebEstoqueTests
             //This part will be test Edit method when acess via post 
             
             //When id its different of product.Id
-            var ResponseIdIsDifferentOfProductId =ProductInventoryRegisterPurchaseControllerInstance.Edit(id:999999, ProductInvetory:ProductInvetoryRegisterPurchaseModelData);
+            var ResponseIdIsDifferentOfProductId =ProductInventoryRegisterPurchaseControllerInstance.Edit(id:999999, ProductInventory:ProductInvetoryRegisterPurchaseModelData);
             Assert.Contains(this.NotFoundResult, ResponseIdIsDifferentOfProductId.Result.ToString());
 
             //When id its equal, exist the product in database and the  changes were made.
@@ -77,7 +77,8 @@ namespace WebEstoqueTests
             //when id passed its equal a product.Id, but doesn't exist a product with this id in database
             
             ProductInventoryRegisterPurchase ProductInvetoryRegisterPurchaseModelDataButWithoutSaveInDatabase = new ProductInventoryRegisterPurchase(){
-            QuantityBuyed=1,PriceOfPurchase=20,DateOfPurchase=DateTime.Today.ToString(),
+
+            Id=33333333,QuantityBuyed=1,PriceOfPurchase=20,DateOfPurchase=DateTime.Today.ToString(),
             PriceProductUnity=2, ProviderId=1,Provider=ProviderInstance, 
             ProductId=2,Product=Product};
             var ResponseIdEqualButNotExistAProductWithId =ProductInventoryRegisterPurchaseControllerInstance.Edit(id:ProductInvetoryRegisterPurchaseModelDataButWithoutSaveInDatabase.Id, ProductInventory:ProductInvetoryRegisterPurchaseModelDataButWithoutSaveInDatabase);

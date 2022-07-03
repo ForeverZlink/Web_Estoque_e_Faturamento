@@ -67,7 +67,7 @@ namespace WebEstoqueTests
 
             //when id passed its equal a product.Id, but doesn't exist a product with this id in database
             Product ProductModelDataButWithoutSaveInDatabase = new Product(){
-            Id=999,Name="Car",Code="01",Description="A nice car"
+            Id=222222222,Name="Car",Code="01",Description="A nice car"
             };
             var ResponseIdEqualButNotExistAProductWithId =ProductControllerInstance.Edit(id:ProductModelDataButWithoutSaveInDatabase.Id, product:ProductModelDataButWithoutSaveInDatabase);
             Assert.Contains(this.NotFoundResult, ResponseIdEqualButNotExistAProductWithId.Result.ToString());
@@ -103,7 +103,7 @@ namespace WebEstoqueTests
         public async void Delete()
         {
             Product ProductModelData = new Product(){
-            Id=2,Name="Car",Code="01",Description="A nice car"
+            Name="Car",Code="01",Description="A nice car"
            };
            ContextConfig=ProductModelData;
            ProductControllerInstance = ContextConfig;
@@ -116,7 +116,7 @@ namespace WebEstoqueTests
         [Fact]
         public async void CreateOn(){
             Product ProductModelData = new Product(){
-            Id=3,Name="Car2",Code="02",Description="A nice car"
+            Name="Car2",Code="02",Description="A nice car"
            };
            //True Case
            ProductControllerInstance = ContextConfig;
