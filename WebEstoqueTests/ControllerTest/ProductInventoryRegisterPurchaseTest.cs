@@ -77,7 +77,7 @@ namespace WebEstoqueTests
             //when id passed its equal a product.Id, but doesn't exist a product with this id in database
             
             ProductInventoryRegisterPurchase ProductInvetoryRegisterPurchaseModelDataButWithoutSaveInDatabase = new ProductInventoryRegisterPurchase(){
-            Id=200202,QuantityBuyed=1,PriceOfPurchase=20,DateOfPurchase=DateTime.Today.ToString(),
+            QuantityBuyed=1,PriceOfPurchase=20,DateOfPurchase=DateTime.Today.ToString(),
             PriceProductUnity=2, ProviderId=1,Provider=ProviderInstance, 
             ProductId=2,Product=Product};
             var ResponseIdEqualButNotExistAProductWithId =ProductInventoryRegisterPurchaseControllerInstance.Edit(id:ProductInvetoryRegisterPurchaseModelDataButWithoutSaveInDatabase.Id, ProductInventory:ProductInvetoryRegisterPurchaseModelDataButWithoutSaveInDatabase);
