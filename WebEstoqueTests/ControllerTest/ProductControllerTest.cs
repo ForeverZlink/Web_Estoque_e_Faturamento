@@ -18,7 +18,7 @@ namespace WebEstoqueTests
         static DbContextOptions<MvcProductContext> option = new DbContextOptionsBuilder<MvcProductContext>().UseInMemoryDatabase(databaseName:"ProductContextDatabase").Options;
         MvcProductContext context = new MvcProductContext(option);
         Product ProductModelData = new Product(){
-            Id=1,Name="Car",Code="01",Description="A nice car"
+            Name="Car",Code="01",Description="A nice car"
            };
         public ProductController _ProductController;
         public dynamic ContextConfig{

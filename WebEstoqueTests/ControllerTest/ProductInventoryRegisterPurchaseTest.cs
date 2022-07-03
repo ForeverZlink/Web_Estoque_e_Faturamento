@@ -18,10 +18,10 @@ namespace WebEstoqueTests
         static DbContextOptions<MvcProductContext> option = new DbContextOptionsBuilder<MvcProductContext>().UseInMemoryDatabase(databaseName:"ProductContextDatabase").Options;
         MvcProductContext context = new MvcProductContext(option);
         static Provider ProviderInstance = new Provider(){
-            Id=1,Name="Volkswagem",Andress="Rua das limitã",Cnpj="134"
+            Name="Volkswagem",Andress="Rua das limitã",Cnpj="134"
         };
         static Product Product = new Product(){
-            Id=11,Name="Car",Code="01",Description="A nice car"
+            Name="Car",Code="01",Description="A nice car"
            };
 
         ProductInventoryRegisterPurchase ProductInvetoryRegisterPurchaseModelData = new ProductInventoryRegisterPurchase(){
