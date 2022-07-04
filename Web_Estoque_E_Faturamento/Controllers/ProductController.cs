@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Web_Estoque_E_Faturamento._Models;
+using Web_Estoque_E_Faturamento.ViewModels;
 using Microsoft.AspNetCore.Mvc.Controllers;
 
 namespace Web_Estoque_E_Faturamento.Controllers
@@ -30,9 +31,11 @@ namespace Web_Estoque_E_Faturamento.Controllers
         // GET: Product
         public async Task<IActionResult> Index()
         {
-            this._logger.LogInformation("REI DA BILADA");
-            _context.Product.Reverse();
-            return View(await _context.Product.ToListAsync());
+            IEnumerable<Product> product = await this._context.Product.ToArrayAsync();
+            IEnumerable<ProductInventoryRegisterPurchase> productInventoryRegisterPurchase = await this._context.ProductInventoryRegisterPurchase.ToArrayAsync();
+            ProductContextNecessary ProductContext = new  ProductContextNecessary(product,productInventoryRegisterPurchase);
+            return View(ProductContext);
+            
         }
 
         // GET: Product/Details/5
