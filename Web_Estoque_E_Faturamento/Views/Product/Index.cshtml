@@ -1,4 +1,4 @@
-@model IEnumerable<Web_Estoque_E_Faturamento._Models.Product>
+@model Web_Estoque_E_Faturamento.ViewModels.ProductContextNecessary
 
 
 @{
@@ -71,22 +71,22 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.Code)
+                        <h4>Code</h4>
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Name)
+                        <h4>Name</h4>
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Description)
+                        <h4>Description</h4>
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model=>model.DateOfCreation)
+                        <h4>Date of creation</h4>
                     </th>
                     <th></th>
                  </tr>
             </thead>
             <tbody>
-             @foreach (var item in Model) {
+             @foreach (var item in Model.Product) {
                 <tr>
                     <td >
                         <p class="text-break">@Html.DisplayFor(modelItem => item.Code)</p> 
@@ -107,10 +107,36 @@
 
                          @Html.ActionLink("Editar","Edit","Product", new {id=@item.Id}) 
                         
-                         @Html.ActionLink("Detalhes","Details","Product",new {id=@item.Id})
-                         
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#DetailsProduct">
+                        Detalhes
+                      </button>
+                  
+                      <div class="modal fade" id="DetailsProduct" tabindex="-1" aria-labelledby="DetailsProduct" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content modal-lg ">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="DetailsProduct">Informações</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                              <div class="modal-body">
+                                    
+                                    
+                                </div>
+                              
+                            
+                            </div>
+                          </div>
+                      </div>
                         
                          @Html.ActionLink("Apagar","Delete","Product", new {id=@item.Id})
+                           
+                       
+                      
+                            
+
+
+
+
                     </td>
                 </tr>
             }
