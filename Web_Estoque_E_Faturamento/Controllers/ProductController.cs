@@ -69,9 +69,13 @@ namespace Web_Estoque_E_Faturamento.Controllers
         [HttpPost,ActionName("Create")]
         public async Task<IActionResult> CreateOn([Bind("Id,Name,Description,Code")] Product product)
         {
+            ProductInventory ProductInventory = new ProductInventory();
+            product.ProductInventory=ProductInventory;
+            product.DateOfCreation=DateTime.Today.ToString();
+            
             if (ModelState.IsValid)
             {
-                product.DateOfCreation= DateTime.UtcNow;
+                
                 _context.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToActionSucess(nameof(Index));
