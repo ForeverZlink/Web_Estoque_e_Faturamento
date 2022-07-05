@@ -32,6 +32,7 @@
                   </div>
                   <div class="modal-body">
                         <form action="/Product/Create" method = "Post">
+                           @Html.AntiForgeryToken()
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <div class="mb-3">
                               <label for="CodeProductLabel" class="form-label">Código do Produto</label>
@@ -45,6 +46,8 @@
                               <label for="DescriptionProductLabel" class="form-label">Descrição do Produto</label>
                               <textarea class="form-control" required id="DescriptionProductLabel" name="Description" rows="3"></textarea>
                             </div>
+                            
+
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <input type="submit" value="Create" class="btn btn-primary">
@@ -87,84 +90,37 @@
             </thead>
             <tbody>
              @foreach (var item in Model.Product) {
-                <tr>
-                    <td >
-                        <p class="text-break">@Html.DisplayFor(modelItem => item.Code)</p> 
-                    </td>
-                    <td>
-                        <p class="text-break">@Html.DisplayFor(modelItem => item.Name)</p> 
-                    </td>
-                    <td>
-                        <p class="text-break">@Html.DisplayFor(modelItem => item.Description)</p>
-                        
-                    </td>
-                    <td>
-                        <p class="text-break">@Html.DisplayFor(modelItem => item.DateOfCreation)</p>
-                        
-                    </td>
-               
-                    <td>
+                  <tr>
+                    
+                      <td >
+                          <p class="text-break">@Html.DisplayFor(modelItem => item.Code)</p> 
+                      </td>
+                      <td>
+                          <p class="text-break">@Html.DisplayFor(modelItem => item.Name)</p> 
+                      </td>
+                      <td>
+                          <p class="text-break">@Html.DisplayFor(modelItem => item.Description)</p>
+                          
+                      </td>
+                      <td>
+                          <p class="text-break">@Html.DisplayFor(modelItem => item.DateOfCreation)</p>
+                          
+                      </td>
+                
+                      <td>
 
-                         @Html.ActionLink("Editar","Edit","Product", new {id=@item.Id}) 
-                        
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#DetailsProduct">
-                        Detalhes
-                      </button>
-                  
-                      <div class="modal fade" id="DetailsProduct" tabindex="-1" aria-labelledby="DetailsProduct" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-scrollable modal-xl">
-                          <div class="modal-content modal-xl ">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="DetailsProduct">Informações</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                              <div class="modal-body">
-                                    <div class="container">
-                                        <div class="row">
-                                          <div class="col">
-                                            <label class="btn btn-dark"  for="ProductName">Nome do produto:</label>
-                                            <button type="button" class="btn btn-dark">@item.Name</button>
-                                          </div>
-                                          <div class="col">
-                                            <label class="btn btn-dark"  for="ProductName">Descrição</label>
-                                            <button type="button" class="btn btn-dark">@item.Description</button>
-                                          </div>
-                                          <div class="col">
-                                            <label class="btn btn-dark"  for="ProductName">Data de criação</label>
-                                            <button type="button" class="btn btn-dark">@item.DateOfCreation</button>
-                                          </div>
-                                        </div>
-                                        
-                                      </div>
-                                </div>
-                              
-                            
-                            </div>
-                          </div>
-                      </div>
-                        
-                         @Html.ActionLink("Apagar","Delete","Product", new {id=@item.Id})
-                           
-                       
-                      
-                            
-
-
-
-
-                    </td>
+                          @Html.ActionLink("Editar","Edit","Product", new {id=@item.Id})
+                          <a class="btn btn-danger" href="@Url.Action("Delete","Product", new{id=@item.Id})" role="button">Apagar</a>
+                          
+               </td>
                 </tr>
-            }
+              }
+
             </tbody>
         </table>
     </div>
-    <table class="table">
-        
-    </table>
 
 </main>
-
-
 
 <div>
     <a asp-action="Index">Backs to List</a>
