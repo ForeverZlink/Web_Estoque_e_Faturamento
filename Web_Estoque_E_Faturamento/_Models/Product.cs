@@ -9,9 +9,9 @@
         
         public string? Code{ get; set; }
         
-        public string DateOfCreation {get;set;}
+        public string? DateOfCreation {get;set;}
 
-        public virtual ProductInventory ProductInventory {get;set;}
+        public virtual ProductInventory? ProductInventory {get;set;}
 
     }
 }

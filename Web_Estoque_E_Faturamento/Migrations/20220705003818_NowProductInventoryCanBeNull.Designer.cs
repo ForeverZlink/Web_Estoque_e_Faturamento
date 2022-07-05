@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Web_Estoque_E_Faturamento.Migrations
 {
     [DbContext(typeof(MvcProductContext))]
-    partial class MvcProductContextModelSnapshot : ModelSnapshot
+    [Migration("20220705003818_NowProductInventoryCanBeNull")]
+    partial class NowProductInventoryCanBeNull
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,6 +35,7 @@ namespace Web_Estoque_E_Faturamento.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("DateOfCreation")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Description")
