@@ -111,6 +111,8 @@
 
                           @Html.ActionLink("Editar","Edit","Product", new {id=@item.Id})
                           <a class="btn btn-danger" href="@Url.Action("Delete","Product", new{id=@item.Id})" role="button">Apagar</a>
+                          <a class="btn btn-primary" href="@Url.Action("Details","Product", new{id=@item.Id})" role="button">Detalhes</a>
+                          
                           
                </td>
                 </tr>
@@ -121,6 +123,10 @@
     </div>
 
 </main>
+
+
+
+
 
 <div>
     <a asp-action="Index">Backs to List</a>
