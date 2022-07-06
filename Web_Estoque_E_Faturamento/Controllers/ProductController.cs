@@ -33,7 +33,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
         {
             IEnumerable<Product> product = await this._context.Product.ToArrayAsync();
             IEnumerable<ProductInventoryRegisterPurchase> productInventoryRegisterPurchase = await this._context.ProductInventoryRegisterPurchase.ToArrayAsync();
-            ProductContextNecessary ProductContext = new  ProductContextNecessary(product,productInventoryRegisterPurchase);
+            ProductContextNecessary ProductContext = new  ProductContextNecessary(null,null,product,productInventoryRegisterPurchase);
             return View(ProductContext);
             
         }
@@ -49,12 +49,18 @@ namespace Web_Estoque_E_Faturamento.Controllers
 
             var product = await _context.Product
                 .FirstOrDefaultAsync(m => m.Id == id);
+            IEnumerable<Product> productenu = await this._context.Product.ToArrayAsync();    
+            ProductContextNecessary productContext  = new ProductContextNecessary(product,null,productenu,null);
             if (product == null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            //for show the detais of the product in a modal. In the view, its a 
+            //a logic tha use this value and case true, the view will show 
+            //a modal in same moment.
+            ViewData["ShowModalWithDetailsOfProduct"] = "true";
+            return View(viewName:"Index", model:productContext);
         }
 
         // GET: Product/Create
@@ -72,7 +78,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
             ProductInventory ProductInventory = new ProductInventory();
             product.ProductInventory=ProductInventory;
             product.DateOfCreation=DateTime.Today.ToString();
-            
+
             if (ModelState.IsValid)
             {
                 

@@ -1,6 +1,7 @@
 @model Web_Estoque_E_Faturamento.ViewModels.ProductContextNecessary
 
 
+
 @{
     ViewData["Title"] = "Index";
     Layout = "_LayoutDashboard";
@@ -18,11 +19,11 @@
             
             
 
-            <!-- Button trigger modal -->
+     
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#NewProductModal">
               Criar novo produto
             </button>
-            <!-- Modal -->
+           
             <div class="modal fade" id="NewProductModal" tabindex="-1" aria-labelledby="NewProductModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg">
                 <div class="modal-content modal-lg ">
@@ -90,7 +91,8 @@
             </thead>
             <tbody>
              @foreach (var item in Model.Product) {
-                  <tr>
+
+                    <tr>
                     
                       <td >
                           <p class="text-break">@Html.DisplayFor(modelItem => item.Code)</p> 
@@ -110,18 +112,66 @@
                       <td>
 
                           @Html.ActionLink("Editar","Edit","Product", new {id=@item.Id})
-                          <a class="btn btn-danger" href="@Url.Action("Delete","Product", new{id=@item.Id})" role="button">Apagar</a>
-                          <a class="btn btn-primary" href="@Url.Action("Details","Product", new{id=@item.Id})" role="button">Detalhes</a>
+                          <a class="btn btn-danger" href='@Url.Action("Delete","Product", new{id=@item.Id})' role="button">Apagar</a>
+                          <a class="btn btn-primary" href= '@Url.Action("Details","Product", new{id=@item.Id})'  role="button">Detalhes</a>
                           
                           
-               </td>
+                      </td>
                 </tr>
-              }
+        
+
+
+             }
+                  
 
             </tbody>
         </table>
     </div>
 
+@if(ViewData["ShowModalWithDetailsOfProduct"] == "true"){
+  
+  
+      
+      <div class="modal fade" id="DetailsProduct" tabindex="-1" aria-labelledby="DetailsProduct" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+          <div class="modal-content modal-xl ">
+            <div class="modal-header">
+              <h5 class="modal-title" id="DetailsProduct">Informações</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+              <div class="modal-body">
+                    <h1></h1>
+                    <div class="container">
+                        <div class="row">
+                          <div class="col">
+                            <label class="btn btn-dark"  for="ProductName">Nome do produto:</label>
+                            <button type="button" class="btn btn-dark">@Model.ProductCommon.Name</button>
+                          </div>
+                          <div class="col">
+                            <label class="btn btn-dark"  for="ProductName">Descrição</label>
+                            <button type="button" class="btn btn-dark">@Model.ProductCommon.Description</button>
+                          </div>
+                          <div class="col">
+                            <label class="btn btn-dark"  for="ProductName">Data de criação</label>
+                            <button type="button" class="btn btn-dark">@Model.ProductCommon.DateOfCreation</button>
+                          </div>
+                        </div>        
+                    </div>
+              </div>
+          </div>
+        </div>
+      </div>
+          
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+
+        <script type="text/javascript">$(window).load(function() {
+            $('#DetailsProduct').modal('show');
+        });
+        </script>
+
+}
 </main>
 
 
