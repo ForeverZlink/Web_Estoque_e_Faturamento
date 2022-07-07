@@ -11,7 +11,7 @@ namespace Web_Estoque_E_Faturamento._Models
     {
         [Key]
         public int? Id {get;set;}
-        public float QuantityInStock {get;set;}
+        public float ?QuantityInStock {get;set;}
 
         
         [ForeignKey("Product")]
@@ -21,7 +21,7 @@ namespace Web_Estoque_E_Faturamento._Models
 
         
 
-        public List< ProductInventoryRegisterPurchase> ProductInventoryRegisterPurchase {get;set;}
+        public List< ProductInventoryRegisterPurchase>? ProductInventoryRegisterPurchase  {get;set;}
         
     }
 }

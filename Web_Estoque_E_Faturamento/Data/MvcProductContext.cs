@@ -16,7 +16,15 @@ using Web_Estoque_E_Faturamento._Models;
             
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder){
+            modelBuilder.Entity<Product>().HasOne(p=>p.ProductInventory)
+            .WithOne(p=>p.Product).HasForeignKey<ProductInventory>(e=>e.ProductId);
+           
+
+        }
+
         public DbSet<Web_Estoque_E_Faturamento._Models.Product> Product { get; set; }
+        public DbSet<Web_Estoque_E_Faturamento._Models.ProductInventory> ProductInventory {get;set;}
         public DbSet<Web_Estoque_E_Faturamento._Models.ProductInventoryRegisterPurchase> ProductInventoryRegisterPurchase {get;set;}
         public DbSet<Web_Estoque_E_Faturamento._Models.Provider> Provider {get;set;}
         
