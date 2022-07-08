@@ -49,6 +49,10 @@ namespace Web_Estoque_E_Faturamento.Controllers
 
             var product = await _context.Product
                 .FirstOrDefaultAsync(m => m.Id == id);
+            var productInventory = this._context.ProductInventory.FirstOrDefault(m=>m.ProductId==product.Id);
+
+            
+           
             IEnumerable<Product> productenu = await this._context.Product.ToArrayAsync();    
             ProductContextNecessary productContext  = new ProductContextNecessary(product,null,productenu,null);
             if (product == null)
@@ -75,15 +79,35 @@ namespace Web_Estoque_E_Faturamento.Controllers
         [HttpPost,ActionName("Create")]
         public async Task<IActionResult> CreateOn([Bind("Id,Name,Description,Code")] Product product)
         {
-            ProductInventory ProductInventory = new ProductInventory();
-            product.ProductInventory=ProductInventory;
+            
+           
+
+           
             product.DateOfCreation=DateTime.Today.ToString();
 
             if (ModelState.IsValid)
             {
                 
+               
                 _context.Add(product);
                 await _context.SaveChangesAsync();
+               
+                ProductInventory productInventory = new ProductInventory(){ProductId=product.Id,QuantityInStock=0};
+                
+
+                this._context.Add(productInventory);
+                this._context.SaveChanges();
+                
+                
+
+                product.ProductInventory = productInventory;
+                product.ProductInventory.ProductInventoryRegisterPurchase =new List<ProductInventoryRegisterPurchase>();
+
+                this._context.Update(product);
+                this._context.SaveChanges();
+
+                
+                
                 return RedirectToActionSucess(nameof(Index));
 
             }
