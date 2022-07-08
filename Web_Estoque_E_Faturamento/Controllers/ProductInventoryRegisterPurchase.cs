@@ -67,22 +67,25 @@ namespace Web_Estoque_E_Faturamento.Controllers
         // POST: ProductInventoryRegister/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-
-
+       
         [HttpPost,ActionName("Create")]
         public async Task<IActionResult> CreateOn(
-            [Bind("ProviderId, ProductId, DateOfPurchase, PriceOfPurchase,QuantityBuyed,  PriceProductUnity")] ProductInventoryRegisterPurchase ProductInventory)
+            [Bind("ProviderId, ProductId, DateOfPurchase, PriceOfPurchase,QuantityBuyed,  PriceProductUnity")] ProductInventoryRegisterPurchase productInventoryRegisterPurchase)
         {
-            
-            ProductInventory.Product = await this._context.Product.FindAsync(ProductInventory.ProductId);
-            ProductInventory.Provider = await this._context.Provider.FindAsync(ProductInventory.ProviderId);
-            this._logger.LogInformation(ProductInventory.Product.Name.ToString());
+             productInventoryRegisterPurchase.Product = await this._context.Product.FindAsync(productInventoryRegisterPurchase.ProductId);
+             productInventoryRegisterPurchase.Provider = await this._context.Provider.FindAsync(productInventoryRegisterPurchase.ProviderId);
             
             if (ModelState.IsValid)
             {
                 
-                _context.ProductInventoryRegisterPurchase.Add(ProductInventory);
+                _context.ProductInventoryRegisterPurchase.Add(productInventoryRegisterPurchase);
                 await _context.SaveChangesAsync();
+
+               
+                var productInventory = this._context.ProductInventory.FirstOrDefault(m=>m.ProductId==productInventoryRegisterPurchase.Id);
+                
+            
+                
                 return RedirectToActionSucess(nameof(Index));
 
             }
@@ -91,7 +94,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
                 Console.WriteLine("NO is valid");
             }
             
-            return View(ProductInventory);
+            return View(productInventoryRegisterPurchase);
         }
 
         // GET: ProductInventoryRegister/Edit/5
