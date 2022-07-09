@@ -101,7 +101,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
                 
 
                 product.ProductInventory = productInventory;
-                product.ProductInventory.ProductInventoryRegisterPurchase =new List<ProductInventoryRegisterPurchase>();
+                
 
                 this._context.Update(product);
                 this._context.SaveChanges();
