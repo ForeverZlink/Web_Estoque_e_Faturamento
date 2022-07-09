@@ -87,9 +87,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
                
                 var productInventory = this._context.ProductInventory.FirstOrDefault(m=>m.ProductId==productInventoryRegisterPurchaseSave.ProductId);
                 this._context.ProductInventory.Include(u=>u.ProductInventoryRegisterPurchase).ToList();
-                
-                productInventory.ProductInventoryRegisterPurchase.Add(productInventoryRegisterPurchaseSave);    
-                productInventory.QuantityInStock+=productInventoryRegisterPurchaseSave.QuantityBuyed;
+                productInventory.AddPurchaseInProductInventory(productInventoryRegisterPurchaseSave);
                 this._context.Update(productInventory);
                 this._context.SaveChanges();
 
