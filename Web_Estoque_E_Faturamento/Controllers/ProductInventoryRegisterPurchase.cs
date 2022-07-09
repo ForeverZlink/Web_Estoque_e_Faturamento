@@ -70,7 +70,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
        
         [HttpPost,ActionName("Create")]
         public async Task<IActionResult> CreateOn(
-            [Bind("ProviderId, ProductId, DateOfPurchase, PriceOfPurchase,QuantityBuyed,  PriceProductUnity")] ProductInventoryRegisterPurchase productInventoryRegisterPurchase)
+            [Bind("Id,ProviderId, ProductId, DateOfPurchase, PriceOfPurchase,QuantityBuyed,  PriceProductUnity")] ProductInventoryRegisterPurchase productInventoryRegisterPurchase)
         {
              productInventoryRegisterPurchase.Product = await this._context.Product.FindAsync(productInventoryRegisterPurchase.ProductId);
              productInventoryRegisterPurchase.Provider = await this._context.Provider.FindAsync(productInventoryRegisterPurchase.ProviderId);
@@ -79,12 +79,20 @@ namespace Web_Estoque_E_Faturamento.Controllers
             {
                 
                 _context.ProductInventoryRegisterPurchase.Add(productInventoryRegisterPurchase);
-                await _context.SaveChangesAsync();
-
-               
-                var productInventory = this._context.ProductInventory.FirstOrDefault(m=>m.ProductId==productInventoryRegisterPurchase.Id);
+                await this._context.SaveChangesAsync();
+                this._logger.LogInformation(productInventoryRegisterPurchase.Id.ToString());
                 
-            
+                
+                var productInventoryRegisterPurchaseSave = this._context.ProductInventoryRegisterPurchase.Find(productInventoryRegisterPurchase.Id);
+               
+                var productInventory = this._context.ProductInventory.FirstOrDefault(m=>m.ProductId==productInventoryRegisterPurchaseSave.ProductId);
+                this._context.ProductInventory.Include(u=>u.ProductInventoryRegisterPurchase).ToList();
+                
+                productInventory.ProductInventoryRegisterPurchase.Add(productInventoryRegisterPurchaseSave);    
+                productInventory.QuantityInStock+=productInventoryRegisterPurchaseSave.QuantityBuyed;
+                this._context.Update(productInventory);
+                this._context.SaveChanges();
+
                 
                 return RedirectToActionSucess(nameof(Index));
 
