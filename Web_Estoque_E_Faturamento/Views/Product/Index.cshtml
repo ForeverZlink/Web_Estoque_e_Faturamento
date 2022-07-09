@@ -159,7 +159,16 @@
                         <div class="row">
                           <label class="btn btn-dark"  for="ProductName">Quantidade no Estoque</label>
                          <button type="button" class="btn btn-dark">@Model.ProductCommon.ProductInventory.QuantityInStock</button>
-                        </div>   
+                        </div>
+                        @foreach(var value in Model.ProductCommon.ProductInventory.ProductInventoryRegisterPurchase){
+                            <ul class="list-group list-group-horizontal">
+                          <li class="list-group-item">@value.Provider.Name</li>
+                          <li class="list-group-item">@value.PriceOfPurchase</li>
+                          <li class="list-group-item">@value.PriceProductUnity</li>
+                          </ul>
+                        }
+                    
+                    
                     </div>
               </div>
           </div>
