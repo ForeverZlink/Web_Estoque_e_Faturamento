@@ -20,8 +20,7 @@ namespace Web_Estoque_E_Faturamento._Models
 
 
         
-
-        public List< ProductInventoryRegisterPurchase>? ProductInventoryRegisterPurchase  {get;set;}
+        public virtual ICollection<ProductInventoryRegisterPurchase>? ProductInventoryRegisterPurchase  {get;set;}
         
     }
 }
