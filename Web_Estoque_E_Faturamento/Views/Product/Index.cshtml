@@ -159,13 +159,33 @@
                           <label class="btn btn-dark"  for="ProductName">Quantidade no Estoque</label>
                          <button type="button" class="btn btn-dark">@Model.ProductCommon.ProductInventory.QuantityInStock</button>
                         </div>
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              
+                              <th scope="col">Name of Provider</th>
+                              <th scope="col">Price Of Purchase</th>
+                              <th scope="col">Price Of unity</th>
+                              <th scope = "col">Date of Purchase</th>
+                            </tr>
+                          </thead>
+                        
+                        <tbody>
                         @foreach(var value in Model.ProductCommon.ProductInventory.ProductInventoryRegisterPurchase){
-                            <ul class="list-group list-group-horizontal">
-                          <li class="list-group-item">@value.Provider.Name</li>
-                          <li class="list-group-item">@value.PriceOfPurchase</li>
-                          <li class="list-group-item">@value.PriceProductUnity</li>
-                          </ul>
+                            
+                            <tr>
+                              
+                              <td>@value.Provider.Name</td>
+                              <td>R$ @value.PriceOfPurchase</td>
+                              <td>R$ @value.PriceProductUnity</td>
+                              <td>@value.DateOfPurchase</td>
+                            </tr>
+                            
+                         
+                        
                         }
+                        </tbody>
+                        </table>
                     
                     
                     </div>
