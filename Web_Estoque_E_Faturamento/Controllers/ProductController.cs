@@ -33,7 +33,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
         {
             IEnumerable<Product> product = await this._context.Product.ToArrayAsync();
             IEnumerable<ProductInventoryRegisterPurchase> productInventoryRegisterPurchase = await this._context.ProductInventoryRegisterPurchase.ToArrayAsync();
-            ProductContextNecessary ProductContext = new  ProductContextNecessary(null,null,product,productInventoryRegisterPurchase);
+            ProductContextNecessary ProductContext = new  ProductContextNecessary(null,null,null,product,productInventoryRegisterPurchase);
             return View(ProductContext);
             
         }
@@ -50,11 +50,14 @@ namespace Web_Estoque_E_Faturamento.Controllers
             var product = await _context.Product
                 .FirstOrDefaultAsync(m => m.Id == id);
             var productInventory = this._context.ProductInventory.FirstOrDefault(m=>m.ProductId==product.Id);
-
+            this._context.ProductInventory.Include(m=>m.ProductInventoryRegisterPurchase).ToList();
+            
+            this._context.ProductInventoryRegisterPurchase.Include("Provider").ToList();
+            
             
            
             IEnumerable<Product> productenu = await this._context.Product.ToArrayAsync();    
-            ProductContextNecessary productContext  = new ProductContextNecessary(product,null,productenu,null);
+            ProductContextNecessary productContext  = new ProductContextNecessary(null,product,null,productenu,null);
             if (product == null)
             {
                 return NotFound();
