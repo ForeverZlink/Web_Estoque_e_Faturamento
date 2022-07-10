@@ -8,10 +8,63 @@
 
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
       <h3>helo</h3>
-        @foreach(var value in Model.ProductInventoryRegisterPurchase){
-        <h1>@value.Product.Name
+        
+        
           
         </h1>
+        <div class="table-responsive">
+        <table class="table table-sm table-striped ">
+            <thead>
+                <tr>
+                    <th>
+                        <h4>Product</h4>
+                    </th>
+                    <th>
+                        <h4>Provider</h4>
+                    </th>
+                    <th>
+                        <h4>PriceOfPurchase</h4>
+                    </th>
+                    <th>
+                        <h4>DateOfPurchase</h4>
+                    </th>
+                    <th></th>
+                 </tr>
+            </thead>
+            <tbody>
+             @foreach(var item in Model.ProductInventoryRegisterPurchase){
+
+                    <tr>
+                    
+                      <td >
+                          <p class="text-break">@Html.DisplayFor(modelItem => item.Product.Name)</p> 
+                      </td>
+                      <td>
+                          <p class="text-break">@Html.DisplayFor(modelItem => item.Provider.Name)</p> 
+                      </td>
+                      <td>
+                          <p class="text-break">R$@Html.DisplayFor(modelItem => item.PriceOfPurchase)</p>
+                          
+                      </td>
+                      <td>
+                          <p class="text-break">@Html.DisplayFor(modelItem => item.DateOfPurchase)</p>
+                          
+                      </td>
+                
+                      <td>
+                     
+                          
+                          
+                      </td>
+                </tr>
+        
+
+
+             }
+                  
+
+            </tbody>
+        </table>
 
 
 }
