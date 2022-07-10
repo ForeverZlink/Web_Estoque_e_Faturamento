@@ -32,7 +32,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
         
             IEnumerable<Provider> provider = await this._context.Provider.ToArrayAsync();
             IEnumerable<Product> product = await this._context.Product.ToArrayAsync();
-            IEnumerable<ProductInventoryRegisterPurchase> productInventoryRegisterPurchase = await this._context.ProductInventoryRegisterPurchase.ToArrayAsync();
+            IEnumerable<ProductInventoryRegisterPurchase> productInventoryRegisterPurchase = await this._context.ProductInventoryRegisterPurchase.OrderByDescending(m=>m.DateOfPurchase).ToArrayAsync();
             DashBoardContextNecessary DashboardContext = new DashBoardContextNecessary(provider,product,productInventoryRegisterPurchase);
             return View(DashboardContext);
         }
