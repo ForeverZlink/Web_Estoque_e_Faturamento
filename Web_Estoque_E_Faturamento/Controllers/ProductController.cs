@@ -52,7 +52,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
             var productInventory = this._context.ProductInventory.FirstOrDefault(m=>m.ProductId==product.Id);
             this._context.ProductInventory.Include(m=>m.ProductInventoryRegisterPurchase).ToList();
             
-            this._context.ProductInventoryRegisterPurchase.Include("Provider").ToList();
+            this._context.ProductInventoryRegisterPurchase.Include("Provider").ToList().OrderBy(m=>m.DateOfPurchase);
             
             
            
