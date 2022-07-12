@@ -7,7 +7,84 @@
 }
 
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-      <h3>helo</h3>
+     <h1>Registro de todas as compras realizadas</h1><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#RegisterPurchases">
+              Registrar Compras
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="RegisterPurchases" tabindex="-1" aria-labelledby="RegisterPurchases" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content modal-lg ">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="RegisterPurchases">Digite as Informações sobre a Compras</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                        <form asp-action = "Create" asp-controller= "ProductInventoryRegisterPurchase" method ="POST">
+                            @Html.AntiForgeryToken()
+
+                            <select name ="ProductId" class="form-select" aria-label="Zelda ocarina of time">
+                               
+                              @foreach(var product in Model.Product){
+                                  <option  value="@product.Id">@product.Name</option>
+                                  
+                              
+                              }
+
+                              
+                            </select>
+                            
+                            <select name="ProviderId" class="form-select" aria-label="Default select example">
+                               
+                              @foreach(var provider in Model.Provider){
+                                  <option  value="@provider.Id">@provider.Name</option>
+                              
+                              }
+                              
+
+                              
+                            </select>
+                            <div></div>
+                            
+                            
+                            
+                            <div class="input-group mb-3">
+                              
+                              <label for="DateOfPurchase" class="col-sm-2 col-form-label">Data da compra</label>
+                              <input class="form-control" id="DateOfPurchase" type="date" name="DateOfPurchase" id="DateOfPurchase">
+                              <div class="input-group mb-3">
+                                <span class="input-group-text">R$</span>
+                                
+                                <input name="PriceProductUnity" placeholder="Preço Unitário" type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                
+                              </div>
+                            </div>
+                           
+                            <div class="input-group mb-3">
+                              <label for="QuantityBuyed" class="col-sm-2 col-form-label">Quantidade de itens comprados</label>
+                              <input class="form-control form-control-sm" placeholder="Quntidade de Itens" id="QuantityBuyed" type="number" name="QuantityBuyed" id="QuantityBuyed">
+                            </div>
+                            <div class="input-group mb-3">
+                              <label for="PriceOfPurchase" class="col-sm-2 col-form-label">Preço total gasto com esse item </label>
+                              <span class="input-group-text">R$</span>
+                              <input class="form-control" id="PriceOfPurchase" type="number" placeholder="Preço total" name="PriceOfPurchase" id="PriceOfPurchase">
+                            </div>
+                         
+                            <div class="modal-footer">
+                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <input type="submit" value="Registra Compra" class="btn btn-primary">
+                                <input type="submit" value="Registrar a compra atual e continuar a registra outras" class="btn btn-primary" >
+                              </div>
+                          
+
+                         </form>
+
+                         
+                   </div>
+                  
+                 
+                </div>
+              </div>
+            </div>
         
         
           
@@ -23,10 +100,10 @@
                         <h4>Provider</h4>
                     </th>
                     <th>
-                        <h4>PriceOfPurchase</h4>
+                        <h4>Price Of Purchase</h4>
                     </th>
                     <th>
-                        <h4>DateOfPurchase</h4>
+                        <h4>Date Of Purchase</h4>
                     </th>
                     <th></th>
                  </tr>
@@ -67,4 +144,4 @@
         </table>
 
 
-}
+
