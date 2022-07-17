@@ -1,0 +1,77 @@
+@model IEnumerable<Web_Estoque_E_Faturamento._Models.Provider>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutDashboard";
+}
+
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+      <h3>Registro de fornecedores</h3>
+       <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#NewProductModal">
+              Adicionar novo fornecedor
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="NewProductModal" tabindex="-1" aria-labelledby="NewProductModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content modal-lg ">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="NewProductModalLabel">Informações</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                         
+                        <form asp-action="Create" asp-controller="Provider"  method= "POST">
+                            @Html.AntiForgeryToken()
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="mb-3">
+                              <label for="NameProviderLabel" class="form-label">Nome</label>
+                              <input type="text" required class="form-control" id="NameProviderLabel" name="Name" placeholder="Digite aqui o nome do fornecedor">
+                            </div>
+                            <div class="mb-3">
+                              <label for="CnpjProviderLabel"  class="form-label">Cnpj</label>
+                              <input type="text" maxlength="300" required class="form-control" name="Cnpj" id="CnpjProviderLabel" placeholder="Digite o nome do produto">
+                            </div>
+                            <div class="mb-3">
+                              <label for="AndressProviderLabel" class="form-label">Endereço do fornec</label>
+                              <textarea class="form-control" required id="AndressProviderLabel" name="Andress" rows="3"></textarea>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <input type="submit" value="Create" class="btn btn-primary">
+                              </div>
+                         </form>
+
+                         
+                   </div>
+                  
+                 
+                </div>
+              </div>
+            </div>
+    <table class="table table-striped-columns">
+        <thead>
+           <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cnpj)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Andress)
+                </th>
+                
+            
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var provider  in @Model){
+                <tr>
+                    <td>@provider.Name</td>
+                    <td>@provider.Cnpj</td>
+                    <td>@provider.Andress</td>
+                </tr>
+            }
+        </table>
+  

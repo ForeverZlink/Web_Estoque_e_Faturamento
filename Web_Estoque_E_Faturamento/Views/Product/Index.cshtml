@@ -1,4 +1,6 @@
-@model IEnumerable<Web_Estoque_E_Faturamento._Models.Product>
+@model Web_Estoque_E_Faturamento.ViewModels.ProductContextNecessary
+
+
 
 @{
     ViewData["Title"] = "Index";
@@ -11,35 +13,42 @@
         <h1 class="h2">Gerenciamento  de Produtos Cadastrados</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group me-2">
+            
             <button type="button" class="btn btn-sm btn-outline-secondary">Exportar</button>
             <button type="button" class="btn btn-sm btn-outline-secondary">Compatilhar</button>
-            <!-- Button trigger modal -->
+            
+            
+
+     
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#NewProductModal">
               Criar novo produto
             </button>
-            <!-- Modal -->
+           
             <div class="modal fade" id="NewProductModal" tabindex="-1" aria-labelledby="NewProductModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content modal-lg ">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="NewProductModalLabel">InformaÁıes</h5>
+                    <h5 class="modal-title" id="NewProductModalLabel">Informa√ß√µes</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
                         <form action="/Product/Create" method = "Post">
+                           @Html.AntiForgeryToken()
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <div class="mb-3">
-                              <label for="CodeProductLabel" class="form-label">CÛdigo do Produto</label>
-                              <input type="text" class="form-control" id="CodeProductLabel" name="Code" placeholder="(Por favor, coloque o cÛdigo original do produto, pois facilitar· as pesquisas futuramente)">
+                              <label for="CodeProductLabel" class="form-label">C√≥digo do Produto</label>
+                              <input type="text" required class="form-control" id="CodeProductLabel" name="Code" placeholder="(Por favor, coloque o c√≥digo original do produto, pois facilitar√° as pesquisas futuramente)">
                             </div>
                             <div class="mb-3">
-                              <label for="NameProductLabel" class="form-label">Nome do Produto</label>
-                              <input type="text" maxlength="300" class="form-control" name="Name" id="NameProductLabel" placeholder="Digite o nome do produto">
+                              <label for="NameProductLabel"  class="form-label">Nome do Produto</label>
+                              <input type="text" maxlength="300" required class="form-control" name="Name" id="NameProductLabel" placeholder="Digite o nome do produto">
                             </div>
                             <div class="mb-3">
-                              <label for="DescriptionProductLabel" class="form-label">DescriÁ„o do Produto</label>
-                              <textarea class="form-control" id="DescriptionProductLabel" name="Description" rows="3"></textarea>
+                              <label for="DescriptionProductLabel" class="form-label">Descri√ß√£o do Produto</label>
+                              <textarea class="form-control" required id="DescriptionProductLabel" name="Description" rows="3"></textarea>
                             </div>
+                            
+
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <input type="submit" value="Create" class="btn btn-primary">
@@ -66,56 +75,146 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.Code)
+                        <h4>Code</h4>
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Name)
+                        <h4>Name</h4>
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Description)
+                        <h4>Description</h4>
                     </th>
-                
+                    <th>
+                        <h4>Date of creation</h4>
+                    </th>
                     <th></th>
                  </tr>
             </thead>
             <tbody>
-             @foreach (var item in Model) {
-                <tr>
-                    <td >
-                        <p class="text-break">@Html.DisplayFor(modelItem => item.Code)</p> 
-                    </td>
-                    <td>
-                        <p class="text-break">@Html.DisplayFor(modelItem => item.Name)</p> 
-                    </td>
-                    <td>
-                        <p class="text-break">@Html.DisplayFor(modelItem => item.Description)</p>
-                        
-                    </td>
-               
-                    <td>
+             @foreach (var item in Model.Product) {
 
-                        <a href="/Product/Edit/@item.Id" asp-route-id="@item.Id">Edit</a> |
-                        
-                         @Html.ActionLink("Detalhes","Details","Product",new {id=@item.Id})
-                         
-                        
-                        <a asp-action="/Product/Delete" asp-route-id="@item.Id">Delete</a>
-                    </td>
+                    <tr>
+                    
+                      <td >
+                          <p class="text-break">@Html.DisplayFor(modelItem => item.Code)</p> 
+                      </td>
+                      <td>
+                          <p class="text-break">@Html.DisplayFor(modelItem => item.Name)</p> 
+                      </td>
+                      <td>
+                          <p class="text-break">@Html.DisplayFor(modelItem => item.Description)</p>
+                          
+                      </td>
+                      <td>
+                          <p class="text-break">@Html.DisplayFor(modelItem => item.DateOfCreation)</p>
+                          
+                      </td>
+                
+                      <td>
+                          <a class="btn btn-info" href='@Url.Action("Edit","Product", new{id=@item.Id})' role="button">Editar</a>
+                          <a class="btn btn-danger" href='@Url.Action("Delete","Product", new{id=@item.Id})' role="button">Apagar</a>
+                          <a class="btn btn-primary" href= '@Url.Action("Details","Product", new{id=@item.Id})'  role="button">Detalhes</a>
+                          
+                          
+                      </td>
                 </tr>
-            }
+        
+
+
+             }
+                  
+
             </tbody>
         </table>
     </div>
-    <table class="table">
-        
-    </table>
 
+@if(ViewData["ShowModalWithDetailsOfProduct"] == "true"){
+  
+  
+      
+      <div class="modal fade" id="DetailsProduct" tabindex="-1" aria-labelledby="DetailsProduct" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+          <div class="modal-content modal-xl ">
+            <div class="modal-header">
+              <h5 class="modal-title" id="DetailsProduct">Informa√ß√µes</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+              <div class="modal-body">
+                    <h1></h1>
+                    <div class="container">
+                        <div class="row">
+                          <div class="col">
+                            <label class="btn btn-dark"  for="ProductName">Nome do produto:</label>
+                            <button type="button" class="btn btn-secondary">@Model.ProductCommon.Name</button>
+                          </div>
+                          <div class="col">
+                            <label class="btn btn-dark"  for="ProductName">Descri√ß√£o</label>
+                            <button type="button" class="btn btn-secondary">@Model.ProductCommon.Description</button>
+                          </div>
+                          <div class="col">
+                            <label class="btn btn-dark"  for="ProductName">Data de cria√ß√£o</label>
+                            <button type="button" class="btn btn-secondary">@Model.ProductCommon.DateOfCreation</button>
+                          </div>
+                        </div>     
+                        <div class="col">
+                          <label class="btn btn-dark"  for="ProductName">Quantidade no Estoque</label>
+                         <button type="button" class="btn btn-secondary">@Model.ProductCommon.ProductInventory.QuantityInStock</button>
+                        </div>
+                        <div align="Center">
+                          <h4>Record of all purchases</h4>
+                        </div>
+                        <table class="table  table-striped">
+                          <thead>
+                            <tr>
+                              
+                              <th scope="col">Name of Provider</th>
+                              <th scope="col">Price Of Purchase</th>
+                              <th scope="col">Price Of unity</th>
+                              <th scope = "col">Date of Purchase</th>
+                            </tr>
+                          </thead>
+                        
+                        <tbody>
+                        @foreach(var value in Model.ProductCommon.ProductInventory.ProductInventoryRegisterPurchase){
+                            
+                            <tr>
+                              
+                              <td>@value.Provider.Name</td>
+                              <td>R$ @value.PriceOfPurchase</td>
+                              <td>R$ @value.PriceProductUnity</td>
+                              <td>@value.DateOfPurchase</td>
+                            </tr>
+                            
+                         
+                        
+                        }
+                        </tbody>
+                        </table>
+                    
+                    
+                    </div>
+              </div>
+          </div>
+        </div>
+      </div>
+          
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+
+        <script type="text/javascript">$(window).load(function() {
+            $('#DetailsProduct').modal('show');
+        });
+        </script>
+
+}
 </main>
 
 
 
+
+
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Backs to List</a>
 
 </div>
 

@@ -1,14 +1,13 @@
-FROM  mcr.microsoft.com/dotnet/sdk AS build-env
+FROM  mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
 WORKDIR /WebApp
+
 
 COPY . /WebApp
 
 WORKDIR /WebApp/Web_Estoque_E_Faturamento
-run dotnet restore
-run dotnet tool install --global dotnet-ef
-ENV PATH="${PATH}:/root/.dotnet/tools"
-
-run dotnet ef database update
+RUN dotnet restore
+run  dotnet tool install --global dotnet-ef
+run dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
 RUN dotnet publish -c Release -o Out
 
 
