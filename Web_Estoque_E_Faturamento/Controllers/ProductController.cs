@@ -46,9 +46,13 @@ namespace Web_Estoque_E_Faturamento.Controllers
             {
                 return NotFound();
             }
-
+            
             var product = await _context.Product
                 .FirstOrDefaultAsync(m => m.Id == id);
+            if (product == null)
+            {
+                return NotFound();
+            }
             var productInventory = this._context.ProductInventory.FirstOrDefault(m=>m.ProductId==product.Id);
             this._context.ProductInventory.Include(m=>m.ProductInventoryRegisterPurchase).ToList();
             
@@ -58,10 +62,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
            
             IEnumerable<Product> productenu = await this._context.Product.ToArrayAsync();    
             ProductContextNecessary productContext  = new ProductContextNecessary(null,product,null,productenu,null);
-            if (product == null)
-            {
-                return NotFound();
-            }
+            
 
             //for show the detais of the product in a modal. In the view, its a 
             //a logic tha use this value and case true, the view will show 

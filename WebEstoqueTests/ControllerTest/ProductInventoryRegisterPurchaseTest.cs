@@ -5,7 +5,7 @@ using Web_Estoque_E_Faturamento._Models;
 using WebEstoqueTests;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-
+using WebEstoqueTests;
 using System;
 
 namespace WebEstoqueTests
@@ -15,8 +15,10 @@ namespace WebEstoqueTests
         public string ViewResult = "ViewResult";
         public string NotFoundResult = "NotFoundResult";
         public string RedirectToActionResult = "RedirectToActionResult";
-        static DbContextOptions<MvcProductContext> option = new DbContextOptionsBuilder<MvcProductContext>().UseInMemoryDatabase(databaseName:"ProductContextDatabase").Options;
-        MvcProductContext context = new MvcProductContext(option);
+
+
+        static public TestDatabaseFixture Fixture = new TestDatabaseFixture();
+         MvcProductContext context = Fixture.CreateContext();
         static Provider ProviderInstance = new Provider(){
             Name="Volkswagem",Andress="Rua das limitã",Cnpj="134"
         };

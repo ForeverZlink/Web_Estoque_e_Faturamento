@@ -1,16 +1,18 @@
 using Xunit;
 using Moq;
+using Web_Estoque_E_Faturamento;
 using Web_Estoque_E_Faturamento.Controllers;
 using Web_Estoque_E_Faturamento._Models;
-using WebEstoqueTests;
+
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
 using System.Linq;
-
+using WebEstoqueTests;
 using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
+
 using System;
 
 namespace WebEstoqueTests
@@ -24,16 +26,16 @@ namespace WebEstoqueTests
     
     
     
-    public class ProductControllerTest:IClassFixture<TestDatabaseFixture>
+    public class ProductControllerTest:Controller
     {
-       
-       
-       static public TestDatabaseFixture? Fixture;
+
+
+        static public TestDatabaseFixture Fixture = new TestDatabaseFixture();
         public string ViewResult = "ViewResult";
         public string NotFoundResult = "NotFoundResult";
         public string RedirectToActionResult = "RedirectToActionResult";
-        
-        
+
+
         MvcProductContext context = Fixture.CreateContext();
        
         
@@ -101,62 +103,34 @@ namespace WebEstoqueTests
         [Fact]
         public void Details()
         {
-            var productData =  new Product{Id=44,Name="Car",Code="01",Description="A nice car"};
-             
+            var productData =  new Product{Name="Car",Code="01",Description="A nice car"};
+            this.context.Add(productData);
+            this.context.SaveChanges();
 
             ProductInventory ProductInventory = new ProductInventory(){
                 ProductId=productData.Id,Product=productData,
                 QuantityInStock=0,ProductInventoryRegisterPurchase= new List<ProductInventoryRegisterPurchase>()};
+            this.context.Add(ProductInventory);
+            this.context.SaveChanges();
 
+            Provider provider = new Provider { Andress = "Rua do limão", Cnpj = "11222.22", Name = "Jfc" };
+            this.context.Add(provider);
+            this.context.SaveChanges();
            
 
             ProductInventoryRegisterPurchase ProductInvetoryRegisterPurchaseModelData = new ProductInventoryRegisterPurchase(){
             QuantityBuyed=1,PriceOfPurchase=20,DateOfPurchase=DateTime.Today.ToString(),
-            PriceProductUnity=2,ProductId=productData.Id,
+            PriceProductUnity=2,ProductId=productData.Id,Provider=provider,ProviderId=provider.Id,
             Product=productData
                 };
             ProductInventory.ProductInventoryRegisterPurchase.Add(ProductInvetoryRegisterPurchaseModelData);
+            this.context.Add(ProductInvetoryRegisterPurchaseModelData);
+            this.context.SaveChanges();
+
+            productData.ProductInventory=ProductInventory;
             
-            var data = new List<Product>{
-                productData
-               
-            }.AsQueryable();
-
-            var dataProductInventoryPurchase = new List<ProductInventoryRegisterPurchase>{
-                ProductInvetoryRegisterPurchaseModelData
-            }.AsQueryable();
-            
-                
-            var dataProductInventory = new List<ProductInventory>{
-                ProductInventory
-            }.AsQueryable();
-
-            
-            
-            var mockset = new Mock<DbSet<Product>>();
-            mockset.As<IQueryable<Product>>().Setup(m=>m.Provider);
-            mockset.As<IQueryable<Product>>().Setup(m => m.Expression).Returns(data.Expression);
-            mockset.As<IQueryable<Product>>().Setup(m => m.ElementType).Returns(data.ElementType);
-            mockset.As<IQueryable<Product>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
-
-            var mocksetInventory = new Mock<DbSet<ProductInventory>>();
-            mockset.As<IQueryable<ProductInventory>>().Setup(m=>m.Provider);
-            mockset.As<IQueryable<ProductInventory>>().Setup(m => m.Expression).Returns(dataProductInventory.Expression);
-            mockset.As<IQueryable<ProductInventory>>().Setup(m => m.ElementType).Returns(dataProductInventory.ElementType);
-            mockset.As<IQueryable<ProductInventory>>().Setup(m => m.GetEnumerator()).Returns(dataProductInventory.GetEnumerator());
-
-            var mocksetPurchases = new Mock<DbSet<ProductInventoryRegisterPurchase>>();
-            mockset.As<IQueryable<ProductInventoryRegisterPurchase>>().Setup(m=>m.Provider);
-            mockset.As<IQueryable<ProductInventoryRegisterPurchase>>().Setup(m => m.Expression).Returns(dataProductInventoryPurchase.Expression);
-            mockset.As<IQueryable<ProductInventoryRegisterPurchase>>().Setup(m => m.ElementType).Returns(dataProductInventoryPurchase.ElementType);
-            mockset.As<IQueryable<ProductInventoryRegisterPurchase>>().Setup(m => m.GetEnumerator()).Returns(dataProductInventoryPurchase.GetEnumerator());
-
-            var mockContext  = new Mock<MvcProductContext>();
-            mockContext.Setup(x=>x.Product).Returns(mockset.Object);
-            mockContext.Setup(x=>x.ProductInventory).Returns(mocksetInventory.Object);
-            mockContext.Setup(x=>x.ProductInventoryRegisterPurchase).Returns(mocksetPurchases.Object);
-            
-
+            this.context.Update(productData);
+            this.context.SaveChanges();
            
             
             var logger = LoggerFactory.Create(config=>{config.AddConsole();}).CreateLogger("Program");
@@ -164,7 +138,7 @@ namespace WebEstoqueTests
          
             
             
-            ProductControllerInstance = mockContext.Object;
+            ProductControllerInstance = context;
            
 
             // Case when its a Product  te jwenn
