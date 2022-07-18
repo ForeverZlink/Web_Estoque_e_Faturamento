@@ -175,7 +175,7 @@ namespace WebEstoqueTests
            };
            ContextConfig=ProductModelData;
            ProductControllerInstance = ContextConfig;
-           var ResponseWanted  = ProductControllerInstance.DeleteConfirmed(id:this.ProductModelData.Id);
+           var ResponseWanted  = ProductControllerInstance.DeleteConfirmed(id:ProductModelData.Id);
            context.Dispose();
            Console.WriteLine(ResponseWanted.Result.ToString());
            Assert.Contains("RedirectToActionResult",ResponseWanted.Result.ToString());
