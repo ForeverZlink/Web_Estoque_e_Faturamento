@@ -27,7 +27,7 @@ namespace WebEstoqueTests
            };
 
         ProductInventoryRegisterPurchase ProductInvetoryRegisterPurchaseModelData = new ProductInventoryRegisterPurchase(){
-            Id=1,QuantityBuyed=1,PriceOfPurchase=20,DateOfPurchase=DateTime.Today.ToString(),
+            QuantityBuyed=1,PriceOfPurchase=20,DateOfPurchase=DateTime.Today.ToString(),
             PriceProductUnity=2, ProviderId=1,Provider=ProviderInstance, 
             ProductId=1,Product=Product
         };
