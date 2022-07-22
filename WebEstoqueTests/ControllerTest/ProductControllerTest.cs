@@ -170,7 +170,7 @@ namespace WebEstoqueTests
         {
             MvcProductContext context = Fixture.CreateContext();
             this.ProductControllerInstance=context;
-            Product ProductModelData = new Product(){Id=3222,
+            Product ProductModelData = new Product(){
             Name="Car",Code="01",Description="A nice car"
            };
            ContextConfig=ProductModelData;
