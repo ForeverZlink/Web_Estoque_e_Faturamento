@@ -22,14 +22,23 @@ namespace Web_Estoque_E_Faturamento._Models
         
         public virtual ICollection<ProductInventoryRegisterPurchase>? ProductInventoryRegisterPurchase  {get;set;}
 
-        public void UpdateStock(float QuantityBuyed){
+        public void ChangeInventory(float ValueForChange)
+        {
+            this.QuantityInStock = ValueForChange;
+        }
+        public void AddInInventoryQuantityBuyed(float QuantityBuyed){
             this.QuantityInStock+=QuantityBuyed;
                 
 
         }
+        public void RemoveOfTheInventoryQuantity(float QuantityToRemove)
+        {
+            this.QuantityInStock -= QuantityToRemove;
+        }
+
         public void AddPurchaseInProductInventory(ProductInventoryRegisterPurchase purchase){
             this.ProductInventoryRegisterPurchase.Add(purchase);
-            UpdateStock(purchase.QuantityBuyed);
+            AddInInventoryQuantityBuyed(purchase.QuantityBuyed);
 
         }
         

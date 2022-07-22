@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
-using Microsoft.AspNetCore.Authentication.Certificate;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
