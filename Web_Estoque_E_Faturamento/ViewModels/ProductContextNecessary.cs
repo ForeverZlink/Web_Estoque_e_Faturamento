@@ -8,7 +8,13 @@ namespace Web_Estoque_E_Faturamento.ViewModels
 {
     public class ProductContextNecessary
     {
-        public ProductContextNecessary (ICollection<Provider> providers, Product ProductCommon,ProductInventory productInventory, IEnumerable<Product> product, IEnumerable<ProductInventoryRegisterPurchase> productInventoryRegisterPurchase){
+        public ProductContextNecessary (
+            ICollection<Provider> providers, Product ProductCommon,ProductInventory productInventory, 
+            IEnumerable<Product> product, IEnumerable<ProductInventoryRegisterPurchase> productInventoryRegisterPurchase,
+            ProductInventoryRegisterPurchase ProducInventoryPurchase = null
+        )
+        {
+            this.ProducInventoryPurchase = ProducInventoryPurchase;
             this.Product=product;
             this.ProductCommon=ProductCommon;
             this.ProductInventory = productInventory;
@@ -21,6 +27,7 @@ namespace Web_Estoque_E_Faturamento.ViewModels
         public Product ProductCommon {get;set;}
         public IEnumerable<ProductInventoryRegisterPurchase> ProductInventoryRegisterPurchase {get;set;}
         public ProductInventory ProductInventory{get;set;}
+        public ProductInventoryRegisterPurchase ProducInventoryPurchase { get; set; }
 
     }
 }
