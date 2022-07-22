@@ -40,8 +40,7 @@ namespace WebEstoqueTests.ControllerTest
             Product.ProductInventory=productInventory;
             
             Product.ProductInventory.ProductInventoryRegisterPurchase.Add(ProductInvetoryRegisterPurchaseModelData);
-            var result = Product.ProductInventory.test();
-            Assert.Equal(result,30);
+           
             
 
         }
