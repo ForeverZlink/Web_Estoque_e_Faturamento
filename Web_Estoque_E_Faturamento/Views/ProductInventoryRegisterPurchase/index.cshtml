@@ -1,4 +1,4 @@
-@model Web_Estoque_E_Faturamento.ViewModels.DashBoardContextNecessary
+@model Web_Estoque_E_Faturamento.ViewModels.ProductContextNecessary
 
 
 @{
@@ -24,8 +24,8 @@
 
                             <select name ="ProductId" class="form-select" aria-label="Zelda ocarina of time">
                                
-                              @foreach(var product in Model.Product){
-                                  <option  value="@product.Id">@product.Name</option>
+                              @foreach(var ProductPurchases in Model.ProductInventoryRegisterPurchase){
+                                  <option  value="@ProductPurchases.ProductId">@ProductPurchases.Product.Name</option>
                                   
                               
                               }
@@ -35,8 +35,8 @@
                             
                             <select name="ProviderId" class="form-select" aria-label="Default select example">
                                
-                              @foreach(var provider in Model.Provider){
-                                  <option  value="@provider.Id">@provider.Name</option>
+                              @foreach(var ProviderPurchases in Model.ProductInventoryRegisterPurchase){
+                                  <option  value="@ProviderPurchases.ProviderId">@ProviderPurchases.Provider.Name</option>
                               
                               }
                               
@@ -130,18 +130,97 @@
                 
                       <td>
                      
-                          
+                           <a class="btn btn-primary" href= '@Url.Action("Details","ProductInventoryRegisterPurchase", new{id=@item.Id})'  role="button">Detalhes</a>
                           
                       </td>
                 </tr>
         
 
-
+                
              }
                   
 
             </tbody>
         </table>
 
+        
+@if(ViewData["ShowModalWithDetailsOfSpecificPurchase"] == "true"){
+  
+  
+      
+      <div class="modal fade" id="DetailsProduct" tabindex="-1" aria-labelledby="DetailsProduct" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+          <div class="modal-content modal-xl ">
+            <div class="modal-header">
+              <h5 class="modal-title" id="DetailsProduct">Informações</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+              <div class="modal-body">
+                    <h1></h1>
+                    <div class="container">
+                        <div class="row">
+                          <div class="col">
+                            <label class="btn btn-dark"  for="ProductName">Nome do produto:</label>
+                            <button type="button" class="btn btn-secondary">@Model.ProducInventoryPurchase.Product.Name</button>
+                          </div>
+                          <div class="col">
+                            <label class="btn btn-dark"  for="ProductName">Descrição</label>
+                            <button type="button" class="btn btn-secondary">@Model.ProducInventoryPurchase.Product.Description</button>
+                          </div>
+                          <div class="col">
+                            <label class="btn btn-dark"  for="ProductName">Data de criação</label>
+                            <button type="button" class="btn btn-secondary">@Model.ProductInventory.Product.DateOfCreation</button>
+                          </div>
+                        </div>     
+                        <div class="col">
+                          <label class="btn btn-dark"  for="ProductName">Quantidade no Estoque</label>
+                         <button type="button" class="btn btn-secondary">@Model.ProductCommon.ProductInventory.QuantityInStock</button>
+                        </div>
+                        <div align="Center">
+                          <h4>Record of all purchases</h4>
+                        </div>
+                        <table class="table  table-striped">
+                          <thead>
+                            <tr>
+                              
+                              <th scope="col">Name of Provider</th>
+                              <th scope="col">Price Of Purchase</th>
+                              <th scope="col">Price Of unity</th>
+                              <th scope = "col">Date of Purchase</th>
+                            </tr>
+                          </thead>
+                        
+                        <tbody>
+                        @foreach(var value in Model.ProductInventoryRegisterPurchase ){
+                            
+                            <tr>
+                              
+                              <td>@value.Provider.Name</td>
+                              <td>R$ @value.PriceOfPurchase</td>
+                              <td>R$ @value.PriceProductUnity</td>
+                              <td>@value.DateOfPurchase</td>
+                            </tr>
+                            
+                         
+                        
+                        }
+                        </tbody>
+                        </table>
+                    
+                    
+                    </div>
+              </div>
+          </div>
+        </div>
+      </div>
+          
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
+        <script type="text/javascript" src="js/bootstrap.js"></script>
 
+        <script type="text/javascript">$(window).load(function() {
+            $('#DetailsProduct').modal('show');
+        });
+        </script>
+
+}
