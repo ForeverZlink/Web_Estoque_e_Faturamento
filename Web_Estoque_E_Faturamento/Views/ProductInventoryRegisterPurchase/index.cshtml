@@ -24,8 +24,8 @@
 
                             <select name ="ProductId" class="form-select" aria-label="Zelda ocarina of time">
                                
-                              @foreach(var ProductPurchases in Model.ProductInventoryRegisterPurchase){
-                                  <option  value="@ProductPurchases.ProductId">@ProductPurchases.Product.Name</option>
+                              @foreach(var ProductPurchases in Model.Product){
+                                  <option  value="@ProductPurchases.Id">@ProductPurchases.Name</option>
                                   
                               
                               }
@@ -35,8 +35,8 @@
                             
                             <select name="ProviderId" class="form-select" aria-label="Default select example">
                                
-                              @foreach(var ProviderPurchases in Model.ProductInventoryRegisterPurchase){
-                                  <option  value="@ProviderPurchases.ProviderId">@ProviderPurchases.Provider.Name</option>
+                              @foreach(var ProviderPurchases in Model.Provider){
+                                  <option  value="@ProviderPurchases.Id">@ProviderPurchases.Name</option>
                               
                               }
                               
