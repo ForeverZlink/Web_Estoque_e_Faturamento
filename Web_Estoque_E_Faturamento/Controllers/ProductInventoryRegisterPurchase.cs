@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Web_Estoque_E_Faturamento._Models;
-using Microsoft.Extensions.Logging;
 using Web_Estoque_E_Faturamento.ViewModels;
+using Microsoft.AspNetCore.Mvc.Controllers;
 
 namespace Web_Estoque_E_Faturamento.Controllers
 {
@@ -30,33 +30,43 @@ namespace Web_Estoque_E_Faturamento.Controllers
         public async Task<IActionResult> Index()
         {
         
-            IEnumerable<Provider> provider = await this._context.Provider.ToArrayAsync();
-            IEnumerable<Product> product = await this._context.Product.ToArrayAsync();
-            IEnumerable<ProductInventoryRegisterPurchase> productInventoryRegisterPurchase = await this._context.ProductInventoryRegisterPurchase.OrderByDescending(m=>m.DateOfPurchase).ToArrayAsync();
-            DashBoardContextNecessary DashboardContext = new DashBoardContextNecessary(provider,product,productInventoryRegisterPurchase);
-            return View(DashboardContext);
+           
+            IEnumerable<ProductInventoryRegisterPurchase> productInventoryRegisterPurchase =
+                await this._context.ProductInventoryRegisterPurchase.Include("Product").Include("Provider").OrderByDescending(m=>m.DateOfPurchase).ToArrayAsync();
+            IEnumerable < Product > products= this._context.Product.ToList();
+            ICollection<Provider> providers = this._context.Provider.ToList();
+            ProductContextNecessary purchaseContextNecessary = new ProductContextNecessary(providers,null,null,products, productInventoryRegisterPurchase);
+            return View(purchaseContextNecessary);
         }
 
-        // GET: ProductInventoryRegister/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            
+
             if (id == null)
             {
                 return NotFound();
             }
 
-            var product = await _context.ProductInventoryRegisterPurchase
+            var productInventoryPurchase = await _context.ProductInventoryRegisterPurchase.Include("Product").Include("Provider")
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (product == null)
+            if (productInventoryPurchase == null)
             {
                 return NotFound();
             }
 
-          
-            return View(product);
-        }
 
+
+
+            
+            ProductContextNecessary PurchaseContext = new ProductContextNecessary(null,null,null,null,null,productInventoryPurchase);
+
+
+            //for show the detais of the product in a modal. In the view, its a 
+            //a logic tha use this value and case true, the view will show 
+            //a modal in same moment.
+            ViewData["ShowModalWithDetailsOfSpecificPurchase"] = "true";
+            return View( model: PurchaseContext);
+        }
         // GET: ProductInventoryRegister/Create
         public IActionResult Create()
         {
