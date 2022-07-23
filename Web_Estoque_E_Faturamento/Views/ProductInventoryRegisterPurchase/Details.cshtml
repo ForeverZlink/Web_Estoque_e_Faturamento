@@ -1,0 +1,60 @@
+﻿@model Web_Estoque_E_Faturamento.ViewModels.ProductContextNecessary
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutDashboard";
+}
+
+
+  
+      
+      <div class="modal fade" id="DetailsProduct" tabindex="-1" aria-labelledby="DetailsProduct" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+          <div class="modal-content modal-xl ">
+            <div class="modal-header">
+              <h5 class="modal-title" id="DetailsProduct">Informações sobre a compra</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+              <div class="modal-body">
+                    <h1></h1>
+                    <div class="container">
+                        
+                        <div class="row">
+                          <div class="col">
+                            <label class="btn btn-dark"  for="ProductName">Nome do produto comprado:</label>
+                            <button type="button" class="btn btn-secondary">@Model.ProducInventoryPurchase.Product.Name</button>
+                          </div>
+                           <div class="col">
+                            <label class="btn btn-dark"  for="ProductCode">Código do produto comprado:</label>
+                            <button type="button" class="btn btn-secondary">@Model.ProducInventoryPurchase.Product.Code</button>
+                          </div>
+                          <div class="col">
+                            <label class="btn btn-dark"  for="ProductName">Descrição do produto comprado</label>
+                            <button type="button" class="btn btn-secondary">@Model.ProducInventoryPurchase.Product.Description</button>
+                          </div>
+                          <div class="col">
+                            <label class="btn btn-dark"  for="ProductName">Data da compra</label>
+                            <button type="button" class="btn btn-secondary">@Model.ProducInventoryPurchase.DateOfPurchase</button>
+                          </div>
+                        </div>     
+                        <div class="col">
+                          <label class="btn btn-dark"  for="ProductName">Quantidade comprada</label>
+                         <button type="button" class="btn btn-secondary">@Model.ProducInventoryPurchase.QuantityBuyed</button>
+                        </div>
+                       
+                    
+                    </div>
+              </div>
+          </div>
+        </div>
+      </div>
+          
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+
+        <script type="text/javascript">$(window).load(function() {
+            $('#DetailsProduct').modal('show');
+        });
+        </script>
