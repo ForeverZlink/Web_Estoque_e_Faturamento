@@ -134,23 +134,20 @@ namespace Web_Estoque_E_Faturamento.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Code")] ProductInventoryRegisterPurchase ProductInventory)
+        public async Task<IActionResult> Edit(int id, ProductInventoryRegisterPurchase ProductInventoryPurchaseNewVersion)
         {
-            if (id != ProductInventory.Id)
-            {
-                return NotFound();
-            }
+            if(id!=ProductInventoryPurchaseNewVersion.Id){
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(ProductInventory);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ProductExists(ProductInventory.Id))
+                return NotFound();
+
+            }
+            if (ModelState.IsValid){
+                
+                try{
+                    this._context.Update(ProductInventoryPurchaseNewVersion);
+                     await this._context.SaveChangesAsync();
+                }catch(DbUpdateConcurrencyException){
+                    if (!ProductExists(ProductInventoryPurchaseNewVersion.Id))
                     {
                         return NotFound();
                     }
@@ -159,9 +156,20 @@ namespace Web_Estoque_E_Faturamento.Controllers
                         throw;
                     }
                 }
-                return RedirectToActionSucess(nameof(Index));
+                     
+                 return RedirectToAction(nameof(Index));
             }
-            return View(ProductInventory);
+
+            return View("Index",ProductInventoryPurchaseNewVersion);
+
+                
+               
+
+               
+            
+            
+            
+           
         }
 
         // GET: ProductInventoryRegister/Delete/5
