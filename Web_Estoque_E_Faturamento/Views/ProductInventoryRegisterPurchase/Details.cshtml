@@ -19,30 +19,56 @@
               <div class="modal-body">
                     <h1></h1>
                     <div class="container">
+                        <form asp-action="Edit" asp-controller="ProductInventoryRegisterPurchase" method="post">
+                            @Html.AntiForgeryToken();
+                            <div class="row">
+                                <input type="hidden" name="Id" value="@Model.ProducInventoryPurchase.Id" />
+                                <input type="hidden" name="ProviderId" value="@Model.ProducInventoryPurchase.ProviderId" />
+                              <div class="col">
+                                <label class="btn btn-dark"  for="ProductName">Nome do produto comprado:</label>
+                                <input type="hidden" name="ProductId" value="@Model.ProducInventoryPurchase.ProductId" />
+                                <button type="button" class="btn btn-secondary">@Model.ProducInventoryPurchase.Product.Name</button>
+                              </div>
+                               <div class="col">
+                                <label class="btn btn-dark"  for="ProductCode">Código do produto comprado:</label>
+                                <button type="button" class="btn btn-secondary">@Model.ProducInventoryPurchase.Product.Code</button>
+                              </div>
+                              <div class="col">
+                                <label class="btn btn-dark"  for="ProductDescription">Descrição do produto comprado</label>
+                                <button type="button" class="btn btn-secondary">@Model.ProducInventoryPurchase.Product.Description</button>
+                              </div>
+                              <div class="col">
+                                <label class="btn btn-dark"  for="DateOfPurchase">Data da compra</label>
+                                <input type="date"  class="form-control" name = "DateOfPurchase" value="@Model.ProducInventoryPurchase.DateOfPurchase"/>
+
+                              </div>
+                            </div>
+                            <div class="row">
+                                  <div class="col">
+                                      <label class="btn btn-dark"  for="QuantityBuyed">Quantidade comprada</label>
+                                      <input type="number" name="QuantityBuyed" class="form-control" value="@Model.ProducInventoryPurchase.QuantityBuyed"/>
+
+                                    </div>
+                                    <div class="col">
+                                      <label class="btn btn-dark"  for="PriceUnity">Preço unitário R$</label>
+                                      <input type="number" name="PriceProductUnity" class="form-control" value="@Model.ProducInventoryPurchase.PriceProductUnity"/>
+
+                                    </div>
+                                    <div class="col">
+                                      <label class="btn btn-dark"  for="PriceTotal">Valor Total da compra R$</label>
+                                     
+                                      <input type="number" name="PriceOfPurchase" class="form-control" value="@Model.ProducInventoryPurchase.PriceOfPurchase"/>
+
+                                    </div>
+
+                            </div>
+                          
+                            <div class="modal-footer">
+                               
+                                <input type="submit" value="Salvar alterações" class="btn btn-primary btn-lg">
+                              </div>
+                        </form>
                         
-                        <div class="row">
-                          <div class="col">
-                            <label class="btn btn-dark"  for="ProductName">Nome do produto comprado:</label>
-                            <button type="button" class="btn btn-secondary">@Model.ProducInventoryPurchase.Product.Name</button>
-                          </div>
-                           <div class="col">
-                            <label class="btn btn-dark"  for="ProductCode">Código do produto comprado:</label>
-                            <button type="button" class="btn btn-secondary">@Model.ProducInventoryPurchase.Product.Code</button>
-                          </div>
-                          <div class="col">
-                            <label class="btn btn-dark"  for="ProductName">Descrição do produto comprado</label>
-                            <button type="button" class="btn btn-secondary">@Model.ProducInventoryPurchase.Product.Description</button>
-                          </div>
-                          <div class="col">
-                            <label class="btn btn-dark"  for="ProductName">Data da compra</label>
-                            <button type="button" class="btn btn-secondary">@Model.ProducInventoryPurchase.DateOfPurchase</button>
-                          </div>
-                        </div>     
-                        <div class="col">
-                          <label class="btn btn-dark"  for="ProductName">Quantidade comprada</label>
-                         <button type="button" class="btn btn-secondary">@Model.ProducInventoryPurchase.QuantityBuyed</button>
-                        </div>
-                       
                     
                     </div>
               </div>
