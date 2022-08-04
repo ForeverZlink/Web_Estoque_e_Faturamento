@@ -25,10 +25,11 @@ namespace WebEstoqueTests
         static Product Product = new Product(){
             Name="Car",Code="01",Description="A nice car"
            };
+        static ProductInventory ProductInventory = new ProductInventory(){Product=Product,ProductId=Product.Id,QuantityInStock=0};
 
         ProductInventoryRegisterPurchase ProductInvetoryRegisterPurchaseModelData = new ProductInventoryRegisterPurchase(){
             QuantityBuyed=1,PriceOfPurchase=20,DateOfPurchase=DateTime.Today.ToString(),
-            PriceProductUnity=2, ProviderId=1,Provider=ProviderInstance, 
+            PriceProductUnity=2, ProviderId=1,Provider=ProviderInstance,ProductInventoryId=1, ProductInventory=ProductInventory,
             ProductId=1,Product=Product
         };
         public ProductInventoryRegisterPurchaseController _ProductInventoryRegisterPurchaseController;
