@@ -18,6 +18,12 @@ namespace Web_Estoque_E_Faturamento._Models
         public string DateOfPurchase {get;set;}
         public float PriceOfPurchase {get;set;}
         public float PriceProductUnity {get;set;}
+
+        [ForeignKey("ProductInventory")]
+        public int ProductInventoryId{get;set;}
+
+        //Case a view not send a arguement of the this type, the model state will raise a error.
+        public ProductInventory? ProductInventory {get;set;}
         
         [ForeignKey("Provider")]
         public int ProviderId {get;set;}
