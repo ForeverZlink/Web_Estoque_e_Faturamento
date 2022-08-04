@@ -10,7 +10,7 @@ namespace Web_Estoque_E_Faturamento._Models
     public class ProductInventory
     {
         [Key]
-        public int? Id {get;set;}
+        public int Id {get;set;}
         public float ?QuantityInStock {get;set;}
 
         
