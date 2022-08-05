@@ -48,11 +48,11 @@ namespace Web_Estoque_E_Faturamento.Migrations
 
             modelBuilder.Entity("Web_Estoque_E_Faturamento._Models.ProductInventory", b =>
                 {
-                    b.Property<int?>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int?>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ProductId")
                         .HasColumnType("integer");
@@ -89,7 +89,7 @@ namespace Web_Estoque_E_Faturamento.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("ProductInventoryId")
+                    b.Property<int>("ProductInventoryId")
                         .HasColumnType("integer");
 
                     b.Property<int>("ProviderId")
@@ -153,9 +153,11 @@ namespace Web_Estoque_E_Faturamento.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Web_Estoque_E_Faturamento._Models.ProductInventory", null)
+                    b.HasOne("Web_Estoque_E_Faturamento._Models.ProductInventory", "ProductInventory")
                         .WithMany("ProductInventoryRegisterPurchase")
-                        .HasForeignKey("ProductInventoryId");
+                        .HasForeignKey("ProductInventoryId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
                     b.HasOne("Web_Estoque_E_Faturamento._Models.Provider", "Provider")
                         .WithMany()
@@ -164,6 +166,8 @@ namespace Web_Estoque_E_Faturamento.Migrations
                         .IsRequired();
 
                     b.Navigation("Product");
+
+                    b.Navigation("ProductInventory");
 
                     b.Navigation("Provider");
                 });

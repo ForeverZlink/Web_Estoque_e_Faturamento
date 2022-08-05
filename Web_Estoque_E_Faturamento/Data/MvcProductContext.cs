@@ -19,6 +19,10 @@ using Web_Estoque_E_Faturamento._Models;
         protected override void OnModelCreating(ModelBuilder modelBuilder){
             modelBuilder.Entity<Product>().HasOne(p=>p.ProductInventory)
             .WithOne(p=>p.Product).HasForeignKey<ProductInventory>(e=>e.ProductId);
+
+            modelBuilder.Entity<ProductInventoryRegisterPurchase>().HasOne(p=>p.ProductInventory)
+            .WithMany(p=>p.ProductInventoryRegisterPurchase).OnDelete(DeleteBehavior.NoAction);
+            
            
 
         }
