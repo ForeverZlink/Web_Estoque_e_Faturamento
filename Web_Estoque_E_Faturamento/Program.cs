@@ -14,6 +14,9 @@ builder.Logging.AddConsole();
 builder.Services.AddDbContext<MvcProductContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("MvcProductContext")));
 
+builder.Services.AddDbContext<MvcIndependentObjectsOfProductsContext>(options=>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("MvcIndependentObjectsOfProductsContext"))
+);
 
 var app = builder.Build();
 
