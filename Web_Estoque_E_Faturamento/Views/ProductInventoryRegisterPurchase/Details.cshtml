@@ -22,6 +22,8 @@
                         <form asp-action="Edit" asp-controller="ProductInventoryRegisterPurchase" method="post">
                             @Html.AntiForgeryToken();
                             <div class="row">
+                                
+                                <input type="hidden" name="ProductInventoryId" value ="@Model.ProducInventoryPurchase.ProductInventoryId"/>
                                 <input type="hidden" name="Id" value="@Model.ProducInventoryPurchase.Id" />
                                 <input type="hidden" name="ProviderId" value="@Model.ProducInventoryPurchase.ProviderId" />
                               <div class="col">
