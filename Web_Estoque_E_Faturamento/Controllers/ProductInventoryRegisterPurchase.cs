@@ -32,7 +32,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
         
            
             IEnumerable<ProductInventoryRegisterPurchase> productInventoryRegisterPurchase =
-                await this._context.ProductInventoryRegisterPurchase.Include("Product").Include("Provider").OrderByDescending(m=>m.DateOfPurchase).ToArrayAsync();
+                await this._context.ProductInventoryRegisterPurchase.Include("Product").Include("Provider").Include("ProductInventory").OrderByDescending(m=>m.DateOfPurchase).ToArrayAsync();
             IEnumerable < Product > products= this._context.Product.ToList();
             ICollection<Provider> providers = this._context.Provider.ToList();
             ProductContextNecessary purchaseContextNecessary = new ProductContextNecessary(providers,null,null,products, productInventoryRegisterPurchase);
@@ -80,37 +80,31 @@ namespace Web_Estoque_E_Faturamento.Controllers
        
         [HttpPost,ActionName("Create")]
         public async Task<IActionResult> CreateOn(
-            [Bind("Id,ProviderId, ProductId, DateOfPurchase, PriceOfPurchase,QuantityBuyed,  PriceProductUnity")] ProductInventoryRegisterPurchase productInventoryRegisterPurchase)
+            ProductInventoryRegisterPurchase productInventoryRegisterPurchase)
         {
-             productInventoryRegisterPurchase.Product = await this._context.Product.FindAsync(productInventoryRegisterPurchase.ProductId);
-             productInventoryRegisterPurchase.Provider = await this._context.Provider.FindAsync(productInventoryRegisterPurchase.ProviderId);
-            
-            if (ModelState.IsValid)
-            {
-                
-                _context.ProductInventoryRegisterPurchase.Add(productInventoryRegisterPurchase);
-                await this._context.SaveChangesAsync();
-                this._logger.LogInformation(productInventoryRegisterPurchase.Id.ToString());
-                
-                
-                var productInventoryRegisterPurchaseSave = this._context.ProductInventoryRegisterPurchase.Find(productInventoryRegisterPurchase.Id);
-               
-                var productInventory = this._context.ProductInventory.FirstOrDefault(m=>m.ProductId==productInventoryRegisterPurchaseSave.ProductId);
-                this._context.ProductInventory.Include(u=>u.ProductInventoryRegisterPurchase).ToList();
-                productInventory.AddPurchaseInProductInventory(productInventoryRegisterPurchaseSave);
-                this._context.Update(productInventory);
-                this._context.SaveChanges();
+             if (ModelState.IsValid){   
+                productInventoryRegisterPurchase.Product=this._context.Product.Include("ProductInventory").FirstOrDefault(m=>m.ProductInventory.ProductId==productInventoryRegisterPurchase.ProductId);
+                productInventoryRegisterPurchase.ProductInventoryId = productInventoryRegisterPurchase.Product.ProductInventory.Id;
+                productInventoryRegisterPurchase.ProductInventory=this._context.ProductInventory.Find(productInventoryRegisterPurchase.ProductId);
+                productInventoryRegisterPurchase.ProductInventory?.AddInInventoryQuantityBuyed(productInventoryRegisterPurchase.QuantityBuyed);
+                try{
+                    _context.ProductInventoryRegisterPurchase.Add(productInventoryRegisterPurchase);
+                    
+                    await this._context.SaveChangesAsync();
+                    
+                }catch(Exception e){
+                    return View();
+                }
+        
+                    this._logger.LogInformation(productInventoryRegisterPurchase.Id.ToString());
+                                    
+                    return RedirectToActionSucess(nameof(Index));
+             }else{
+                return View("Index",productInventoryRegisterPurchase);
+             }
+             
 
-                
-                return RedirectToActionSucess(nameof(Index));
-
-            }
-            else
-            {
-                Console.WriteLine("NO is valid");
-            }
-            
-            return View(productInventoryRegisterPurchase);
+         
         }
 
         // GET: ProductInventoryRegister/Edit/5
