@@ -43,7 +43,7 @@ namespace Web_Estoque_E_Faturamento.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Product");
+                    b.ToTable("Product", (string)null);
                 });
 
             modelBuilder.Entity("Web_Estoque_E_Faturamento._Models.ProductInventory", b =>
@@ -65,7 +65,7 @@ namespace Web_Estoque_E_Faturamento.Migrations
                     b.HasIndex("ProductId")
                         .IsUnique();
 
-                    b.ToTable("ProductInventory");
+                    b.ToTable("ProductInventory", (string)null);
                 });
 
             modelBuilder.Entity("Web_Estoque_E_Faturamento._Models.ProductInventoryRegisterPurchase", b =>
@@ -106,7 +106,7 @@ namespace Web_Estoque_E_Faturamento.Migrations
 
                     b.HasIndex("ProviderId");
 
-                    b.ToTable("ProductInventoryRegisterPurchase");
+                    b.ToTable("ProductInventoryRegisterPurchase", (string)null);
                 });
 
             modelBuilder.Entity("Web_Estoque_E_Faturamento._Models.Provider", b =>
@@ -131,7 +131,7 @@ namespace Web_Estoque_E_Faturamento.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Provider");
+                    b.ToTable("Provider", (string)null);
                 });
 
             modelBuilder.Entity("Web_Estoque_E_Faturamento._Models.ProductInventory", b =>
