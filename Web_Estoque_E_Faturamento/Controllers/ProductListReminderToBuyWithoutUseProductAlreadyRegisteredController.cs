@@ -29,6 +29,9 @@ namespace Web_Estoque_E_Faturamento.Controllers
             return RedirectToAction(ActionName);
         }
         
-       
+        public async Task<IActionResult> Index(){
+            IEnumerable<ProductListReminderToBuyWithoutUseProductAlreadyRegistered> AllProductListReminder = await this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.ToArrayAsync();
+            return View("Index", AllProductListReminder);
+        }
     }
 }
