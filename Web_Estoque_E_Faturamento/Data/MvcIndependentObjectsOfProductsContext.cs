@@ -9,7 +9,7 @@ using Web_Estoque_E_Faturamento._Models;
 
     public class MvcIndependentObjectsOfProductsContext : DbContext
     {
-        public MvcIndependentObjectsOfProductsContext (DbContextOptions<MvcProductContext> options)
+        public MvcIndependentObjectsOfProductsContext (DbContextOptions<MvcIndependentObjectsOfProductsContext> options)
             : base(options)
         {
             AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
