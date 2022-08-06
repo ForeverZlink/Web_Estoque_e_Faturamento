@@ -16,10 +16,10 @@ namespace Web_Estoque_E_Faturamento.Controllers
     public class ProductListReminderToBuyWithoutUseProductAlreadyRegisteredController : Controller
     {
         
-        private readonly MvcProductContext _context;
+        private readonly MvcIndependentObjectsOfProductsContext _context;
         private readonly ILogger _logger;
         
-        public ProductListReminderToBuyWithoutUseProductAlreadyRegisteredController(MvcProductContext context, ILogger<ProductController> logger)
+        public ProductListReminderToBuyWithoutUseProductAlreadyRegisteredController(MvcIndependentObjectsOfProductsContext context, ILogger<ProductController> logger)
         {
             _context = context;
             _logger = logger;
@@ -28,6 +28,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
         public RedirectToActionResult RedirectToActionSucess(string ActionName){
             return RedirectToAction(ActionName);
         }
+        
        
     }
 }
