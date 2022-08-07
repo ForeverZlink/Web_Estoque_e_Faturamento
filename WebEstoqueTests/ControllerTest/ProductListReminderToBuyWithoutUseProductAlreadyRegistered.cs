@@ -21,7 +21,7 @@ namespace WebEstoqueTests
   
     
     
-    public class ProductListReminderToBuyWithoutUseProductAlreadyRegistered:Controller
+    public class ProductListReminderToBuyWithoutUseProductAlreadyRegisteredTest:Controller
     {
 
 
@@ -34,22 +34,36 @@ namespace WebEstoqueTests
 
         public ProductListReminderToBuyWithoutUseProductAlreadyRegisteredController controller;
 
-        public dynamic ProductListReminderToBuyWithoutUseProductAlreadyRegisteredInstance {
+        public dynamic ProductListReminderToBuyWithoutUseProductAlreadyRegisteredInstanceController {
             get{return this.controller;}
             set{this.controller = new 
             ProductListReminderToBuyWithoutUseProductAlreadyRegisteredController(context:value,null);}
             
         }
+
         [Fact]
-        public void TestIndex()
-        {
-            // Given
+        public void TestCreateOn(){
+             // Given
+          
+             ProductListReminderToBuyWithoutUseProductAlreadyRegistered productListReminder = new ProductListReminderToBuyWithoutUseProductAlreadyRegistered(){
+                NameOfProduct="Iphone",CodeOfProduct="92"};
+            
+        
+            ProductListReminderToBuyWithoutUseProductAlreadyRegisteredInstanceController = this.context;
+
             
             // When
-        
+            var Response = ProductListReminderToBuyWithoutUseProductAlreadyRegisteredInstanceController.CreateOn(productListReminder);
+           
+            Assert.Contains("RedirectToActionResult",Response.Result.ToString());
+           
             // Then
+
+
+
         }
-        
-        
+           
     }
+        
+        
 }
