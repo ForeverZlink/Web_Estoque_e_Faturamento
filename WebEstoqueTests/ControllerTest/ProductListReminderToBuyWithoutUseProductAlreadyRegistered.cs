@@ -30,10 +30,25 @@ namespace WebEstoqueTests
         public string NotFoundResult = "NotFoundResult";
         public string RedirectToActionResult = "RedirectToActionResult";
 
+        MvcIndependentObjectsOfProductsContext context = Fixture.CreateMvcIndependentContext();
 
-        MvcProductContext context = Fixture.CreateContext();
-       
+        public ProductListReminderToBuyWithoutUseProductAlreadyRegisteredController controller;
+
+        public dynamic ProductListReminderToBuyWithoutUseProductAlreadyRegisteredInstance {
+            get{return this.controller;}
+            set{this.controller = new 
+            ProductListReminderToBuyWithoutUseProductAlreadyRegisteredController(context:value,null);}
+            
+        }
+        [Fact]
+        public void TestIndex()
+        {
+            // Given
+            
+            // When
         
+            // Then
+        }
         
         
     }
