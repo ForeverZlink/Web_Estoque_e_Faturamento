@@ -14,13 +14,26 @@
             
         </figure>
         <div class="input-group">
-         
-            <input type="text" placeholder="Código do produto" aria-label="First name" class="form-control">
-            <input type="text" placeholder= "Nome do produto" aria-label="Last name" class="form-control">
-            <input class="btn btn-primary" type="submit" value="Registrar">
+            <form asp-action ="Create" asp-controller="ProductListReminderToBuyWithoutUseProductAlreadyRegistered" method="POST">
+                @Html.AntiForgeryToken()
+                <input type="checkbox" name="AlreadyBuyed" hidden/>
+
+                <input type="text" hidden name="DateOfCreation" value="@DateTime.Now" />
+                <input required type="text" name = "CodeOfProduct" placeholder="Código do produto" aria-label="First name" class="form-control">    
+                <input required type="text" name="NameOfProduct" placeholder= "Nome do produto" aria-label="Last name" class="form-control">
+                <input class="btn btn-primary" type="submit" value="Registrar">
+
+            </form>
+            
             
         </div>
-          
+@foreach (var item in Model)
+{
+    <h1>@item.NameOfProduct</h1>
+    <h1>@item.CodeOfProduct</h1>
+    <h1>@item.DateOfCreation</h1>
+
+}
             
 
 
