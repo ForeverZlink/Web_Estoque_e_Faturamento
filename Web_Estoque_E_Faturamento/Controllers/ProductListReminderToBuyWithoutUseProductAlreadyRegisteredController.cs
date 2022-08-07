@@ -33,5 +33,20 @@ namespace Web_Estoque_E_Faturamento.Controllers
             IEnumerable<ProductListReminderToBuyWithoutUseProductAlreadyRegistered> AllProductListReminder = await this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.ToArrayAsync();
             return View("Index", AllProductListReminder);
         }
+
+        [HttpPost, ActionName("Create")]
+        public async Task<IActionResult> CreateOn( ProductListReminderToBuyWithoutUseProductAlreadyRegistered  ProductListReminder){
+            if (ModelState.IsValid)
+            {
+
+                this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Add(ProductListReminder);
+                await this._context.SaveChangesAsync();
+                return RedirectToActionSucess(nameof(Index));
+            }
+            return View("Index", this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.ToArray());
+            
+            
+
+        }
     }
 }
