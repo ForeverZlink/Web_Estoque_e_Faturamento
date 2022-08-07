@@ -4,6 +4,8 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "_LayoutDashboard";
+    var ProductsToBuy = ViewBag.ProductsToBuy;
+    var ProductsAlreadyBuyed = ViewBag.ProductsAlreadyBuyed;
 }
 
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
@@ -53,14 +55,39 @@
     </tr>
   </thead>
   <tbody>
-     @foreach (var  ProductToBuy in Model)
+     @foreach (var  ProductToBuy in ProductsToBuy)
      {
           <tr>
               <td>@ProductToBuy.CodeOfProduct</td>
               <td>@ProductToBuy.NameOfProduct</td>
               <td>@ProductToBuy.DateOfCreation</td>
                 
-              <td> <a class="btn btn-warning" href= '@Url.Action("MarkAsBuyed","ProductListReminderToBuyWithoutUseProductAlreadyRegistered", new{id=@ProductToBuy.Id})'>Marcar como comprado</a></td>
+              <td> <a class="btn btn-success" href= '@Url.Action("MarkAsBuyed","ProductListReminderToBuyWithoutUseProductAlreadyRegistered", new{id=@ProductToBuy.Id})'>Marcar como comprado</a></td>
+            </tr>
+     }
+   
+    
+  </tbody>
+</table>
+<table class="table caption-top table-hover">
+    <caption><h3 class="text-center">Produtos Já comprados</h3> </caption>
+  <thead>
+    <tr>
+      
+      <th scope="col">Código do produto</th>
+      <th scope="col">Nome do produto</th>
+      <th scope="col">Data de adição</th>
+    </tr>
+  </thead>
+  <tbody>
+     @foreach (var  ProductToBuy in ProductsAlreadyBuyed)
+     {
+          <tr>
+              <td>@ProductToBuy.CodeOfProduct</td>
+              <td>@ProductToBuy.NameOfProduct</td>
+              <td>@ProductToBuy.DateOfCreation</td>
+                
+              <td> <a class="btn btn-warning" href= '@Url.Action("MarkAsBuyed","ProductListReminderToBuyWithoutUseProductAlreadyRegistered", new{id=@ProductToBuy.Id})'>Marcar como não comprado</a></td>
             </tr>
      }
    

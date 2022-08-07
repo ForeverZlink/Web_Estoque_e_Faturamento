@@ -30,8 +30,12 @@ namespace Web_Estoque_E_Faturamento.Controllers
         }
         
         public async Task<IActionResult> Index(){
-            IEnumerable<ProductListReminderToBuyWithoutUseProductAlreadyRegistered> AllProductListReminder = await this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.ToArrayAsync();
-            return View("Index", AllProductListReminder);
+            IEnumerable<ProductListReminderToBuyWithoutUseProductAlreadyRegistered> ProductsToBuy = this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Where(m => m.AlreadyBuyed == false).ToArray();
+            IEnumerable<ProductListReminderToBuyWithoutUseProductAlreadyRegistered> ProductsAlreadyBuyed = this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Where(m => m.AlreadyBuyed ==true).ToArray();
+            ViewBag.ProductsToBuy = ProductsToBuy;
+            ViewBag.ProductsAlreadyBuyed = ProductsAlreadyBuyed;
+            
+            return View("Index", this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.ToArray());
         }
 
         [HttpPost, ActionName("Create")]
