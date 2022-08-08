@@ -52,8 +52,17 @@ namespace Web_Estoque_E_Faturamento.Controllers
             
 
         }
-        
-   
+
+        public async Task<IActionResult> DeletePermanently(int id)
+        {
+            var ProductToDelete = await _context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.FindAsync(id);
+            this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Remove(ProductToDelete);
+            
+            await _context.SaveChangesAsync();
+            return RedirectToActionSucess(nameof(Index));
+        }
+
+
         public async Task<IActionResult> MarkAsPurchased (int? id)
         {
             if (id == null)
