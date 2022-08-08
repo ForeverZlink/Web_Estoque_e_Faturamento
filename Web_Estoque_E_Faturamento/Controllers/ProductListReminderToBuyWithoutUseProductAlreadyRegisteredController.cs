@@ -52,6 +52,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
             
 
         }
+        
    
         public async Task<IActionResult> MarkAsBuyed (int? id)
         {
@@ -65,7 +66,18 @@ namespace Web_Estoque_E_Faturamento.Controllers
             await this._context.SaveChangesAsync();
             return RedirectToActionSucess(nameof(Index));
         }
-
+        public async Task<IActionResult> MarkAsNotPurchased(int? id)
+        {
+            if (id == null)
+            {
+                return View();
+            }
+            var producNotbuyed = this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.FirstOrDefault(m => m.Id == id);
+            producNotbuyed.AlreadyBuyed = false;
+            this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Update(producNotbuyed);
+            await this._context.SaveChangesAsync();
+            return RedirectToActionSucess(nameof(Index));
+        }
 
     }
 }
