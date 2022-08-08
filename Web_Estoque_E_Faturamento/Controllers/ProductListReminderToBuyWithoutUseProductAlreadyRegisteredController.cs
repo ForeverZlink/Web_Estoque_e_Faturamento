@@ -54,7 +54,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
         }
         
    
-        public async Task<IActionResult> MarkAsBuyed (int? id)
+        public async Task<IActionResult> MarkAsPurchased (int? id)
         {
             if (id == null)
             {
