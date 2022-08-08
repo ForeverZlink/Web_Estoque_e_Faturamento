@@ -62,7 +62,46 @@ namespace WebEstoqueTests
 
 
         }
-           
+        [Fact]
+        public void TestDeletePermanently()
+        {
+            ProductListReminderToBuyWithoutUseProductAlreadyRegistered productListReminder = new ProductListReminderToBuyWithoutUseProductAlreadyRegistered()
+            {
+                Id=22,
+                NameOfProduct = "Iphone",
+                CodeOfProduct = "92"
+            };
+
+            var Response = ProductListReminderToBuyWithoutUseProductAlreadyRegisteredInstanceController.DeletePermanently(productListReminder.Id);
+            Assert.Contains("RedirectToActionResult", Response.Result.ToString());
+        }
+
+        [Fact]
+        public void TestMarkAsPurchased()
+        {
+            ProductListReminderToBuyWithoutUseProductAlreadyRegistered productListReminder = new ProductListReminderToBuyWithoutUseProductAlreadyRegistered()
+            {
+                Id = 212,
+                NameOfProduct = "Iphone",
+                CodeOfProduct = "92"
+            };
+            var response = ProductListReminderToBuyWithoutUseProductAlreadyRegisteredInstanceController.MarkAsPurchased(productListReminder.Id);
+            
+            Assert.Contains("RedirectToActionResult", response.Result.ToString());
+        }
+        [Fact]
+        public void TestMarkAsNotPurchased()
+        {
+            ProductListReminderToBuyWithoutUseProductAlreadyRegistered productListReminder = new ProductListReminderToBuyWithoutUseProductAlreadyRegistered()
+            {
+                Id = 2132,
+                NameOfProduct = "Iphone",
+                CodeOfProduct = "92"
+            };
+            var response = ProductListReminderToBuyWithoutUseProductAlreadyRegisteredInstanceController.MarkAsPurchased(productListReminder.Id);
+
+            Assert.Contains("RedirectToActionResult", response.Result.ToString());
+        }
     }
         
         
