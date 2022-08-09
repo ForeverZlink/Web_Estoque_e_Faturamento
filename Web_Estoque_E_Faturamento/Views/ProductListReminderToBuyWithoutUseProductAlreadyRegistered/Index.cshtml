@@ -44,7 +44,9 @@
             
 <div></div>
 
-<div class="table-responsive">
+@if (ProductsToBuy.Length>0)
+{
+    <div class="table-responsive">
 
     <table class="table caption-top table-hover">
         <caption><h3 class="text-center">Lista de Produtos para serem comprados</h3> </caption>
@@ -76,7 +78,11 @@
       </tbody>
     </table>
 </div>
-<div class="table-responsive">
+
+}
+@if (ProductsAlreadyBuyed.Length>0)
+{
+    <div class="table-responsive">
 
     <table class="table caption-top table-hover">
         <caption><h3 class="text-center">Produtos Já comprados</h3> </caption>
@@ -108,3 +114,5 @@
       </tbody>
     </table>
 </div>
+}
+
