@@ -19,7 +19,7 @@ namespace Web_Estoque_E_Faturamento._Models
         public string NameOfProduct{get;set;}
         public string CodeOfProduct{get;set;}
        
-
+        public float QuantityToBuy { get; set; }
         public  bool AlreadyBuyed { get; set; }
 
       
