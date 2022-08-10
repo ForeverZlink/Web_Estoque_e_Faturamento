@@ -14,7 +14,7 @@ namespace Web_Estoque_E_Faturamento.ClassUtilities
             DirectoryToExcelCreation = directoryToExcelCreation;
             ValuesToColumsTitles = valuesToColumsTitles;
             ValuesToRows = valuesToRow;
-
+            ExcelPackage ExcelGateway = new ExcelPackage(DirectoryToExcelCreation); 
         }
 
     }
