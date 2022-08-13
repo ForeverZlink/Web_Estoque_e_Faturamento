@@ -69,7 +69,7 @@ namespace WebEstoqueTests
         {
             ProductListReminderToBuyWithoutUseProductAlreadyRegistered productListReminder = new ProductListReminderToBuyWithoutUseProductAlreadyRegistered()
             {
-                Id=22,
+
                 NameOfProduct = "Iphone",
                 CodeOfProduct = "92",
                 DateOfCreation="19-10-2022",
@@ -77,7 +77,8 @@ namespace WebEstoqueTests
 
             };
             this.context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Add(productListReminder);
-            
+            this.context.SaveChanges();
+            ProductListReminderToBuyWithoutUseProductAlreadyRegisteredInstanceController = this.context;
 
             var Response = ProductListReminderToBuyWithoutUseProductAlreadyRegisteredInstanceController.DeletePermanently(productListReminder.Id);
             Assert.Contains("RedirectToActionResult", Response.Result.ToString());
@@ -88,12 +89,15 @@ namespace WebEstoqueTests
         {
             ProductListReminderToBuyWithoutUseProductAlreadyRegistered productListReminder = new ProductListReminderToBuyWithoutUseProductAlreadyRegistered()
             {
-                Id = 212,
                 NameOfProduct = "Iphone",
                 CodeOfProduct = "92",
                 DateOfCreation = "19-10-2022",
                 QuantityToBuy = 0
             };
+            this.context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Add(productListReminder);
+            this.context.SaveChanges();
+            ProductListReminderToBuyWithoutUseProductAlreadyRegisteredInstanceController = this.context;
+
             var response = ProductListReminderToBuyWithoutUseProductAlreadyRegisteredInstanceController.MarkAsPurchased(productListReminder.Id);
             
             Assert.Contains("RedirectToActionResult", response.Result.ToString());
@@ -103,12 +107,16 @@ namespace WebEstoqueTests
         {
             ProductListReminderToBuyWithoutUseProductAlreadyRegistered productListReminder = new ProductListReminderToBuyWithoutUseProductAlreadyRegistered()
             {
-                Id = 2132,
+                
                 NameOfProduct = "Iphone",
                 CodeOfProduct = "92",
                 DateOfCreation = "19-10-2022",
                 QuantityToBuy = 0
             };
+            this.context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Add(productListReminder);
+            this.context.SaveChanges();
+            ProductListReminderToBuyWithoutUseProductAlreadyRegisteredInstanceController = this.context;
+
             var response = ProductListReminderToBuyWithoutUseProductAlreadyRegisteredInstanceController.MarkAsPurchased(productListReminder.Id);
 
             Assert.Contains("RedirectToActionResult", response.Result.ToString());
