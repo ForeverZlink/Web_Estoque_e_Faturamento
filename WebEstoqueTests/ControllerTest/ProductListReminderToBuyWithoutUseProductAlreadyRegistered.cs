@@ -46,7 +46,9 @@ namespace WebEstoqueTests
              // Given
           
              ProductListReminderToBuyWithoutUseProductAlreadyRegistered productListReminder = new ProductListReminderToBuyWithoutUseProductAlreadyRegistered(){
-                NameOfProduct="Iphone",CodeOfProduct="92"};
+                NameOfProduct="Iphone",CodeOfProduct="92",
+                 DateOfCreation = "19-10-2022",
+                 QuantityToBuy =0};
             
         
             ProductListReminderToBuyWithoutUseProductAlreadyRegisteredInstanceController = this.context;
@@ -69,8 +71,13 @@ namespace WebEstoqueTests
             {
                 Id=22,
                 NameOfProduct = "Iphone",
-                CodeOfProduct = "92"
+                CodeOfProduct = "92",
+                DateOfCreation="19-10-2022",
+                QuantityToBuy = 0
+
             };
+            this.context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Add(productListReminder);
+            
 
             var Response = ProductListReminderToBuyWithoutUseProductAlreadyRegisteredInstanceController.DeletePermanently(productListReminder.Id);
             Assert.Contains("RedirectToActionResult", Response.Result.ToString());
@@ -83,7 +90,9 @@ namespace WebEstoqueTests
             {
                 Id = 212,
                 NameOfProduct = "Iphone",
-                CodeOfProduct = "92"
+                CodeOfProduct = "92",
+                DateOfCreation = "19-10-2022",
+                QuantityToBuy = 0
             };
             var response = ProductListReminderToBuyWithoutUseProductAlreadyRegisteredInstanceController.MarkAsPurchased(productListReminder.Id);
             
@@ -96,7 +105,9 @@ namespace WebEstoqueTests
             {
                 Id = 2132,
                 NameOfProduct = "Iphone",
-                CodeOfProduct = "92"
+                CodeOfProduct = "92",
+                DateOfCreation = "19-10-2022",
+                QuantityToBuy = 0
             };
             var response = ProductListReminderToBuyWithoutUseProductAlreadyRegisteredInstanceController.MarkAsPurchased(productListReminder.Id);
 
