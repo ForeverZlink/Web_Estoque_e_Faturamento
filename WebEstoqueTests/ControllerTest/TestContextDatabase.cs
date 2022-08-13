@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 public class TestDatabaseFixture
 {
     private const string ConnectionString = @"Server=(localdb)\mssqllocaldb;Database=EFTestSample;Trusted_Connection=True";
-    private const string ConnectionStringMvcIndependentObjectsOfProductsContext = @"Server=(localdb)\mssqllocaldb;Database=MvcIndependentObjectsOfProductsContext;Trusted_Connection=True";
+    private const string ConnectionStringMvcIndependentObjectsOfProductsContext = @"Server=(localdb)\mssqllocaldb;Database=TestMvcIndependentObjectsOfProductsContext;Trusted_Connection=True";
     private static readonly object _lock = new();
     private static bool _databaseInitialized;
 
@@ -22,6 +22,12 @@ public class TestDatabaseFixture
                 }
 
                 _databaseInitialized = true;
+
+                using(var MvcIndependent = CreateMvcIndependentContext())
+                {
+                    MvcIndependent.Database.EnsureDeleted();
+                    MvcIndependent.Database.EnsureCreated();
+                }
             }
         }
     }
@@ -36,8 +42,8 @@ public class TestDatabaseFixture
     public MvcIndependentObjectsOfProductsContext CreateMvcIndependentContext(){
         return new MvcIndependentObjectsOfProductsContext(
             new DbContextOptionsBuilder<MvcIndependentObjectsOfProductsContext>()
-            .UseSqlServer(ConnectionStringMvcIndependentObjectsOfProductsContext)
-            .Options        
+            .UseSqlServer(ConnectionStringMvcIndependentObjectsOfProductsContext,options=> options.EnableRetryOnFailure())
+            .Options
             );
     }
 
