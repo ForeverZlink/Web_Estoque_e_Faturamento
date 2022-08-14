@@ -1,4 +1,6 @@
 ﻿using OfficeOpenXml;
+using Microsoft.AspNetCore.Mvc;
+using Web_Estoque_E_Faturamento._Models;
 namespace Web_Estoque_E_Faturamento.ClassUtilities
 {
     public class ExcelHandler
