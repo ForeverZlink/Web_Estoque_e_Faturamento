@@ -6,6 +6,11 @@ namespace Web_Estoque_E_Faturamento.ClassUtilities
         public string DirectoryToExcelCreation;
         public string[] ValuesToColumsTitles;
         public string[] ValuesToRows;
+        public ExcelPackage ExcelInstance;
+        public ExcelWorksheet Sheet;
+        string ExtensionOfFileDefault = ".xlsx";
+        public string ExcelContentTypeToAspNetReturn = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+
         public ExcelHandler(
             string directoryToExcelCreation, 
             string[]valuesToColumsTitles,
