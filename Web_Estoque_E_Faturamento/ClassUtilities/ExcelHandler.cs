@@ -14,14 +14,69 @@ namespace Web_Estoque_E_Faturamento.ClassUtilities
         public string ExcelContentTypeToAspNetReturn = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 
         public ExcelHandler(
-            string directoryToExcelCreation, 
-            string[]valuesToColumsTitles,
-            string[]valuesToRow)
+            string directoryToExcelCreation=null
+
+            )
         {
             DirectoryToExcelCreation = directoryToExcelCreation;
-            ValuesToColumsTitles = valuesToColumsTitles;
-            ValuesToRows = valuesToRow;
-            ExcelPackage ExcelGateway = new ExcelPackage(DirectoryToExcelCreation); 
+            
+            if (directoryToExcelCreation == null)
+            {
+                this.ExcelInstance= new ExcelPackage();
+            }
+            else
+            {
+                this.ExcelInstance = new ExcelPackage(DirectoryToExcelCreation);
+
+            }
+        }
+
+        public void CreateSheet(string SheetName)
+        {
+            this.Sheet = ExcelInstance.Workbook.Worksheets.Add(SheetName);
+
+
+        }
+        public void SaveArchive(string NameArchive)
+        {
+            
+            
+            this.ExcelInstance.SaveAs(NameArchive);
+        }
+
+        public void AddRowsIntoSheet<T>(T[] values)
+        {
+            
+
+
+        }
+        public void AddTitleIntoSheet( string[] ValuesToTitle= null)
+        {
+
+
+                int counter = 1;
+                foreach (var TitleName in ValuesToTitle)
+                {
+                    this.Sheet.Cells[1,counter ].Value = TitleName;
+                    counter++;
+                }
+            
+            
+        }
+
+         public MemoryStream CreateStreamSheetWithValues<T>(
+            string SheetName,
+            string[] TitlesTable,
+            T[] ValuesToInsertInRows
+            )
+        {
+            var stream = new MemoryStream();
+            this.CreateSheet(SheetName);
+            this.AddTitleIntoSheet(TitlesTable);
+            this.AddRowsIntoSheet(ValuesToInsertInRows);
+            this.ExcelInstance.SaveAs(stream);
+
+            return stream;
         }
 
     }
