@@ -19,7 +19,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
         
         private readonly MvcIndependentObjectsOfProductsContext _context;
         private readonly ILogger _logger;
-        
+       
         public ProductListReminderToBuyWithoutUseProductAlreadyRegisteredController(MvcIndependentObjectsOfProductsContext context, ILogger<ProductController> logger)
         {
             _context = context;
@@ -34,6 +34,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
             IEnumerable<ProductListReminderToBuyWithoutUseProductAlreadyRegistered> ProductsToBuy = this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Where(m => m.AlreadyBuyed == false).ToArray();
             IEnumerable<ProductListReminderToBuyWithoutUseProductAlreadyRegistered> ProductsAlreadyBuyed = this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Where(m => m.AlreadyBuyed ==true).ToArray();
             ViewBag.ProductsToBuy = ProductsToBuy;
+            
             ViewBag.ProductsAlreadyBuyed = ProductsAlreadyBuyed;
             
             return View("Index", this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.ToArray());
@@ -95,6 +96,46 @@ namespace Web_Estoque_E_Faturamento.Controllers
            
             return RedirectToActionSucess(nameof(Index));
         }
+        
 
+        [HttpGet]
+        public async Task<IActionResult> ExportToExcelProductsToBuy()
+        {
+            string SheetName = "Produtos Para a compra";
+            string fileName = "ProdutosEmFalta.xlsx";
+            string[] TitlesToTable = new string[] { "Código", "Nome" };
+            ProductListReminderToBuyWithoutUseProductAlreadyRegistered[] products;
+            
+
+            products =  this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Where(m => m.AlreadyBuyed == false).ToArray();
+            var ExcelInstance = new ExcelHandler();
+            var stream=ExcelInstance.CreateStreamSheetWithValues(
+                SheetName,TitlesToTable,products
+                );
+            
+
+
+            return File(stream.ToArray(), ExcelInstance.ExcelContentTypeToAspNetReturn, fileName);
+        }
+        [HttpGet]
+        public async Task<IActionResult> ExportToExcelProductsAlreadyBuyed()
+        {
+            string SheetName = "Produtos já comprados";
+            string fileName = "ProdutosComprados.xlsx";
+            string[] TitlesToTable = new string[] { "Código", "Nome" };
+            
+            ProductListReminderToBuyWithoutUseProductAlreadyRegistered[] products;
+
+
+            products = this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Where(m => m.AlreadyBuyed == true).ToArray();
+            var ExcelInstance = new ExcelHandler();
+            var stream = ExcelInstance.CreateStreamSheetWithValues(
+                SheetName, TitlesToTable,products
+                );
+
+
+
+            return File(stream.ToArray(), ExcelInstance.ExcelContentTypeToAspNetReturn, fileName);
+        }
     }
 }

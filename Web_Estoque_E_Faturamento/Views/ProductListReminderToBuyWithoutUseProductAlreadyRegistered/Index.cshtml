@@ -38,7 +38,7 @@
 
             </form>
             
-            
+             
         </div>
 
             
@@ -56,7 +56,9 @@
           <th scope="col">Código do produto</th>
           <th scope="col">Nome do produto</th>
           <th scope="col">Data de adição</th>
-        </tr>
+          <th scope="col"> <a class="btn btn-primary" href="@Url.Action("ExportToExcelProductsToBuy","ProductListReminderToBuyWithoutUseProductAlreadyRegistered")">Exportar</a>
+        </th>
+         </tr>
       </thead>
       <tbody>
          @foreach (var  ProductToBuy in ProductsToBuy)
@@ -65,6 +67,7 @@
                   <td>@ProductToBuy.CodeOfProduct</td>
                   <td>@ProductToBuy.NameOfProduct</td>
                   <td>@ProductToBuy.DateOfCreation</td>
+
                 
                   <td> 
                       <a class="btn btn-success" href= '@Url.Action("MarkAsPurchased","ProductListReminderToBuyWithoutUseProductAlreadyRegistered", new{id=@ProductToBuy.Id})'>Marcar como comprado</a>
