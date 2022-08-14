@@ -9,7 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using Web_Estoque_E_Faturamento._Models;
 using Web_Estoque_E_Faturamento.ViewModels;
 using Microsoft.AspNetCore.Mvc.Controllers;
-
+using Web_Estoque_E_Faturamento.ClassUtilities;
+using System.IO;
 namespace Web_Estoque_E_Faturamento.Controllers
 {
     
