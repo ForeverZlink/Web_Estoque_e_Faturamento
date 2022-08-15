@@ -6,9 +6,12 @@ namespace Web_Estoque_E_Faturamento.ClassUtilities
     public class ExcelHandler
     {
         public string DirectoryToExcelCreation;
+
+        public bool SucessOperation = true;
         public string[] ValuesToColumsTitles;
         public string[] ValuesToRows;
         public ExcelPackage ExcelInstance;
+        
         public ExcelWorksheet Sheet;
         string ExtensionOfFileDefault = ".xlsx";
         public string ExcelContentTypeToAspNetReturn = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
@@ -39,9 +42,7 @@ namespace Web_Estoque_E_Faturamento.ClassUtilities
         }
         public void SaveArchive(string NameArchive)
         {
-            
-            
-            this.ExcelInstance.SaveAs(NameArchive);
+             this.ExcelInstance.SaveAs(NameArchive);
         }
 
         public void AddRowsIntoSheet<T>(T[] values)
@@ -50,18 +51,35 @@ namespace Web_Estoque_E_Faturamento.ClassUtilities
 
 
         }
-        public void AddTitleIntoSheet( string[] ValuesToTitle= null)
+        public bool AddTitleIntoSheet( string[] ValuesToTitle= null)
         {
+            if (ValuesToTitle == null)
+            {
+                throw new ArgumentException("ValuesToTitle can not be null");
+            }
+            if (this.Sheet == null) {
+                throw new ArgumentNullException("Erro, not exists a sheet");
+            }
+            //1 == First Row
+            int RowToInsertTitles = 1;
+            int ColumnIndex = 1;
 
-
-                int counter = 1;
+            try
+            {
                 foreach (var TitleName in ValuesToTitle)
                 {
-                    this.Sheet.Cells[1,counter ].Value = TitleName;
-                    counter++;
+                    this.Sheet.Cells[RowToInsertTitles, ColumnIndex].Value = TitleName;
+                    ColumnIndex++;
                 }
-            
-            
+
+            }catch (Exception e)
+            {
+                throw e;
+            }
+
+
+            return this.SucessOperation;
+
         }
 
          public MemoryStream CreateStreamSheetWithValues<T>(
