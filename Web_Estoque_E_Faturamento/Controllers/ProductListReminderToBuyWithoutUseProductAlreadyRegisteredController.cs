@@ -19,7 +19,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
         
         private readonly MvcIndependentObjectsOfProductsContext _context;
         private readonly ILogger _logger;
-       
+        public string DateToday = DateTime.Now.Date.ToString();
         public ProductListReminderToBuyWithoutUseProductAlreadyRegisteredController(MvcIndependentObjectsOfProductsContext context, ILogger<ProductController> logger)
         {
             _context = context;
@@ -102,7 +102,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
         public async Task<IActionResult> ExportToExcelProductsToBuy()
         {
             string SheetName = "Produtos Para a compra";
-            string fileName = "ProdutosEmFalta.xlsx";
+            string fileName = $"ProdutosEmFalta-{this.DateToday}.xlsx";
             string[] TitlesToTable = new string[] { "Código", "Nome" };
             ProductListReminderToBuyWithoutUseProductAlreadyRegistered[] products;
             
@@ -121,7 +121,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
         public async Task<IActionResult> ExportToExcelProductsAlreadyBuyed()
         {
             string SheetName = "Produtos já comprados";
-            string fileName = "ProdutosComprados.xlsx";
+            string fileName = $"ProdutosComprados-{this.DateToday}.xlsx";
             string[] TitlesToTable = new string[] { "Código", "Nome" };
             
             ProductListReminderToBuyWithoutUseProductAlreadyRegistered[] products;
