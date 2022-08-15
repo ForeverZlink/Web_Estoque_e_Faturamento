@@ -26,8 +26,18 @@ namespace WebEstoqueTests
         public void CreateSheetTest()
         {
             this.excel.CreateSheet("MySheetTesting");
-            this.excel.SaveArchive("Testing.xlsx");
+            
         }
-        
+
+        [Fact]
+        public void AddTitleIntoSheetTest()
+        {
+            string NameSheet = "Testing";
+            this.excel.CreateSheet(NameSheet);
+            var response = this.excel.AddTitleIntoSheet(ExcelTitlesColums);
+            Assert.True(response);
+        }
+
+
     }
 }
