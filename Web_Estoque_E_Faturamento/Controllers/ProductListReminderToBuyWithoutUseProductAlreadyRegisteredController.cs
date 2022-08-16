@@ -104,13 +104,17 @@ namespace Web_Estoque_E_Faturamento.Controllers
             string SheetName = "Produtos Para a compra";
             string fileName = $"ProdutosEmFalta-{this.DateToday}.xlsx";
             string[] TitlesToTable = new string[] { "Código", "Nome" };
-            ProductListReminderToBuyWithoutUseProductAlreadyRegistered[] products;
-            
 
-            products =  this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Where(m => m.AlreadyBuyed == false).ToArray();
+            Dictionary<string, string[]> ProductsValues = new Dictionary<string, string[]>();
+            var products = this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Where(m => m.AlreadyBuyed == false);
+            string[] ArrayWithProductsName = products.Select(m => m.NameOfProduct).ToArray();
+            string[] ArrayWithProductsCode = products.Select(m => m.CodeOfProduct).ToArray();
+
+            ProductsValues.Add("ProductsCode", ArrayWithProductsCode);
+            ProductsValues.Add("ProductsName", ArrayWithProductsName);
             var ExcelInstance = new ExcelHandler();
             var stream=ExcelInstance.CreateStreamSheetWithValues(
-                SheetName,TitlesToTable,products
+                SheetName,TitlesToTable,ProductsValues
                 );
             
 
@@ -123,14 +127,17 @@ namespace Web_Estoque_E_Faturamento.Controllers
             string SheetName = "Produtos já comprados";
             string fileName = $"ProdutosComprados-{this.DateToday}.xlsx";
             string[] TitlesToTable = new string[] { "Código", "Nome" };
-            
-            ProductListReminderToBuyWithoutUseProductAlreadyRegistered[] products;
 
+            Dictionary<string, string[]> ProductsValues = new Dictionary<string, string[]>();
+            var products = this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Where(m => m.AlreadyBuyed == true);
+            string[] ArrayWithProductsName = products.Select(m => m.NameOfProduct).ToArray();
+            string[] ArrayWithProductsCode = products.Select(m => m.CodeOfProduct).ToArray();
 
-            products = this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Where(m => m.AlreadyBuyed == true).ToArray();
+            ProductsValues.Add("ProductsCode", ArrayWithProductsCode);
+            ProductsValues.Add("ProductsName", ArrayWithProductsName);
             var ExcelInstance = new ExcelHandler();
             var stream = ExcelInstance.CreateStreamSheetWithValues(
-                SheetName, TitlesToTable,products
+                SheetName, TitlesToTable, ProductsValues
                 );
 
 
