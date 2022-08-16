@@ -11,7 +11,7 @@ namespace Web_Estoque_E_Faturamento.ClassUtilities
         public string[] ValuesToColumsTitles;
         public string[] ValuesToRows;
         public ExcelPackage ExcelInstance;
-        
+        int RowToInsertTitles = 1;
         public ExcelWorksheet Sheet;
         string ExtensionOfFileDefault = ".xlsx";
         public string ExcelContentTypeToAspNetReturn = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
@@ -45,30 +45,39 @@ namespace Web_Estoque_E_Faturamento.ClassUtilities
              this.ExcelInstance.SaveAs(NameArchive);
         }
 
-        public void AddRowsIntoSheet<T>(T[] values)
+        public void AddRowsIntoSheet(Dictionary<string,string[]> ValuesToInsert)
         {
-            
+            int IndexOfRowToInsertValues = this.RowToInsertTitles+1;
+            int IndexColumn = 1;
+
+            foreach (var ValuesOfArrayToInsertInRow in ValuesToInsert.Values) {
+                foreach(var Value in ValuesOfArrayToInsertInRow)
+                {
+                    this.Sheet.Cells[IndexOfRowToInsertValues, IndexColumn].Value = Value;
+                    IndexOfRowToInsertValues++;
+
+                }
+                IndexOfRowToInsertValues = this.RowToInsertTitles + 1;
+                IndexColumn++;
+            }
 
 
         }
-        public bool AddTitleIntoSheet( string[] ValuesToTitle= null)
+        public bool AddTitleIntoSheet( string[] ValuesToTitle)
         {
-            if (ValuesToTitle == null)
-            {
-                throw new ArgumentException("ValuesToTitle can not be null");
-            }
+            
             if (this.Sheet == null) {
                 throw new ArgumentNullException("Erro, not exists a sheet");
             }
             //1 == First Row
-            int RowToInsertTitles = 1;
+            
             int ColumnIndex = 1;
 
             try
             {
                 foreach (var TitleName in ValuesToTitle)
                 {
-                    this.Sheet.Cells[RowToInsertTitles, ColumnIndex].Value = TitleName;
+                    this.Sheet.Cells[this.RowToInsertTitles, ColumnIndex].Value = TitleName;
                     ColumnIndex++;
                 }
 
@@ -82,10 +91,10 @@ namespace Web_Estoque_E_Faturamento.ClassUtilities
 
         }
 
-         public MemoryStream CreateStreamSheetWithValues<T>(
+         public MemoryStream CreateStreamSheetWithValues(
             string SheetName,
             string[] TitlesTable,
-            T[] ValuesToInsertInRows
+            Dictionary<string, string[]> ValuesToInsertInRows
             )
         {
             var stream = new MemoryStream();
@@ -93,6 +102,7 @@ namespace Web_Estoque_E_Faturamento.ClassUtilities
             this.AddTitleIntoSheet(TitlesTable);
             this.AddRowsIntoSheet(ValuesToInsertInRows);
             this.ExcelInstance.SaveAs(stream);
+
 
             return stream;
         }
