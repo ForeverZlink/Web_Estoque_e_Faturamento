@@ -48,7 +48,7 @@
 {
     <div class="table-responsive">
 
-    <table class="table caption-top table-hover">
+    <table class="table table-sm caption-top table-hover">
         <caption><h3 class="text-center">Produtos que estão em falta</h3> </caption>
       <thead>
         <tr>
@@ -64,14 +64,17 @@
          @foreach (var  ProductToBuy in ProductsToBuy)
          {
               <tr>
-                  <td>@ProductToBuy.CodeOfProduct</td>
-                  <td>@ProductToBuy.NameOfProduct</td>
-                  <td>@ProductToBuy.DateOfCreation</td>
+                  <td><p class="text-break">@ProductToBuy.CodeOfProduct</p></td>
+                  <td><p class="text-break">@ProductToBuy.NameOfProduct</p></td>
+                  <td><p class="text-break">@ProductToBuy.DateOfCreation</p></td>
 
                 
                   <td> 
-                      <a class="btn btn-success" href= '@Url.Action("MarkAsPurchased","ProductListReminderToBuyWithoutUseProductAlreadyRegistered", new{id=@ProductToBuy.Id})'>Marcar como comprado</a>
+                      <a class="btn btn-success" href= '@Url.Action("MarkAsPurchased","ProductListReminderToBuyWithoutUseProductAlreadyRegistered", new{id=@ProductToBuy.Id})'>Marcar como já comprado</a>
+                      <a class="btn btn-warning" href= '@Url.Action("DeletePermanently","ProductListReminderToBuyWithoutUseProductAlreadyRegistered", new{id=@ProductToBuy.Id})'>Adicionar na cotação</a>
+                      
                       <a class="btn btn-danger" href= '@Url.Action("DeletePermanently","ProductListReminderToBuyWithoutUseProductAlreadyRegistered", new{id=@ProductToBuy.Id})'>Deletar</a>
+                      
                   </td>
 
               </tr>
