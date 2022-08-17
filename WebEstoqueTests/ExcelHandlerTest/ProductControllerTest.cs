@@ -5,7 +5,7 @@ using Web_Estoque_E_Faturamento.ClassUtilities;
 using Microsoft.Extensions.Logging;
 
 using System;
-
+using System.Collections.Generic;
 namespace WebEstoqueTests
 {
 
@@ -18,10 +18,9 @@ namespace WebEstoqueTests
            
         public ExcelHandler excel = new ExcelHandler(
             directoryToExcelCreation: ExcelDirectory
-            
-            
-            );
 
+            );
+       
         [Fact]
         public void CreateSheetTest()
         {
@@ -38,6 +37,31 @@ namespace WebEstoqueTests
             Assert.True(response);
         }
 
+        [Fact]
+        public void AddRowsIntoSheetTest() {
+            
+            Dictionary<string, string[]> values = new Dictionary<string, string[]>();
+            this.excel.CreateSheet("Test");
+            string[] Names = new string[] { "Test", "Tst" };
+            string[] Codes = new string[] { "001", "002" };
+
+            //First Collumn
+            values.Add("Names",Names);
+
+            //Second Collumn
+            values.Add("Codes", Codes);
+
+            var  response = this.excel.AddRowsIntoSheet(values);
+            Assert.True(response);
+            var FirstNameInTableValue = this.excel.Sheet.Cells[this.excel.RowToInsertTitles+1, 1].Value.ToString();
+            
+            string FirstName = Names[0];
+            Assert.Equal(FirstName, FirstNameInTableValue);
+
+
+
+        
+        }
 
     }
 }
