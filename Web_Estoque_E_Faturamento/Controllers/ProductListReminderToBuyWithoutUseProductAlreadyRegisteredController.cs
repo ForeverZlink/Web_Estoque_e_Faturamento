@@ -31,10 +31,12 @@ namespace Web_Estoque_E_Faturamento.Controllers
         }
         
         public async Task<IActionResult> Index(){
-            IEnumerable<ProductListReminderToBuyWithoutUseProductAlreadyRegistered> ProductsToBuy = this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Where(m => m.AlreadyBuyed == false).ToArray();
-            IEnumerable<ProductListReminderToBuyWithoutUseProductAlreadyRegistered> ProductsAlreadyBuyed = this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Where(m => m.AlreadyBuyed ==true).ToArray();
+            IEnumerable<ProductListReminderToBuyWithoutUseProductAlreadyRegistered> ProductsToBuy = this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Where(m => m.AlreadyBuyed == false).Where(m=>m.WillBePurchased==false).ToArray();
+            IEnumerable<ProductListReminderToBuyWithoutUseProductAlreadyRegistered> ProductsWillBePurchased = this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Where(m => m.WillBePurchased == true).Where(m=>m.AlreadyBuyed==false).ToArray();
+            IEnumerable<ProductListReminderToBuyWithoutUseProductAlreadyRegistered> ProductsAlreadyBuyed = this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Where(m => m.AlreadyBuyed == true).ToArray();
+
             ViewBag.ProductsToBuy = ProductsToBuy;
-            
+            ViewBag.ProductsWillBePurchased = ProductsWillBePurchased;
             ViewBag.ProductsAlreadyBuyed = ProductsAlreadyBuyed;
             
             return View("Index", this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.ToArray());
