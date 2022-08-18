@@ -6,6 +6,7 @@
     Layout = "_LayoutDashboard";
     var ProductsToBuy = ViewBag.ProductsToBuy;
     var ProductsAlreadyBuyed = ViewBag.ProductsAlreadyBuyed;
+    var ProductsWillBePurchased = ViewBag.ProductsWillBePurchased;
 }
 
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
@@ -71,7 +72,7 @@
                 
                   <td> 
                       <a class="btn btn-success" href= '@Url.Action("MarkAsPurchased","ProductListReminderToBuyWithoutUseProductAlreadyRegistered", new{id=@ProductToBuy.Id})'>Marcar como já comprado</a>
-                      <a class="btn btn-warning" href= '@Url.Action("DeletePermanently","ProductListReminderToBuyWithoutUseProductAlreadyRegistered", new{id=@ProductToBuy.Id})'>Adicionar na cotação</a>
+                      <a class="btn btn-warning" href= '@Url.Action("MarkAsWillBePurchased","ProductListReminderToBuyWithoutUseProductAlreadyRegistered", new{id=@ProductToBuy.Id})'>Adicionar na cotação</a>
                       
                       <a class="btn btn-danger" href= '@Url.Action("DeletePermanently","ProductListReminderToBuyWithoutUseProductAlreadyRegistered", new{id=@ProductToBuy.Id})'>Deletar</a>
                       
@@ -86,6 +87,48 @@
 </div>
 
 }
+    @if (ProductsWillBePurchased.Length > 0)
+    {
+        <div class="table-responsive">
+
+            <table class="table table-sm caption-top table-hover">
+                <caption><h3 class="text-center">Produtos da Cotação</h3> </caption>
+                <thead>
+                    <tr>
+
+                        <th scope="col">Código do produto</th>
+                        <th scope="col">Nome do produto</th>
+                        <th scope="col">Data de adição</th>
+                        <th scope="col">
+                            <a class="btn btn-primary" href="@Url.Action("ExportToExcelProductsToBuy","ProductListReminderToBuyWithoutUseProductAlreadyRegistered")">Exportar para excel</a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var ProductsWillBuy in ProductsWillBePurchased)
+                    {
+                        <tr>
+                            <td><p class="text-break">@ProductsWillBuy.CodeOfProduct</p></td>
+                            <td><p class="text-break">@ProductsWillBuy.NameOfProduct</p></td>
+                            <td><p class="text-break">@ProductsWillBuy.DateOfCreation</p></td>
+
+
+                            <td>
+                                <a class="btn btn-success" href='@Url.Action("MarkAsPurchased","ProductListReminderToBuyWithoutUseProductAlreadyRegistered", new{id=@ProductsWillBuy.Id})'>Marcar como já comprado</a>
+
+                                <a class="btn btn-danger" href='@Url.Action("DeletePermanently","ProductListReminderToBuyWithoutUseProductAlreadyRegistered", new{id=@ProductsWillBuy.Id})'>Deletar</a>
+
+                            </td>
+
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+
+    }
 @if (ProductsAlreadyBuyed.Length>0)
 {
     <div class="table-responsive">
