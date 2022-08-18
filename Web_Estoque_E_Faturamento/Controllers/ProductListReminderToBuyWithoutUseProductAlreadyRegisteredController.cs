@@ -83,6 +83,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
             }
             var productbuyed = this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.FirstOrDefault(m => m.Id == id);
             productbuyed.AlreadyBuyed = true;
+            productbuyed.WillBePurchased = false;
             this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Update(productbuyed);
             await this._context.SaveChangesAsync();
             return RedirectToActionSucess(nameof(Index));
@@ -97,6 +98,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
             {
                 var producNotbuyed = this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.FirstOrDefault(m => m.Id == id);
                 producNotbuyed.AlreadyBuyed = false;
+                producNotbuyed.WillBePurchased=false;
                 this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Update(producNotbuyed);
                 await this._context.SaveChangesAsync();
             }catch (Exception e)
