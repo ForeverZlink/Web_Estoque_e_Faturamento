@@ -115,6 +115,7 @@
 
                             <td>
                                 <a class="btn btn-success" href='@Url.Action("MarkAsPurchased","ProductListReminderToBuyWithoutUseProductAlreadyRegistered", new{id=@ProductsWillBuy.Id})'>Marcar como já comprado</a>
+                                <a class="btn btn-secondary" href='@Url.Action("MarkAsNotWillBePurchased","ProductListReminderToBuyWithoutUseProductAlreadyRegistered", new{id=@ProductsWillBuy.Id})'>Remover da cotação</a>
 
                                 <a class="btn btn-danger" href='@Url.Action("DeletePermanently","ProductListReminderToBuyWithoutUseProductAlreadyRegistered", new{id=@ProductsWillBuy.Id})'>Deletar</a>
 
