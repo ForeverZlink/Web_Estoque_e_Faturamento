@@ -64,7 +64,15 @@ namespace Web_Estoque_E_Faturamento.Controllers
             return RedirectToActionSucess(nameof(Index));
         }
         
-
+        public async Task<IActionResult> MarkAsWillBePurchased (int id)
+        {
+            var product = this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Find(id);
+            product.WillBePurchased = true;
+            product.AlreadyBuyed = false;
+            this._context.Update(product);
+            await this._context.SaveChangesAsync();
+            return RedirectToActionSucess(nameof(Index));
+        }
         public async Task<IActionResult> MarkAsPurchased (int? id)
         {
             if (id == null)
