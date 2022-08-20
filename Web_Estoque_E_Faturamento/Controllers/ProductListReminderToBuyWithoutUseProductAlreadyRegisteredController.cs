@@ -131,6 +131,27 @@ namespace Web_Estoque_E_Faturamento.Controllers
             return stream;
         }
         [HttpGet]
+        public async Task<IActionResult> ExportToExcelProductsWillBePurchased()
+        {
+            string SheetName = "Cotação";
+            string fileName = $"Cotação-{this.DateToday}.xlsx";
+            string[] TitlesToTable = new string[] { "Código", "Nome" };
+
+            Dictionary<string, string[]> ProductsValues = new Dictionary<string, string[]>();
+            var products = this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Where(m => m.AlreadyBuyed == false).Where(m=>m.WillBePurchased==true);
+            string[] ArrayWithProductsName = products.Select(m => m.NameOfProduct).ToArray();
+            string[] ArrayWithProductsCode = products.Select(m => m.CodeOfProduct).ToArray();
+
+            ProductsValues.Add("ProductsCode", ArrayWithProductsCode);
+            ProductsValues.Add("ProductsName", ArrayWithProductsName);
+            var stream = this.ExportExcelBaseAsStreamController(SheetName, TitlesToTable, ProductsValues);
+
+
+
+            return File(stream.ToArray(), ExcelHandler.ExcelContentTypeToAspNetReturn , fileName);
+        }
+
+        [HttpGet]
         public async Task<IActionResult> ExportToExcelProductsToBuy()
         {
             string SheetName = "Produtos Para a compra";
