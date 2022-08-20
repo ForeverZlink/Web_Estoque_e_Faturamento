@@ -120,6 +120,16 @@ namespace Web_Estoque_E_Faturamento.Controllers
         }
         
 
+        private MemoryStream ExportExcelBaseAsStreamController(string SheetName, string[] TitlesToTable
+            ,Dictionary<string, string[]> ValuesToInsertInRow)
+        {
+
+            var ExcelInstance = new ExcelHandler();
+            var stream = ExcelInstance.CreateStreamSheetWithValues(
+                SheetName, TitlesToTable, ValuesToInsertInRow
+                );
+            return stream;
+        }
         [HttpGet]
         public async Task<IActionResult> ExportToExcelProductsToBuy()
         {
