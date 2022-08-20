@@ -14,7 +14,7 @@ namespace Web_Estoque_E_Faturamento.ClassUtilities
         public int RowToInsertTitles = 1;
         public ExcelWorksheet Sheet;
         string ExtensionOfFileDefault = ".xlsx";
-        public string ExcelContentTypeToAspNetReturn = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+        static public string ExcelContentTypeToAspNetReturn = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 
         public ExcelHandler(
             string directoryToExcelCreation=null
