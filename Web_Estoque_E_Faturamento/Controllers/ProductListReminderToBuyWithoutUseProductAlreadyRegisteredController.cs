@@ -118,7 +118,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
            
             return RedirectToActionSucess(nameof(Index));
         }
-        
+
 
         private MemoryStream ExportExcelBaseAsStreamController(string SheetName, string[] TitlesToTable
             ,Dictionary<string, string[]> ValuesToInsertInRow)
@@ -133,9 +133,9 @@ namespace Web_Estoque_E_Faturamento.Controllers
         [HttpGet]
         public async Task<IActionResult> ExportToExcelProductsWillBePurchased()
         {
-            string SheetName = "CotaÃ§Ã£o";
-            string fileName = $"CotaÃ§Ã£o-{this.DateToday}.xlsx";
-            string[] TitlesToTable = new string[] { "CÃ³digo", "Nome" };
+            string SheetName = "Cotação";
+            string fileName = $"Cotação-{this.DateToday}.xlsx";
+            string[] TitlesToTable = new string[] { "Código", "Nome" };
 
             Dictionary<string, string[]> ProductsValues = new Dictionary<string, string[]>();
             var products = this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Where(m => m.AlreadyBuyed == false).Where(m=>m.WillBePurchased==true);
@@ -167,9 +167,9 @@ namespace Web_Estoque_E_Faturamento.Controllers
             ProductsValues.Add("ProductsName", ArrayWithProductsName);
             var stream = this.ExportExcelBaseAsStreamController(SheetName, TitlesToTable, ProductsValues);
             
+            
 
-
-            return File(stream.ToArray(), ExcelInstance.ExcelContentTypeToAspNetReturn, fileName);
+            return File(stream.ToArray(), ExcelHandler.ExcelContentTypeToAspNetReturn, fileName);
         }
         [HttpGet]
         public async Task<IActionResult> ExportToExcelProductsAlreadyBuyed()
