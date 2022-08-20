@@ -144,10 +144,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
 
             ProductsValues.Add("ProductsCode", ArrayWithProductsCode);
             ProductsValues.Add("ProductsName", ArrayWithProductsName);
-            var ExcelInstance = new ExcelHandler();
-            var stream=ExcelInstance.CreateStreamSheetWithValues(
-                SheetName,TitlesToTable,ProductsValues
-                );
+            var stream = this.ExportExcelBaseAsStreamController(SheetName, TitlesToTable, ProductsValues);
             
 
 
@@ -167,14 +164,14 @@ namespace Web_Estoque_E_Faturamento.Controllers
 
             ProductsValues.Add("ProductsCode", ArrayWithProductsCode);
             ProductsValues.Add("ProductsName", ArrayWithProductsName);
-            var ExcelInstance = new ExcelHandler();
-            var stream = ExcelInstance.CreateStreamSheetWithValues(
+            
+            var stream = this.ExportExcelBaseAsStreamController(
                 SheetName, TitlesToTable, ProductsValues
                 );
 
 
 
-            return File(stream.ToArray(), ExcelInstance.ExcelContentTypeToAspNetReturn, fileName);
+            return File(stream.ToArray(), ExcelHandler.ExcelContentTypeToAspNetReturn, fileName);
         }
     }
 }
