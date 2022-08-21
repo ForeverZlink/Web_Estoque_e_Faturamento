@@ -159,7 +159,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
             string[] TitlesToTable = new string[] { "Código", "Nome" };
 
             Dictionary<string, string[]> ProductsValues = new Dictionary<string, string[]>();
-            var products = this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Where(m => m.AlreadyBuyed == false);
+            var products = this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Where(m => m.AlreadyBuyed == false).Where(m=>m.WillBePurchased==false);
             string[] ArrayWithProductsName = products.Select(m => m.NameOfProduct).ToArray();
             string[] ArrayWithProductsCode = products.Select(m => m.CodeOfProduct).ToArray();
 
@@ -179,7 +179,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
             string[] TitlesToTable = new string[] { "Código", "Nome" };
 
             Dictionary<string, string[]> ProductsValues = new Dictionary<string, string[]>();
-            var products = this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Where(m => m.AlreadyBuyed == true);
+            var products = this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Where(m => m.AlreadyBuyed == true).Where(m=>m.WillBePurchased==false);
             string[] ArrayWithProductsName = products.Select(m => m.NameOfProduct).ToArray();
             string[] ArrayWithProductsCode = products.Select(m => m.CodeOfProduct).ToArray();
 
