@@ -133,9 +133,9 @@ namespace Web_Estoque_E_Faturamento.Controllers
         [HttpGet]
         public async Task<IActionResult> ExportToExcelProductsWillBePurchased()
         {
-            string SheetName = "CotaÁ„o";
-            string fileName = $"CotaÁ„o-{this.DateToday}.xlsx";
-            string[] TitlesToTable = new string[] { "CÛdigo", "Nome" };
+            string SheetName = "Cota√ß√£o";
+            string fileName = $"Cota√ß√£o-{this.DateToday}.xlsx";
+            string[] TitlesToTable = new string[] { "C√≥digo", "Nome" };
 
             Dictionary<string, string[]> ProductsValues = new Dictionary<string, string[]>();
             var products = this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Where(m => m.AlreadyBuyed == false).Where(m=>m.WillBePurchased==true);
@@ -156,7 +156,7 @@ namespace Web_Estoque_E_Faturamento.Controllers
         {
             string SheetName = "Produtos Para a compra";
             string fileName = $"ProdutosEmFalta-{this.DateToday}.xlsx";
-            string[] TitlesToTable = new string[] { "CÛdigo", "Nome" };
+            string[] TitlesToTable = new string[] { "C√≥digo", "Nome" };
 
             Dictionary<string, string[]> ProductsValues = new Dictionary<string, string[]>();
             var products = this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Where(m => m.AlreadyBuyed == false).Where(m=>m.WillBePurchased==false);
@@ -174,9 +174,9 @@ namespace Web_Estoque_E_Faturamento.Controllers
         [HttpGet]
         public async Task<IActionResult> ExportToExcelProductsAlreadyBuyed()
         {
-            string SheetName = "Produtos j· comprados";
+            string SheetName = "Produtos j√° comprados";
             string fileName = $"ProdutosComprados-{this.DateToday}.xlsx";
-            string[] TitlesToTable = new string[] { "CÛdigo", "Nome" };
+            string[] TitlesToTable = new string[] { "C√≥digo", "Nome" };
 
             Dictionary<string, string[]> ProductsValues = new Dictionary<string, string[]>();
             var products = this._context.ProductListReminderToBuyWithoutUseProductAlreadyRegistered.Where(m => m.AlreadyBuyed == true).Where(m=>m.WillBePurchased==false);
