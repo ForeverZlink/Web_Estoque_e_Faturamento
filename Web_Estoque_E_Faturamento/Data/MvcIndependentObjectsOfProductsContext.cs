@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Web_Estoque_E_Faturamento._Models;
 
     public class MvcIndependentObjectsOfProductsContext : DbContext
-    {
+    { 
         public MvcIndependentObjectsOfProductsContext (DbContextOptions<MvcIndependentObjectsOfProductsContext> options)
             : base(options)
         {

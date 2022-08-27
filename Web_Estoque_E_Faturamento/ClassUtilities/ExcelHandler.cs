@@ -80,6 +80,7 @@ namespace Web_Estoque_E_Faturamento.ClassUtilities
                 foreach (var TitleName in ValuesToTitle)
                 {
                     this.Sheet.Cells[this.RowToInsertTitles, ColumnIndex].Value = TitleName;
+                    
                     ColumnIndex++;
                 }
 
