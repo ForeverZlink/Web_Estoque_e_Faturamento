@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
 
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -11,24 +12,29 @@ builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 
 
-builder.Services.AddDbContext<MvcProductContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("MvcProductContext")));
-
-builder.Services.AddDbContext<MvcIndependentObjectsOfProductsContext>(options=>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("MvcIndependentObjectsOfProductsContext"))
-);
-
-var app = builder.Build();
 
 
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+if (builder.Environment.IsProduction())
 {
-    app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+
+    string MvcIndependentObjectsOfProductsContextCrendecialsDatabase = System.Environment.GetEnvironmentVariable("MvcIndependentObjectsOfProductsContext");
+    builder.Configuration.AddJsonFile("appsettings.json").AddEnvironmentVariables($"MvcIndependentObjectsOfProductsContext:{MvcIndependentObjectsOfProductsContextCrendecialsDatabase}");
+    string MvcProductContextCrendecialsDatabase = System.Environment.GetEnvironmentVariable("MvcProductContext");
+    builder.Configuration.AddJsonFile("appsettings.json").AddEnvironmentVariables($"MvcProductContext:{MvcIndependentObjectsOfProductsContextCrendecialsDatabase}");
+
 }
 
+
+builder.Services.AddDbContext<MvcProductContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MvcProductContext")));
+
+
+builder.Services.AddDbContext<MvcIndependentObjectsOfProductsContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MvcIndependentObjectsOfProductsContext"))
+);
+
+var app = builder.Build();
 
 
 app.UseHttpsRedirection();
