@@ -16,6 +16,10 @@ namespace Web_Estoque_E_Faturamento._Models
         
         
         public string DateOfPurchase {get;set;}
+        
+        public int DanfeNumber { get; set; }
+
+        public int Serie { get; set; }
         public float PriceOfPurchase {get;set;}
         public float PriceProductUnity {get;set;}
 
