@@ -23,15 +23,16 @@
                             @Html.AntiForgeryToken()
 
                             @if(Model.Product.ToArray().Length!= 0){
-                                <select name ="ProductId" class="form-select" aria-label="Zelda ocarina of time" >
-                              
-                                  @foreach(var ProductPurchases in Model.Product){
-                                      <option name="ProductId" value="@ProductPurchases.Id">@ProductPurchases.Name</option>
-                                  
-                              
-                                  }
+                                
+                                <select name="ProductId" class="form-select" aria-label="Zelda ocarina of time" >
+                                    <option selected>Clique aqui para ver opções de produtos</option>
+                                    @foreach(var ProductPurchases in Model.Product){
+                                    <option name="ProductId" value="@ProductPurchases.Id">@ProductPurchases.Name</option>
 
-                              
+
+                                    }
+
+
                                 </select>
                             } else{
                                 <h2> Não existe produtos cadastrados no banco de dados :(</h2>
@@ -39,16 +40,16 @@
                             
                             @if(Model.Provider.ToArray().Length !=0){
                                     <select name="ProviderId" class="form-select" aria-label="Default select example">
+                                        <option selected>Clique aqui para ver opções de fornecedores</option>
+                                        @foreach (var ProviderPurchases in Model.Provider)
+                                        {
+                                                <option name="ProviderId" value="@ProviderPurchases.Id">@ProviderPurchases.Name</option>
 
-                                @foreach (var ProviderPurchases in Model.Provider)
-                                {
-                                          <option name="ProviderId" value="@ProviderPurchases.Id">@ProviderPurchases.Name</option>
-
-                                }
+                                        }
 
 
 
-                                </select>
+                                    </select>
                             }else{
                                         <h2>Não há fornecedores cadastrados. @Html.ActionLink("Ir para fornecedores.","Index","Provider")</h2>
                             }
