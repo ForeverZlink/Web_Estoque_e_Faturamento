@@ -22,27 +22,37 @@
                         <form asp-action = "Create" asp-controller= "ProductInventoryRegisterPurchase" method ="POST">
                             @Html.AntiForgeryToken()
 
-                            <select name ="ProductId" class="form-select" aria-label="Zelda ocarina of time">
-                               
-                              @foreach(var ProductPurchases in Model.Product){
-                                  <option name="ProductId" value="@ProductPurchases.Id">@ProductPurchases.Name</option>
+                            @if(Model.Product.ToArray().Length!= 0){
+                                <select name ="ProductId" class="form-select" aria-label="Zelda ocarina of time" >
+                              
+                                  @foreach(var ProductPurchases in Model.Product){
+                                      <option name="ProductId" value="@ProductPurchases.Id">@ProductPurchases.Name</option>
                                   
                               
-                              }
+                                  }
 
                               
-                            </select>
+                                </select>
+                            } else{
+                                <h2> Não existe produtos cadastrados no banco de dados :(</h2>
+                            }
                             
-                            <select name="ProviderId" class="form-select" aria-label="Default select example">
-                               
-                              @foreach(var ProviderPurchases in Model.Provider){
-                                  <option name="ProviderId" value="@ProviderPurchases.Id">@ProviderPurchases.Name</option>
-                              
-                              }
-                              
+                            @if(Model.Provider.ToArray().Length !=0){
+                                    <select name="ProviderId" class="form-select" aria-label="Default select example">
 
-                              
-                            </select>
+                                @foreach (var ProviderPurchases in Model.Provider)
+                                {
+                                          <option name="ProviderId" value="@ProviderPurchases.Id">@ProviderPurchases.Name</option>
+
+                                }
+
+
+
+                                </select>
+                            }else{
+                                        <h2>Não há fornecedores cadastrados. @Html.ActionLink("Ir para fornecedores.","Index","Provider")</h2>
+                            }
+                            
                             <div></div>
                             
                             
@@ -68,12 +78,9 @@
                                <input name="Serie" id="Serie" placeholder="Número de série da nota)" type="number"   class="form-control" aria-label="Amount (to the nearest dollar)">
 
 
-                             
-                              <div class="input-group mb-3">
+                              
 
-                                <input name="PriceProductUnity" placeholder="Número da nota (Danfe)" type="number"   class="form-control" aria-label="Amount (to the nearest dollar)">
 
-                              </div>
                             </div>
 
                            
