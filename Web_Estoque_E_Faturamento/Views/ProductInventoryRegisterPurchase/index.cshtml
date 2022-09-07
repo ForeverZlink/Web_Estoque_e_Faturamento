@@ -62,7 +62,7 @@
                               <label for="DateOfPurchase" class="col-sm-2 col-form-label">Data da compra</label>
                               <input class="form-control" id="DateOfPurchase" type="date" name="DateOfPurchase" id="DateOfPurchase">
                               <div class="input-group mb-3">
-                                <span class="input-group-text">R$</span>
+                                <span class="input-group-text">Preço Unitário R$</span>
                                 
                                 <input name="PriceProductUnity" placeholder="Preço Unitário" type="number" step="0.01"  class="form-control" aria-label="Amount (to the nearest dollar)">
                                 
@@ -74,7 +74,7 @@
                              
                              
 
-                                <input name="Danfe" id="Danfe" placeholder="Número da nota (Danfe)" type="number"   class="form-control" aria-label="Amount (to the nearest dollar)">
+                                <input name="DanfeNumber" id="Danfe" placeholder="Número da nota (Danfe)" type="number"   class="form-control" aria-label="Amount (to the nearest dollar)">
                                <input name="Serie" id="Serie" placeholder="Número de série da nota)" type="number"   class="form-control" aria-label="Amount (to the nearest dollar)">
 
 
@@ -126,39 +126,54 @@
                     </th>
                     <th>
                         <h4>Price Of Purchase</h4>
+
+                    </th>
+                    <th>
+                        <h4>Number of Danfe</h4>
+                    </th>
+                    <th>
+                        <h4>Serie</h4>
                     </th>
                     <th>
                         <h4>Date Of Purchase</h4>
                     </th>
                     <th></th>
-                 </tr>
+                </tr>
             </thead>
             <tbody>
              @foreach(var item in Model.ProductInventoryRegisterPurchase){
 
                     <tr>
-                    
-                      <td >
-                          <p class="text-break">@Html.DisplayFor(modelItem => item.Product.Name)</p> 
-                      </td>
-                      <td>
-                          <p class="text-break">@Html.DisplayFor(modelItem => item.Provider.Name)</p> 
-                      </td>
-                      <td>
-                          <p class="text-break">R$@Html.DisplayFor(modelItem => item.PriceOfPurchase)</p>
-                          
-                      </td>
-                      <td>
-                          <p class="text-break">@Html.DisplayFor(modelItem => item.DateOfPurchase)</p>
-                          
-                      </td>
-                
-                      <td>
-                     
-                           <a class="btn btn-primary" href= '@Url.Action("Details","ProductInventoryRegisterPurchase", new{id=@item.Id})'  role="button">Detalhes</a>
-                          
-                      </td>
-                </tr>
+
+                        <td>
+                            <p class="text-break">@Html.DisplayFor(modelItem => item.Product.Name)</p>
+                        </td>
+                        <td>
+                            <p class="text-break">@Html.DisplayFor(modelItem => item.Provider.Name)</p>
+                        </td>
+                        <td>
+                            <p class="text-break">R$@Html.DisplayFor(modelItem => item.PriceOfPurchase)</p>
+
+                        </td>
+                        <td>
+                            <p class="text-break">@Html.DisplayFor(modelItem => item.DanfeNumber)</p>
+
+                        </td>
+                        <td>
+                            <p class="text-break">@Html.DisplayFor(modelItem => item.Serie)</p>
+
+                        </td>
+                        <td>
+                            <p class="text-break">@Html.DisplayFor(modelItem => item.DateOfPurchase)</p>
+
+                        </td>
+
+                        <td>
+
+                            <a class="btn btn-primary" href='@Url.Action("Details","ProductInventoryRegisterPurchase", new{id=@item.Id})' role="button">Detalhes</a>
+
+                        </td>
+                    </tr>
         
 
                 
