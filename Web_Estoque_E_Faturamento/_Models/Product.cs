@@ -1,7 +1,10 @@
-﻿namespace Web_Estoque_E_Faturamento._Models
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations;
+namespace Web_Estoque_E_Faturamento._Models
 {
     public class Product
     {
+        [Key]
         public int Id { get; set; }
         public string? Name{get; set; }
         
