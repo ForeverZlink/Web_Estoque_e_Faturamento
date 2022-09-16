@@ -25,12 +25,12 @@ namespace WebEstoqueTests
         static Product Product = new Product(){
             Name="Car",Code="01",Description="A nice car"
            };
-        static ProductInventory ProductInventory = new ProductInventory(){Product=Product,ProductId=Product.Id,QuantityInStock=0};
+        static ProductInventory ProductInventory = new ProductInventory(){ProductId=Product.Id,QuantityInStock=0};
 
         ProductInventoryRegisterPurchase ProductInvetoryRegisterPurchaseModelData = new ProductInventoryRegisterPurchase(){
             QuantityBuyed=1,PriceOfPurchase=20,DateOfPurchase=DateTime.Today.ToString(),
-            PriceProductUnity=2, ProviderId=1,Provider=ProviderInstance,ProductInventoryId=1, ProductInventory=ProductInventory,
-            ProductId=1,Product=Product
+            PriceProductUnity=2, ProviderId=ProviderInstance.Id,ProductInventoryId=ProductInventory.Id,
+            ProductId=Product.Id,DanfeNumber=1,Serie=1
         };
         public ProductInventoryRegisterPurchaseController _ProductInventoryRegisterPurchaseController;
         public dynamic ContextConfig{
@@ -48,10 +48,31 @@ namespace WebEstoqueTests
         [Fact]
         public void Edit()
         {
+            this.context.Provider.Add(ProviderInstance);
+            this.context.Product.Add(Product);
+            this.context.SaveChanges();
+            
+            
+            ProductInventory ProductInventory = new ProductInventory() { ProductId = Product.Id, QuantityInStock = 0 };
+            this.context.ProductInventory.Add(ProductInventory);
+            this.context.SaveChanges();
+
+            ProductInventoryRegisterPurchase ProductInvetoryRegisterPurchaseModelData = new ProductInventoryRegisterPurchase()
+            {
+                QuantityBuyed = 1,
+                PriceOfPurchase = 20,
+                DateOfPurchase = DateTime.Today.ToString(),
+                PriceProductUnity = 2,
+                ProviderId = ProviderInstance.Id,
+                ProductInventoryId = ProductInventory.Id,
+                ProductId = Product.Id,
+                DanfeNumber = 1,
+                Serie = 1
+            };
             //This part will be test Edit method when acess via get, thus
             //its just search in database for the informations
 
-            ContextConfig =ProductInvetoryRegisterPurchaseModelData;
+            ContextConfig = ProductInvetoryRegisterPurchaseModelData;
             ProductInventoryRegisterPurchaseControllerInstance = ContextConfig;
             //When its passed a id null
            
@@ -82,13 +103,20 @@ namespace WebEstoqueTests
             //when id passed its equal a product.Id, but doesn't exist a product with this id in database
             
             ProductInventoryRegisterPurchase ProductInvetoryRegisterPurchaseModelDataButWithoutSaveInDatabase = new ProductInventoryRegisterPurchase(){
-
-            Id=33333333,QuantityBuyed=1,PriceOfPurchase=20,DateOfPurchase=DateTime.Today.ToString(),
-            PriceProductUnity=2, ProviderId=1,Provider=ProviderInstance, 
-            ProductId=2,Product=Product};
+                Id=9999,
+            QuantityBuyed=1,PriceOfPurchase=20,DateOfPurchase=DateTime.Today.ToString(),
+            PriceProductUnity=2, ProviderId=1,Provider=ProviderInstance, ProductInventoryId=1,
+            ProductId=1,Product=Product};
             var ResponseIdEqualButNotExistAProductWithId =ProductInventoryRegisterPurchaseControllerInstance.Edit(id:ProductInvetoryRegisterPurchaseModelDataButWithoutSaveInDatabase.Id, ProductInventoryPurchaseNewVersion:ProductInvetoryRegisterPurchaseModelDataButWithoutSaveInDatabase);
             Assert.Contains(this.NotFoundResult, ResponseIdEqualButNotExistAProductWithId.Result.ToString());
 
+
+        }
+        [Fact]
+        public void Create()
+        {
+            ContextConfig = ProductInvetoryRegisterPurchaseModelData;
+            ProductInventoryRegisterPurchaseControllerInstance = ContextConfig;
 
         }
     }
